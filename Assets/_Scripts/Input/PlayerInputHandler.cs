@@ -8,7 +8,8 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerInput playerInput;
 
 
-    public Vector2 PointerPosition { get; private set; }
+    public Vector2 PointerScreenPosition { get; private set; }
+    public Vector2 PointerRawPosition { get; private set; }
     public bool PointerPress { get; private set; }
     public bool PointerRelease { get; private set; }
 
@@ -41,7 +42,8 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (!processInputs) return;
 
-        PointerPosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+        PointerScreenPosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+        PointerRawPosition = context.ReadValue<Vector2>();
     }
 
     public void OnPointerPressInput(InputAction.CallbackContext context)

@@ -9,9 +9,13 @@ public class TouchCursor : MonoBehaviour
     [SerializeField] private Color normalColor;
     [SerializeField] private Color pressColor;
     [SerializeField] private Color releaseColor;
+    [SerializeField] private LayerMask mask;
+
+    private Camera cam;
 
     private void Awake()
     {
+        cam = Camera.main;
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -24,7 +28,13 @@ public class TouchCursor : MonoBehaviour
     {
         if (PlayerInputHandler.Instance.PointerPress)
         {
-            transform.position = PlayerInputHandler.Instance.PointerPosition;
+            Ray ray = cam.ScreenPointToRay(PlayerInputHandler.Instance.PointerRawPosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, mask))
+            {
+                transform.position = hitInfo.point;
+            }
+
             spriteRenderer.color = pressColor;
         }
         else if (PlayerInputHandler.Instance.PointerRelease)
