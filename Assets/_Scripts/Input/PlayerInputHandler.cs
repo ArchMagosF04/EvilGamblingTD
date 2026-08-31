@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerInputHandler : MonoBehaviour
 {
     public static PlayerInputHandler Instance;
 
     private PlayerInput playerInput;
+    private Camera cam;
 
 
     public Vector2 PointerScreenPosition { get; private set; }
@@ -13,6 +15,8 @@ public class PlayerInputHandler : MonoBehaviour
     public bool PointerPress { get; private set; }
     public bool PointerRelease { get; private set; }
 
+
+    [SerializeField] private LayerMask mousePositionLayer;
     [SerializeField] private float releasePeriodDuration = 0.1f;
     private float realeaseStartTime;
 
@@ -30,6 +34,7 @@ public class PlayerInputHandler : MonoBehaviour
             return;
         }
 
+        cam = Camera.main;
         playerInput = GetComponent<PlayerInput>();
     }
 
@@ -44,6 +49,18 @@ public class PlayerInputHandler : MonoBehaviour
 
         PointerScreenPosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
         PointerRawPosition = context.ReadValue<Vector2>();
+    }
+
+    public Vector3 GetPointerWorldPosition()
+    {
+        Ray ray = cam.ScreenPointToRay(PointerRawPosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, mousePositionLayer))
+        {
+            return hitInfo.point;
+        }
+
+        return Vector3.negativeInfinity;
     }
 
     public void OnPointerPressInput(InputAction.CallbackContext context)

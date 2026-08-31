@@ -1,3 +1,4 @@
+using Alchemy.Inspector;
 using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
@@ -5,6 +6,9 @@ public class TowerPlacement : MonoBehaviour
     private Camera cam;
 
     private TowerController currentPlacingTower;
+
+    [BoxGroup("Layer Info"), SerializeField] private LayerMask generalLayer;
+    [BoxGroup("Layer Info"), SerializeField] private LayerMask spawnableLayer;
 
     private void Awake()
     {
@@ -15,12 +19,26 @@ public class TowerPlacement : MonoBehaviour
     {
         if (currentPlacingTower != null)
         {
-            currentPlacingTower.transform.position = PlayerInputHandler.Instance.PointerScreenPosition;
+            Ray ray = cam.ScreenPointToRay(PlayerInputHandler.Instance.PointerRawPosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, 50f, spawnableLayer))
+            {
+                currentPlacingTower.transform.position = PlayerInputHandler.Instance.GetPointerWorldPosition();
+            }
+
+            currentPlacingTower.IsTowerObstructed();
 
             if (PlayerInputHandler.Instance.PointerRelease)
             {
-                currentPlacingTower.PlaceTower();
-                currentPlacingTower = null;
+                if (currentPlacingTower.CanPlace)
+                {
+                    currentPlacingTower.PlaceTower();
+                    currentPlacingTower = null;
+                }
+                else
+                {
+                    CancelCurrentPlacing();
+                }
             }
         }
     }
@@ -32,7 +50,7 @@ public class TowerPlacement : MonoBehaviour
             CancelCurrentPlacing();
         }
 
-        currentPlacingTower = TowerPool.Instance.GetTower(prefab, PlayerInputHandler.Instance.PointerScreenPosition, Quaternion.identity);
+        currentPlacingTower = TowerPool.Instance.GetTower(prefab, PlayerInputHandler.Instance.GetPointerWorldPosition(), Quaternion.identity);
     }
 
     public void CancelCurrentPlacing()
