@@ -1,3 +1,4 @@
+using Alchemy.Inspector;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -49,6 +50,7 @@ public class PlayerManager : MonoBehaviour
         healthValueText?.InvokeEvent("Health: " + CurrentHealth.ToString());
     }
 
+    [Button]
     public void GainMoney(float amount)
     {
         Money += amount;
@@ -75,6 +77,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    [Button]
     public void HealBase(float amount)
     {
         CurrentHealth += amount;

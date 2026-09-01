@@ -6,6 +6,7 @@ public class TowerPlacement : MonoBehaviour
     private Camera cam;
 
     private TowerController currentPlacingTower;
+    private SO_TowerBuyData currentTowerData;
 
     [BoxGroup("Layer Info"), SerializeField] private LayerMask generalLayer;
     [BoxGroup("Layer Info"), SerializeField] private LayerMask spawnableLayer;
@@ -32,8 +33,10 @@ public class TowerPlacement : MonoBehaviour
             {
                 if (currentPlacingTower.CanPlace)
                 {
+                    PlayerManager.Instance.LoseMoney(currentTowerData.TowerCost);
                     currentPlacingTower.PlaceTower();
                     currentPlacingTower = null;
+                    currentTowerData = null;
                 }
                 else
                 {
@@ -43,20 +46,22 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
-    public void SetTowerToPlace(TowerController prefab)
+    public void SetTowerToPlace(SO_TowerBuyData data)
     {
         if (currentPlacingTower != null)
         {
             CancelCurrentPlacing();
         }
 
-        currentPlacingTower = TowerPool.Instance.GetTower(prefab, PlayerInputHandler.Instance.GetPointerWorldPosition(), Quaternion.identity);
+        currentTowerData = data;
+        currentPlacingTower = TowerPool.Instance.GetTower(data.TowerPrefab, PlayerInputHandler.Instance.GetPointerWorldPosition(), Quaternion.identity);
     }
 
     public void CancelCurrentPlacing()
     {
         TowerPool.Instance.ReturnToPool(currentPlacingTower.ID, currentPlacingTower);
 
+        currentTowerData = null;
         currentPlacingTower = null;
     }
 }
