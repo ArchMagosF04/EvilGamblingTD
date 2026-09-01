@@ -78,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1770186571
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
@@ -147,6 +147,7 @@ MonoBehaviour:
   - {fileID: 8180946532246349559}
   - {fileID: 8041759931263609811}
   towerCollider: {fileID: 4002816615081537345}
+  spriteRenderOrder: {fileID: 7203476154029645039}
   obstructLayer:
     serializedVersion: 2
     m_Bits: 72
@@ -182,6 +183,14 @@ PrefabInstance:
     - target: {fileID: -8653719598885068355, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
       propertyPath: m_Name
       value: DemonMF
+      objectReference: {fileID: 0}
+    - target: {fileID: -8089108032486474258, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8089108032486474258, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 355811143
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
       propertyPath: m_LocalScale.x
@@ -239,10 +248,45 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4341751166894078726, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4341751166894078726, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 355811143
+      objectReference: {fileID: 0}
+    - target: {fileID: 391018535723972668, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 391018535723972668, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 355811143
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643812517830056397, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643812517830056397, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 355811143
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750224980703316446, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750224980703316446, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 355811143
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7203476154029645039}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
 --- !u!212 &2664003499124865984 stripped
 SpriteRenderer:
@@ -254,6 +298,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
   m_PrefabInstance: {fileID: 3618518983342678541}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3877669683305595824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
+  m_PrefabInstance: {fileID: 3618518983342678541}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7203476154029645039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3877669683305595824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b57badd3ceab2546a95970cf4ba85b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteRenderOrder
+  spriteArray:
+  - {fileID: 8041759931263609811}
+  - {fileID: 8180946532246349559}
+  - {fileID: 3988679222386121265}
+  - {fileID: 2664003499124865984}
+  - {fileID: 4434419239486988259}
 --- !u!212 &3988679222386121265 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 391018535723972668, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}

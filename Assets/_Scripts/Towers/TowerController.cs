@@ -7,6 +7,7 @@ public class TowerController : MonoBehaviour
 
     [BoxGroup("Components"), SerializeField] private SpriteRenderer[] spriteRenderers;
     [BoxGroup("Components"), SerializeField] private BoxCollider towerCollider;
+    [BoxGroup("Components"), SerializeField] private SpriteRenderOrder spriteRenderOrder;
 
     [BoxGroup("Placement Settings"), SerializeField] private LayerMask obstructLayer;
 
@@ -37,6 +38,8 @@ public class TowerController : MonoBehaviour
     {
         TowerPlaced = true;
         towerCollider.isTrigger = false;
+
+        spriteRenderOrder.UpdateOrderOfLayers();
 
         foreach (var sprite in spriteRenderers)
         {
