@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f96ab01b4ed6a46ba57655ea0409ec, type: 3}
   m_Name: SelectedTowers
   m_EditorClassIdentifier: Assembly-CSharp::SO_SelectedTowersArray
-  Slot1Tower: {fileID: 11400000, guid: e63b49d210055f7468d2e3fa616a72c5, type: 2}
-  Slot2Tower: {fileID: 11400000, guid: c5380b2a50d5ddb47abe7a8574ec2bf9, type: 2}
-  Slot3Tower: {fileID: 11400000, guid: c4da084b4d0aa904e9c3b874abda203b, type: 2}
-  Slot4Tower: {fileID: 11400000, guid: 0212b575c1941b44594c3c0ccce04ee1, type: 2}
-  Slot5Tower: {fileID: 11400000, guid: dcb3102c7381aa54e9ee1b5c36484ba6, type: 2}
+  Slot1Tower: {fileID: 11400000, guid: 4b0e3db2ff2613f41b51ceea1f763f7c, type: 2}
+  Slot2Tower: {fileID: 11400000, guid: f339e9e3eeb78c0499b9e730d4612db1, type: 2}
+  Slot3Tower: {fileID: 11400000, guid: 8dbd802a473db1c48934b42ebc0e23d8, type: 2}
+  Slot4Tower: {fileID: 11400000, guid: 461138a847f19a949a729c437a015774, type: 2}
+  Slot5Tower: {fileID: 11400000, guid: 7d60781a0ee8cea40bd442258a02559a, type: 2}

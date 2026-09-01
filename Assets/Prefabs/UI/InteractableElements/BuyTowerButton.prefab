@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f6bd1ef26d6a545b82e03bd9d42ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuyTowerButton
-  towerData: {fileID: 11400000, guid: e63b49d210055f7468d2e3fa616a72c5, type: 2}
+  towerData: {fileID: 0}
   towerIconImage: {fileID: 2948684621325499103}
   buttonImage: {fileID: 4423406083604532430}
   costText: {fileID: 7927484311065030534}

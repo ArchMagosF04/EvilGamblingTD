@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TowerControllerEventListener : AbstractEventListener<SO_TowerBuyData>
+public class TowerControllerEventListener : AbstractEventListener<SO_TowerData>
 {
 
 }

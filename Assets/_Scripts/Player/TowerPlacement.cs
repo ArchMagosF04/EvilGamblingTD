@@ -6,7 +6,7 @@ public class TowerPlacement : MonoBehaviour
     private Camera cam;
 
     private TowerController currentPlacingTower;
-    private SO_TowerBuyData currentTowerData;
+    private SO_TowerData currentTowerData;
 
     [BoxGroup("Layer Info"), SerializeField] private LayerMask generalLayer;
     [BoxGroup("Layer Info"), SerializeField] private LayerMask spawnableLayer;
@@ -46,7 +46,7 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
-    public void SetTowerToPlace(SO_TowerBuyData data)
+    public void SetTowerToPlace(SO_TowerData data)
     {
         if (currentPlacingTower != null)
         {

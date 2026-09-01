@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BuyTowerButton : MonoBehaviour
 {
-    [BoxGroup("Components"), SerializeField] private SO_TowerBuyData towerData;
+    [BoxGroup("Components"), SerializeField] private SO_TowerData towerData;
     [BoxGroup("Components"), SerializeField] private Image towerIconImage;
     [BoxGroup("Components"), SerializeField] private Image buttonImage;
     [BoxGroup("Components"), SerializeField] private TMP_Text costText;
@@ -22,7 +22,7 @@ public class BuyTowerButton : MonoBehaviour
     }
 
     [Button]
-    public void InitializeTowerSlot(SO_TowerBuyData data)
+    public void InitializeTowerSlot(SO_TowerData data)
     {
         towerData = data;
 
