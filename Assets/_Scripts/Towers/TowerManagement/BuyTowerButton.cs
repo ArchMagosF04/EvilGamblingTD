@@ -22,7 +22,7 @@ public class BuyTowerButton : MonoBehaviour
     }
 
     [Button]
-    private void InitializeTowerSlot(SO_TowerBuyData data)
+    public void InitializeTowerSlot(SO_TowerBuyData data)
     {
         towerData = data;
 

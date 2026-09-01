@@ -428,6 +428,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4677510548894254848, guid: 206f237614c227d4bb023a3876c5b9c3, type: 3}
   m_PrefabInstance: {fileID: 3602822983896832712}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &390087849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5705041193481516051, guid: 206f237614c227d4bb023a3876c5b9c3, type: 3}
+  m_PrefabInstance: {fileID: 3602822983896832712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f6bd1ef26d6a545b82e03bd9d42ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuyTowerButton
 --- !u!1001 &471660740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1272,6 +1283,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1275353119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5705041193481516051, guid: 206f237614c227d4bb023a3876c5b9c3, type: 3}
+  m_PrefabInstance: {fileID: 471660740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f6bd1ef26d6a545b82e03bd9d42ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuyTowerButton
 --- !u!1 &1308036568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,6 +1397,7 @@ GameObject:
   - component: {fileID: 1339324926}
   - component: {fileID: 1339324925}
   - component: {fileID: 1339324927}
+  - component: {fileID: 1339324928}
   m_Layer: 5
   m_Name: TowerButtonsPanel
   m_TagString: Untagged
@@ -1470,6 +1493,24 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1339324928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339324923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e68362ebf354024cbcddaa35d9a8569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerButtonsInitialiazer
+  selectedTowersArray: {fileID: 11400000, guid: a636c9434dc4b8745ae8373075a67c7f, type: 2}
+  button1: {fileID: 390087849}
+  button2: {fileID: 1583411084}
+  button3: {fileID: 1275353119}
+  button4: {fileID: 1924367067}
+  button5: {fileID: 2089989559}
 --- !u!1 &1407025213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,6 +1941,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4677510548894254848, guid: 206f237614c227d4bb023a3876c5b9c3, type: 3}
   m_PrefabInstance: {fileID: 1583411082}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1583411084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5705041193481516051, guid: 206f237614c227d4bb023a3876c5b9c3, type: 3}
+  m_PrefabInstance: {fileID: 1583411082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f6bd1ef26d6a545b82e03bd9d42ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuyTowerButton
 --- !u!1 &1646796533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2332,6 +2384,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4677510548894254848, guid: 206f237614c227d4bb023a3876c5b9c3, type: 3}
   m_PrefabInstance: {fileID: 1924367065}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1924367067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5705041193481516051, guid: 206f237614c227d4bb023a3876c5b9c3, type: 3}
+  m_PrefabInstance: {fileID: 1924367065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f6bd1ef26d6a545b82e03bd9d42ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuyTowerButton
 --- !u!1 &2011623625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2572,6 +2635,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4677510548894254848, guid: 206f237614c227d4bb023a3876c5b9c3, type: 3}
   m_PrefabInstance: {fileID: 2089989557}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2089989559 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5705041193481516051, guid: 206f237614c227d4bb023a3876c5b9c3, type: 3}
+  m_PrefabInstance: {fileID: 2089989557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f6bd1ef26d6a545b82e03bd9d42ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuyTowerButton
 --- !u!1001 &3602822983896832712
 PrefabInstance:
   m_ObjectHideFlags: 0

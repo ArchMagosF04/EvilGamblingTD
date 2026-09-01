@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc081dc5bf348246886cf4cc252915a, type: 3}
+  m_Name: BD_TestTower 2
+  m_EditorClassIdentifier: Assembly-CSharp::SO_TowerBuyData
+  <TowerPrefab>k__BackingField: {fileID: 7034009629477887436, guid: 70c60eef0724d614aab0efb832ece60d, type: 3}
+  <TowerCost>k__BackingField: 75
+  <TowerButtonSprite>k__BackingField: {fileID: -8128970506050789309, guid: 4e5abe2663a89574eb688c260e9c80c1, type: 3}
