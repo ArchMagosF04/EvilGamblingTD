@@ -16,11 +16,6 @@ public class BuyTowerButton : MonoBehaviour
     private Sequence cantBuySequence;
     private Tween buyTween;
 
-    private void Awake()
-    {
-        InitializeTowerSlot(towerData);
-    }
-
     [Button]
     public void InitializeTowerSlot(SO_TowerData data)
     {
