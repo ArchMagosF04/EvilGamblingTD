@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Tower Data", menuName = "Scriptable Objects/Towers/Tower Data")]
 public class SO_TowerData : ScriptableObject
 {
-    [field: SerializeField] private int ID;
+    [field: SerializeField] public int ID {  get; private set; }
 
     #region Buy Settings
 
@@ -19,4 +19,16 @@ public class SO_TowerData : ScriptableObject
     [field: BoxGroup("Tower Stats"), SerializeField] private float damage;
 
     #endregion
+
+    [Button]
+    public void GiveTowerDataToPrefab()
+    {
+        if (TowerPrefab == null)
+        {
+            Debug.LogWarning("No tower prefab found.");
+            return;
+        }
+
+        TowerPrefab.ReceiveTowerData(this);
+    }
 }

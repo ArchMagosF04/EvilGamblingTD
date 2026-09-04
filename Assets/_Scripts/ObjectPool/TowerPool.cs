@@ -9,7 +9,8 @@ public class TowerPool : MonoBehaviour
 
     private readonly Dictionary<int, ObjectPool<TowerController>> poolDictionary = new();
 
-    [SerializeField] private TowerPoolPreWarm[] preWarmArray;
+    [SerializeField] private SO_SelectedTowersArray selectedTowersArray;
+    [SerializeField, Min(0)] private int preWarmTowersAmount = 5;
 
     private void Awake()
     {
@@ -23,44 +24,52 @@ public class TowerPool : MonoBehaviour
             return;
         }
 
-        PreWarmPools();
+        PreWarmSelectedTowerPool(selectedTowersArray.Slot1Tower);
+        PreWarmSelectedTowerPool(selectedTowersArray.Slot2Tower);
+        PreWarmSelectedTowerPool(selectedTowersArray.Slot3Tower);
+        PreWarmSelectedTowerPool(selectedTowersArray.Slot4Tower);
+        PreWarmSelectedTowerPool(selectedTowersArray.Slot5Tower);
     }
 
-    private void PreWarmPools()
+    private void PreWarmSelectedTowerPool(SO_TowerData data)
     {
-        for (int i = 0; i < preWarmArray.Length; i++)
+        if (data != null)
         {
-            if (poolDictionary.ContainsKey(preWarmArray[i].prefab.ID))
+            if (poolDictionary.ContainsKey(data.ID))
             {
-                poolDictionary[preWarmArray[i].prefab.ID].Clear();
+                poolDictionary[data.ID].Clear();
             }
             else
             {
-                CreatePool(preWarmArray[i].prefab);
+                CreatePool(data.TowerPrefab);
             }
 
-            List<TowerController> tempList = new(preWarmArray[i].amount);
+            List<TowerController> tempList = new(preWarmTowersAmount);
 
-            for (int j = 0; j < preWarmArray[i].amount; j++)
+            for (int j = 0; j < preWarmTowersAmount; j++)
             {
-                tempList.Add(GetTower(preWarmArray[i].prefab, Vector3.down * 9999, Quaternion.identity));
+                tempList.Add(GetTower(data.TowerPrefab, Vector3.down * 9999, Quaternion.identity));
             }
 
             for (int j = 0; j < tempList.Count; j++)
             {
-                ReturnToPool(tempList[j].ID, tempList[j]);
+                ReturnToPool(tempList[j].TowerData.ID, tempList[j]);
             }
+        }
+        else
+        {
+            Debug.LogWarning("Empty Tower Slot");
         }
     }
 
     public TowerController GetTower(TowerController prefab, Vector3 position, Quaternion rotation, Transform parent = null)
     {
-        if (!poolDictionary.ContainsKey(prefab.ID))
+        if (!poolDictionary.ContainsKey(prefab.TowerData.ID))
         {
             CreatePool(prefab);
         }
 
-        TowerController newEffect = poolDictionary[prefab.ID].Get();
+        TowerController newEffect = poolDictionary[prefab.TowerData.ID].Get();
         if (parent != null) newEffect.transform.SetParent(parent);
         newEffect.transform.SetPositionAndRotation(position, rotation);
         return newEffect;
@@ -93,13 +102,6 @@ public class TowerPool : MonoBehaviour
                 maxSize: 150
             );
 
-        poolDictionary.Add(prefab.ID, newPool);
+        poolDictionary.Add(prefab.TowerData.ID, newPool);
     }
-}
-
-[Serializable]
-public struct TowerPoolPreWarm
-{
-    public TowerController prefab;
-    [Min(0)] public int amount;
 }

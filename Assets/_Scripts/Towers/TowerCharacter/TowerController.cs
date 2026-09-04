@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
-    [field: SerializeField] public int ID {  get; private set; }
-
+    [field: BoxGroup("Components"), SerializeField] public SO_TowerData TowerData {  get; private set; }
     [BoxGroup("Components"), SerializeField] private SpriteRenderer[] spriteRenderers;
     [BoxGroup("Components"), SerializeField] private BoxCollider towerCollider;
     [BoxGroup("Components"), SerializeField] private SpriteRenderOrder spriteRenderOrder;
@@ -31,6 +30,8 @@ public class TowerController : MonoBehaviour
             sprite.color = tempColor;
         }
     }
+
+    public void ReceiveTowerData(SO_TowerData data) => TowerData = data;
 
     #region Tower Placement
 

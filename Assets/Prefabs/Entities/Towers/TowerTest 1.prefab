@@ -78,9 +78,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 355811143
-  m_SortingLayer: 4
-  m_SortingOrder: -1
+  m_SortingLayerID: 1770186571
+  m_SortingLayer: 1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 7034009629477887436}
   - component: {fileID: 4002816615081537345}
   m_Layer: 6
-  m_Name: TowerTest
+  m_Name: TowerTest 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd271e61898bec479dce6dda183b082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerController
-  <TowerData>k__BackingField: {fileID: 11400000, guid: 4b0e3db2ff2613f41b51ceea1f763f7c, type: 2}
+  <TowerData>k__BackingField: {fileID: 11400000, guid: f339e9e3eeb78c0499b9e730d4612db1, type: 2}
   spriteRenderers:
   - {fileID: 1255652520015881486}
   - {fileID: 4434419239486988259}
@@ -218,11 +218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9848078
+      value: 0.953717
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.17364825
+      value: -0.30070576
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
       propertyPath: m_LocalRotation.y
@@ -234,7 +234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -20
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -321,7 +321,6 @@ MonoBehaviour:
   - {fileID: 3988679222386121265}
   - {fileID: 2664003499124865984}
   - {fileID: 4434419239486988259}
-  orderOnAwake: 0
 --- !u!212 &3988679222386121265 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 391018535723972668, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}

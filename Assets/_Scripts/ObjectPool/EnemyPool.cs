@@ -30,9 +30,9 @@ public class EnemyPool : MonoBehaviour
     {
         for (int i = 0; i < preWarmArray.Length; i++)
         {
-            if (poolDictionary.ContainsKey(preWarmArray[i].prefab.ID))
+            if (poolDictionary.ContainsKey(preWarmArray[i].prefab.EnemyData.ID))
             {
-                poolDictionary[preWarmArray[i].prefab.ID].Clear();
+                poolDictionary[preWarmArray[i].prefab.EnemyData.ID].Clear();
             }
             else
             {
@@ -48,19 +48,19 @@ public class EnemyPool : MonoBehaviour
 
             for (int j = 0; j < tempList.Count; j++)
             {
-                ReturnToPool(tempList[j].ID, tempList[j]);
+                ReturnToPool(tempList[j].EnemyData.ID, tempList[j]);
             }
         }
     }
 
     public EnemyController GetEnemy(EnemyController prefab, Vector3 position, Quaternion rotation, Transform parent = null)
     {
-        if (!poolDictionary.ContainsKey(prefab.ID))
+        if (!poolDictionary.ContainsKey(prefab.EnemyData.ID))
         {
             CreatePool(prefab);
         }
 
-        EnemyController newEffect = poolDictionary[prefab.ID].Get();
+        EnemyController newEffect = poolDictionary[prefab.EnemyData.ID].Get();
         if (parent != null) newEffect.transform.SetParent(parent);
         newEffect.transform.SetPositionAndRotation(position, rotation);
         return newEffect;
@@ -93,7 +93,7 @@ public class EnemyPool : MonoBehaviour
                 maxSize: 150
             );
 
-        poolDictionary.Add(prefab.ID, newPool);
+        poolDictionary.Add(prefab.EnemyData.ID, newPool);
     }
 }
 

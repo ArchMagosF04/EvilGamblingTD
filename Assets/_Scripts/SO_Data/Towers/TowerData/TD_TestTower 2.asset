@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4741f620f4db141bc2449b3f7594fb, type: 3}
   m_Name: TD_TestTower 2
   m_EditorClassIdentifier: Assembly-CSharp::SO_TowerData
-  ID: 1
-  <TowerPrefab>k__BackingField: {fileID: 7034009629477887436, guid: 70c60eef0724d614aab0efb832ece60d, type: 3}
+  <ID>k__BackingField: 1
+  <TowerPrefab>k__BackingField: {fileID: 7034009629477887436, guid: a30b9ac0f125f0c47b16a40976c8052a, type: 3}
   <TowerCost>k__BackingField: 75
   <TowerButtonSprite>k__BackingField: {fileID: 6231648784806597034, guid: e385e47d2eb6c88498773ab9090edcb7, type: 3}
   damage: 0
