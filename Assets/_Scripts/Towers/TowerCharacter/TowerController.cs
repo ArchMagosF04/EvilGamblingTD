@@ -12,6 +12,7 @@ public class TowerController : MonoBehaviour
 
     public bool TowerPlaced { get; private set; }
     public bool CanPlace { get; private set; }
+    private bool returned;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class TowerController : MonoBehaviour
 
     private void OnEnable()
     {
+        returned = false;
         towerCollider.isTrigger = true;
         TowerPlaced = false;
 
@@ -99,4 +101,20 @@ public class TowerController : MonoBehaviour
     }
 
     #endregion
+
+    public void DestroyTower()
+    {
+        if (TowerPool.Instance != null)
+        {
+            if (!returned)
+            {
+                TowerPool.Instance.ReturnToPool(TowerData.ID, this);
+                returned = true;
+            }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }

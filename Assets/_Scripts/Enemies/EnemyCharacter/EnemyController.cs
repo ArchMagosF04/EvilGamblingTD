@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
@@ -8,6 +9,9 @@ public class EnemyController : MonoBehaviour
     [field: BoxGroup("Components"), SerializeField] public SO_EnemyData EnemyData { get; private set; }
     [BoxGroup("Components"), SerializeField] private Rigidbody rb;
 
+    public Action OnRemoveEnemyFromWave;
+    private bool returned;
+
     private void Awake()
     {
         if (!rb) rb = GetComponent<Rigidbody>();
@@ -15,6 +19,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
+        returned = false;
         rb.linearVelocity = Vector3.right * EnemyData.MoveSpeed;
     }
 
@@ -22,13 +27,13 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name + "A");
+        //Debug.Log(collision.gameObject.name + "A");
 
         if (collision.gameObject.CompareTag("PlayerBase"))
         {
             PlayerManager.Instance.DamageBase(EnemyData.Damage);
 
-            Destroy(gameObject);
+            DestroyEnemy();
         }
     }
 
@@ -40,7 +45,26 @@ public class EnemyController : MonoBehaviour
     //    {
     //        PlayerManager.Instance.DamageBase(EnemyData.Damage);
 
-    //        Destroy(gameObject);
+    //        DestroyEnemy();
     //    }
     //}
+
+    public void DestroyEnemy()
+    {
+        OnRemoveEnemyFromWave?.Invoke();
+        OnRemoveEnemyFromWave = null;
+
+        if (EnemyPool.Instance != null)
+        {
+            if (!returned)
+            {
+                EnemyPool.Instance.ReturnToPool(EnemyData.ID, this);
+                returned = true;
+            }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }

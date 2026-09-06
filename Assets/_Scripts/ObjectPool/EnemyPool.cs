@@ -85,7 +85,7 @@ public class EnemyPool : MonoBehaviour
         ObjectPool<EnemyController> newPool = new ObjectPool<EnemyController>
             (
                 createFunc: () => Instantiate(prefab, transform),
-                actionOnGet: (item) => item.gameObject.SetActive(true),
+                actionOnGet: (item) => item.gameObject.SetActive(false),
                 actionOnRelease: (item) => item.gameObject.SetActive(false),
                 actionOnDestroy: (item) => Destroy(item.gameObject),
                 collectionCheck: true,

@@ -10,17 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cf1a5e7f8c52c148bd60a8bf2fedbb3, type: 3}
-  m_Name: TestEnemyData
+  m_Name: TestEnemyData 1
   m_EditorClassIdentifier: Assembly-CSharp::SO_EnemyData
-  <ID>k__BackingField: 0
-  EnemyPrefab: {fileID: 439606636570254557, guid: 806bbd7e26d5f494cb8a36493a0ab791, type: 3}
+  <ID>k__BackingField: 1
+  EnemyPrefab: {fileID: 439606636570254557, guid: 989d3796947f3764d843f4afdad44eae, type: 3}
   <SpawnCost>k__BackingField: 1
+  <MinWaveRequirement>k__BackingField: 0
   <BaseWeight>k__BackingField: 100
-  <MinWaveRequirement>k__BackingField: 1
-  <PeakWave>k__BackingField: 5
+  <WaveWeightShift>k__BackingField: 5
   <WeightShiftPerWave>k__BackingField: -5
   <MinWeightClamp>k__BackingField: 0
-  <MaxWeightClamp>k__BackingField: 0
-  <MoveSpeed>k__BackingField: 1
+  <MaxWeightClamp>k__BackingField: 100
+  <AmountToSpawn>k__BackingField: 1
+  <WaveBurstShift>k__BackingField: 10
+  <BurstShiftPerWave>k__BackingField: 0.2
+  <MinBurstClamp>k__BackingField: 1
+  <MaxBurstClamp>k__BackingField: 15
+  <MoveSpeed>k__BackingField: 5
   <MaxHealth>k__BackingField: 1
   <Damage>k__BackingField: 1

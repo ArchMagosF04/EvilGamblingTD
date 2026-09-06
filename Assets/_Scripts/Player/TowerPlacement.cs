@@ -59,7 +59,7 @@ public class TowerPlacement : MonoBehaviour
 
     public void CancelCurrentPlacing()
     {
-        TowerPool.Instance.ReturnToPool(currentPlacingTower.TowerData.ID, currentPlacingTower);
+        currentPlacingTower.DestroyTower();
 
         currentTowerData = null;
         currentPlacingTower = null;
