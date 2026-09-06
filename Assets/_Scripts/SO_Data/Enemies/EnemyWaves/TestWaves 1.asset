@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa3d7add86cc1c4fa4411ec28eea056, type: 3}
+  m_Name: TestWaves 1
+  m_EditorClassIdentifier: Assembly-CSharp::SO_EnemyWavesBlueprint
+  __alchemySerializationData_SO_EnemyWavesBlueprint:
+    EnemyWaves:
+      isCreated: 1
+      data: "[\n    {\n        \"Key\": 1,\n        \"Value\": [\n            {\n               
+        \"AmountToSpawn\": 2,\n                \"EnemyData\": 0\n            },\n           
+        {\n                \"AmountToSpawn\": 1,\n                \"EnemyData\":
+        1\n            }\n        ]\n    }\n]"
+    unityObjectReferences:
+    - {fileID: 11400000, guid: 42d9bb967c0d18e47957cdd1b6a360de, type: 2}
+    - {fileID: 11400000, guid: ba2f98feb46df864e86a9c6e19f8d582, type: 2}

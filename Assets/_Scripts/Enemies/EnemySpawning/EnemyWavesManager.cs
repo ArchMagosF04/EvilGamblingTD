@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyWavesManager : MonoBehaviour
 {
     [BoxGroup("Components"), SerializeField] private List<SO_EnemyData> availableEnemies;
-    [BoxGroup("Components"), SerializeField, InlineEditor] private SO_EnemyWavesBlueprint wavesBlueprint;
+    [BoxGroup("Components"), SerializeField] private SO_EnemyWavesBlueprint wavesBlueprint;
 
     [BoxGroup("Spawn Area"), SerializeField] private Transform spawnPoint;
     [BoxGroup("Spawn Area"), SerializeField] private Vector2 offsetRange;
