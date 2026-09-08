@@ -26,6 +26,14 @@ MonoBehaviour:
   <BurstShiftPerWave>k__BackingField: 0.2
   <MinBurstClamp>k__BackingField: 1
   <MaxBurstClamp>k__BackingField: 15
-  <MoveSpeed>k__BackingField: 5
+  <MoveSpeed>k__BackingField: 2
   <MaxHealth>k__BackingField: 1
   <Damage>k__BackingField: 1
+  <DetectionMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
+  <DetectionRadius>k__BackingField: 0.9
+  <DetectionRange>k__BackingField: 1
+  <DetectionTickTime>k__BackingField: 0.3
+  <AttackRadius>k__BackingField: 1
+  <AttackRange>k__BackingField: 0.5

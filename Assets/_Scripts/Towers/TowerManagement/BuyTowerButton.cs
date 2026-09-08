@@ -19,6 +19,12 @@ public class BuyTowerButton : MonoBehaviour
     [Button]
     public void InitializeTowerSlot(SO_TowerData data)
     {
+        if (data == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         towerData = data;
 
         costText.text = "$" + towerData.TowerCost;

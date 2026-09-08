@@ -24,7 +24,10 @@ public class TowerPlacement : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hitInfo, 50f, spawnableLayer))
             {
-                currentPlacingTower.transform.position = PlayerInputHandler.Instance.GetPointerWorldPosition();
+                Vector3 pos = PlayerInputHandler.Instance.GetPointerWorldPosition();
+                pos.z = 0;
+
+                currentPlacingTower.transform.position = pos;
             }
 
             currentPlacingTower.IsTowerObstructed();
@@ -54,7 +57,11 @@ public class TowerPlacement : MonoBehaviour
         }
 
         currentTowerData = data;
-        currentPlacingTower = TowerPool.Instance.GetTower(data.TowerPrefab, PlayerInputHandler.Instance.GetPointerWorldPosition(), Quaternion.identity);
+
+        Vector3 pos = PlayerInputHandler.Instance.GetPointerWorldPosition();
+        pos.z = 0;
+
+        currentPlacingTower = TowerPool.Instance.GetTower(data.TowerPrefab, pos, Quaternion.identity);
     }
 
     public void CancelCurrentPlacing()

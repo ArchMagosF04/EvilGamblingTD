@@ -25,7 +25,9 @@ public class EnemyWavesManager : MonoBehaviour
     [BoxGroup("Spawn Timing Settings"), SerializeField, Tooltip("How much faster enemies spawn each wave"), Range(0.1f, 0.9999f)]
     private float intervalDecayRate = 0.95f;
 
-    [SerializeField, ReadOnly] private Queue<SpawnEntry> currentWaveSpawnQueue = new Queue<SpawnEntry>();
+    [BoxGroup("Event Channels"), SerializeField] private StringEvent waveNumberTextEvent;
+
+    [BoxGroup("Debug"), SerializeField, ReadOnly] private Queue<SpawnEntry> currentWaveSpawnQueue = new Queue<SpawnEntry>();
 
     public int CurrentWave { get; private set; } = 0;
     private bool allEnemiesInWaveDead = true;
@@ -38,12 +40,20 @@ public class EnemyWavesManager : MonoBehaviour
     private float currentWaveBudget;
     private float currentSpawnInterval;
 
+    private void Awake()
+    {
+        waveNumberTextEvent?.InvokeEvent("Wave: " + CurrentWave);
+    }
+
     [Button]
     public void StartNextWave()
     {
         if (allEnemiesInWaveDead)
         {
             CurrentWave++;
+
+            waveNumberTextEvent?.InvokeEvent("Wave: " + CurrentWave);
+
             currentWaveBudget = CalculateWaveBudget(CurrentWave);
             currentSpawnInterval = CalculateSpawnInterval(CurrentWave);
 
@@ -91,6 +101,8 @@ public class EnemyWavesManager : MonoBehaviour
             lastSpawnTime = Time.time;
 
             SpawnEntry entry = currentWaveSpawnQueue.Dequeue();
+
+            if (entry.EnemyData == null || entry.EnemyData.EnemyPrefab == null) return;
 
             for (int i = 0; i < entry.AmountToSpawn; i++)
             {

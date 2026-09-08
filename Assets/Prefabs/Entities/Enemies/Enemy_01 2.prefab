@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   <EnemyData>k__BackingField: {fileID: 0}
   rb: {fileID: 2172734939503691017}
+  spriteRenderOrder: {fileID: 4575975757097228085}
+  DebugGizmos: 1
 --- !u!65 &4012596121093223780
 BoxCollider:
   m_ObjectHideFlags: 0

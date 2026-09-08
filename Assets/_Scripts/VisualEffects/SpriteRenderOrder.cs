@@ -19,4 +19,12 @@ public class SpriteRenderOrder : MonoBehaviour
             spriteArray[i].sortingOrder = i + Mathf.RoundToInt(Mathf.Abs(transform.position.y) * 100);
         }
     }
+
+    public void BringToFront()
+    {
+        for (int i = 0; i < spriteArray.Length; i++)
+        {
+            spriteArray[i].sortingOrder = short.MaxValue;
+        }
+    }
 }

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c4741f620f4db141bc2449b3f7594fb, type: 3}
-  m_Name: TD_TestTower 3
+  m_Name: TD_MermaidData
   m_EditorClassIdentifier: Assembly-CSharp::SO_TowerData
-  <ID>k__BackingField: 2
-  <TowerPrefab>k__BackingField: {fileID: 7034009629477887436, guid: 57f14a6f4e5bb394bad35170246e66df, type: 3}
-  <TowerCost>k__BackingField: 100
-  <TowerButtonSprite>k__BackingField: {fileID: -8128970506050789309, guid: 4e5abe2663a89574eb688c260e9c80c1, type: 3}
+  <ID>k__BackingField: 1
+  <TowerPrefab>k__BackingField: {fileID: 7034009629477887436, guid: a30b9ac0f125f0c47b16a40976c8052a, type: 3}
+  <TowerCost>k__BackingField: 75
+  <TowerButtonSprite>k__BackingField: {fileID: -2706993181599527538, guid: 4485ec1d9eea61448a3d7282a9d7dcb7, type: 3}
   damage: 0

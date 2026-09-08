@@ -30,7 +30,24 @@ public class SO_EnemyData : ScriptableObject
 
     [field: BoxGroup("Enemy Stats"), SerializeField] public float MoveSpeed { get; private set; } = 5f;
     [field: BoxGroup("Enemy Stats"), SerializeField] public float MaxHealth { get; private set; } = 1f;
-    [field: BoxGroup("Enemy Stats"), SerializeField] public float Damage { get; private set; } = 1f;
+    [field: BoxGroup("Enemy Stats"), SerializeField] public float BaseDamage { get; private set; } = 1f;
+    #endregion
+
+    #region Enemy Attack
+    [field: TabGroup("Attack Settings", "Attack Stats"), SerializeField] public float AttackDamage { get; private set; } = 1f;
+    [field: TabGroup("Attack Settings", "Attack Stats"), SerializeField] public float AttackSpeed { get; private set; } = 1.5f;
+    [field: TabGroup("Attack Settings", "Attack Range"), SerializeField] public float AttackRadius { get; private set; } = 1f;
+    [field: TabGroup("Attack Settings", "Attack Range"), SerializeField] public float AttackRange { get; private set; } = 0.5f;
+
+    #endregion
+
+    #region Detection/Attack Range
+
+    [field: BoxGroup("Detection Range"), SerializeField] public LayerMask DetectionMask { get; private set; }
+    [field: BoxGroup("Detection Range"), SerializeField] public float DetectionRadius { get; private set; } = 1f;
+    [field: BoxGroup("Detection Range"), SerializeField] public float DetectionRange { get; private set; } = 0.5f;
+    [field: BoxGroup("Detection Range"), SerializeField] public float DetectionTickTime { get; private set; } = 0.5f;
+    
 
     #endregion
 

@@ -4,9 +4,10 @@ using UnityEngine;
 public class TowerController : MonoBehaviour
 {
     [field: BoxGroup("Components"), SerializeField] public SO_TowerData TowerData {  get; private set; }
-    [BoxGroup("Components"), SerializeField] private SpriteRenderer[] spriteRenderers;
     [BoxGroup("Components"), SerializeField] private BoxCollider towerCollider;
+    [BoxGroup("Components"), SerializeField] private Animator animator;
     [BoxGroup("Components"), SerializeField] private SpriteRenderOrder spriteRenderOrder;
+    [BoxGroup("Components"), SerializeField] private SpriteRenderer[] spriteRenderers;
 
     [BoxGroup("Placement Settings"), SerializeField] private LayerMask obstructLayer;
 
@@ -14,9 +15,13 @@ public class TowerController : MonoBehaviour
     public bool CanPlace { get; private set; }
     private bool returned;
 
+    //private const int idleAnim = Animator.StringToHash("Deployed");
+
     private void Awake()
     {
+        if (!animator) animator = GetComponentInChildren<Animator>();
         if (!towerCollider) towerCollider = GetComponent<BoxCollider>();
+        if (!spriteRenderOrder) spriteRenderOrder = GetComponentInChildren<SpriteRenderOrder>();
     }
 
     private void OnEnable()
@@ -24,6 +29,8 @@ public class TowerController : MonoBehaviour
         returned = false;
         towerCollider.isTrigger = true;
         TowerPlaced = false;
+            
+        spriteRenderOrder.BringToFront();
 
         foreach (var sprite in spriteRenderers)
         {
@@ -43,6 +50,8 @@ public class TowerController : MonoBehaviour
         towerCollider.isTrigger = false;
 
         spriteRenderOrder.UpdateOrderOfLayers();
+
+        animator.SetBool("Deployed", true);
 
         foreach (var sprite in spriteRenderers)
         {
@@ -104,6 +113,8 @@ public class TowerController : MonoBehaviour
 
     public void DestroyTower()
     {
+        animator.SetBool("Deployed", false);
+
         if (TowerPool.Instance != null)
         {
             if (!returned)
@@ -116,5 +127,11 @@ public class TowerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    [Button, BoxGroup("Components")]
+    public void GetTowerSprites()
+    {
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
     }
 }

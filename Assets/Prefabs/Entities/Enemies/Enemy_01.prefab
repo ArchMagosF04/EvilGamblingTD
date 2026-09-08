@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   <EnemyData>k__BackingField: {fileID: 11400000, guid: ba2f98feb46df864e86a9c6e19f8d582, type: 2}
   rb: {fileID: 2172734939503691017}
+  spriteRenderOrder: {fileID: 4575975757097228085}
+  DebugGizmos: 1
 --- !u!65 &4012596121093223780
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -69,7 +71,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.75, y: 0.75, z: 0.4}
-  m_Center: {x: 0, y: 0, z: -0.21}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2172734939503691017
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -403,7 +405,7 @@ MonoBehaviour:
   - {fileID: 2178620176565499667}
   - {fileID: 981450528239982306}
   - {fileID: 1507749104953242305}
-  orderOnAwake: 1
+  orderOnAwake: 0
 --- !u!212 &2178620176565499667 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 391018535723972668, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
