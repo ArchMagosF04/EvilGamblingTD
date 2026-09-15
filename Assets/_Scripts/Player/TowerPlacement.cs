@@ -66,7 +66,7 @@ public class TowerPlacement : MonoBehaviour
 
     public void CancelCurrentPlacing()
     {
-        currentPlacingTower.DestroyTower();
+        currentPlacingTower.RemoveTower();
 
         currentTowerData = null;
         currentPlacingTower = null;

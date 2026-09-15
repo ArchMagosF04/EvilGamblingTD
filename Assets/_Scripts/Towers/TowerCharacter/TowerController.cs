@@ -1,11 +1,13 @@
 using Alchemy.Inspector;
 using UnityEngine;
 
+[RequireComponent(typeof(HealthController))]
 public class TowerController : MonoBehaviour
 {
     [field: BoxGroup("Components"), SerializeField] public SO_TowerData TowerData {  get; private set; }
     [BoxGroup("Components"), SerializeField] private BoxCollider towerCollider;
     [BoxGroup("Components"), SerializeField] private Animator animator;
+    [BoxGroup("Components"), SerializeField] private HealthController healthController;
     [BoxGroup("Components"), SerializeField] private SpriteRenderOrder spriteRenderOrder;
     [BoxGroup("Components"), SerializeField] private SpriteRenderer[] spriteRenderers;
 
@@ -15,13 +17,16 @@ public class TowerController : MonoBehaviour
     public bool CanPlace { get; private set; }
     private bool returned;
 
-    //private const int idleAnim = Animator.StringToHash("Deployed");
+    public static readonly int idleAnim = Animator.StringToHash("Deployed");
 
     private void Awake()
     {
+        if (!healthController) healthController = GetComponent<HealthController>();
         if (!animator) animator = GetComponentInChildren<Animator>();
         if (!towerCollider) towerCollider = GetComponent<BoxCollider>();
         if (!spriteRenderOrder) spriteRenderOrder = GetComponentInChildren<SpriteRenderOrder>();
+
+        healthController.OnHealthDepleted += RemoveTower;
     }
 
     private void OnEnable()
@@ -50,8 +55,9 @@ public class TowerController : MonoBehaviour
         towerCollider.isTrigger = false;
 
         spriteRenderOrder.UpdateOrderOfLayers();
+        healthController.InitializeHealth(TowerData.MaxHealth);
 
-        animator.SetBool("Deployed", true);
+        animator.SetBool(idleAnim, true);
 
         foreach (var sprite in spriteRenderers)
         {
@@ -111,9 +117,9 @@ public class TowerController : MonoBehaviour
 
     #endregion
 
-    public void DestroyTower()
+    public void RemoveTower()
     {
-        animator.SetBool("Deployed", false);
+        animator.SetBool(idleAnim, false);
 
         if (TowerPool.Instance != null)
         {

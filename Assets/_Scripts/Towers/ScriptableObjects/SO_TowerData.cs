@@ -16,7 +16,8 @@ public class SO_TowerData : ScriptableObject
 
     #region Tower Stats
 
-    [field: BoxGroup("Tower Stats"), SerializeField] private float damage;
+    [field: BoxGroup("Tower Stats"), SerializeField] public float Damage { get; private set; } = 1f;
+    [field: BoxGroup("Tower Stats"), SerializeField] public float MaxHealth { get; private set; } = 5f;
 
     #endregion
 
