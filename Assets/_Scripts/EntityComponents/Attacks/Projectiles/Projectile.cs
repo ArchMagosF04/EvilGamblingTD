@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
     private bool returned;
     private Vector3 direction;
     private bool active;
+    private float startTime;
+    private bool hasAttacked;
 
     private void Awake()
     {
@@ -28,6 +30,8 @@ public class Projectile : MonoBehaviour
         entitiesHit.Clear();
         amountOfHits = 0;
         active = true;
+        startTime = Time.time;
+        hasAttacked = false;
     }
 
     private void Update()
@@ -35,13 +39,15 @@ public class Projectile : MonoBehaviour
         if (!active) return;
 
         transform.position += direction * AttackData.MoveSpeed * Time.deltaTime;
+
+        if (Time.time > startTime + AttackData.LifeTime) StopAttack();
     }
 
     private void FixedUpdate()
     {
         if (!active) return;
 
-        if (AttackData.Pierce <= 0)
+        if (!AttackData.HitsMultipleEnemies)
         {
             SingleCollisionAttack();
         }
@@ -53,20 +59,40 @@ public class Projectile : MonoBehaviour
 
     private void SingleCollisionAttack()
     {
+        if (AttackData.AttacksOnlyOnce && hasAttacked) return;
+
+        hasAttacked = true;
+
         RaycastHit hit = projectileCollider.GetSingleCollision();
 
         if (hit.collider == null) return;
 
         if (hit.collider.TryGetComponent<HealthController>(out HealthController health))
         {
+            if (!AttackData.CanHitMultipleTimes)
+            {
+                if (entitiesHit.Contains(health)) return;
+            }
+
+            entitiesHit.Add(health);
+
             health.TakeDamage(new AttackInfo(AttackData.Damage));
 
-            StopAttack();
+            amountOfHits++;
+        }
+
+        if (AttackData.Pierce > 0 && amountOfHits >= AttackData.Pierce)
+        {
+            if (AttackData.DestroyOnLastHit) StopAttack();
         }
     }
 
     private void MultiCollisionAttack()
     {
+        if (AttackData.AttacksOnlyOnce && hasAttacked) return;
+
+        hasAttacked = true;
+
         RaycastHit[] hits = projectileCollider.GetMultipleCollisions();
 
         if (hits.Length <= 0) return;
@@ -90,7 +116,11 @@ public class Projectile : MonoBehaviour
 
                 if (AttackData.Pierce > 0 && amountOfHits >= AttackData.Pierce)
                 {
-                    StopAttack();
+                    if (AttackData.DestroyOnLastHit)
+                    {
+                        StopAttack();
+                        return;
+                    }
                 }
             }
         }
@@ -98,6 +128,8 @@ public class Projectile : MonoBehaviour
 
     public void StopAttack()
     {
+        active = false;
+
         if (AttackPool.Instance != null)
         {
             if (!returned)

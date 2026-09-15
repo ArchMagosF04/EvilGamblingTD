@@ -35,7 +35,7 @@ public class SO_EnemyData : ScriptableObject
     #endregion
 
     #region Enemy Attack
-    [field: BoxGroup("Attack Settings"), SerializeField] public Projectile AttackPrefab { get; private set; }
+    [field: BoxGroup("Attack Settings"), SerializeField, AssetsOnly] public Projectile AttackPrefab { get; private set; }
     [field: BoxGroup("Attack Settings"), SerializeField] public float AttackSpeed { get; private set; } = 1.5f;
     [field: BoxGroup("Attack Settings"), SerializeField] public bool OnlyAttackOnTowerDetected { get; private set; } = true;
     [field: BoxGroup("Attack Settings"), SerializeField] public float AttackRadius { get; private set; } = 1f;

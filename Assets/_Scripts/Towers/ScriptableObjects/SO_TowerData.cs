@@ -16,6 +16,7 @@ public class SO_TowerData : ScriptableObject
 
     #region Tower Stats
 
+    [field: BoxGroup("Attack Settings"), SerializeField, AssetsOnly] public Projectile AttackPrefab { get; private set; }
     [field: BoxGroup("Tower Stats"), SerializeField] public float Damage { get; private set; } = 1f;
     [field: BoxGroup("Tower Stats"), SerializeField] public float MaxHealth { get; private set; } = 5f;
 

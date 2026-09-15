@@ -30,8 +30,9 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 2
   <MaxHealth>k__BackingField: 1
   <BaseDamage>k__BackingField: 1
-  <AttackDamage>k__BackingField: 1
+  <AttackPrefab>k__BackingField: {fileID: 6841679849085340367, guid: 3a206517e1a27f24e976c2c9426b75ac, type: 3}
   <AttackSpeed>k__BackingField: 1.5
+  <OnlyAttackOnTowerDetected>k__BackingField: 1
   <AttackRadius>k__BackingField: 1
   <AttackRange>k__BackingField: 0.5
   <DetectionMask>k__BackingField:

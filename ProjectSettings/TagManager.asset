@@ -54,5 +54,8 @@ TagManager:
   - name: Towers
     uniqueID: 355811143
     locked: 0
+  - name: Attacks
+    uniqueID: 2530123955
+    locked: 0
   m_RenderingLayers:
   - Default

@@ -27,6 +27,8 @@ public class TowerController : MonoBehaviour
         if (!spriteRenderOrder) spriteRenderOrder = GetComponentInChildren<SpriteRenderOrder>();
 
         healthController.OnHealthDepleted += RemoveTower;
+
+        //if (AttackPool.Instance != null) AttackPool.Instance.PreWarmPool(TowerData.AttackPrefab, 20);
     }
 
     private void OnEnable()

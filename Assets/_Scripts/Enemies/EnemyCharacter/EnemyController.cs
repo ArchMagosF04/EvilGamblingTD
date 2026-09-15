@@ -31,6 +31,8 @@ public class EnemyController : MonoBehaviour
         if (!spriteRenderOrder) spriteRenderOrder = GetComponentInChildren<SpriteRenderOrder>();
 
         healthController.OnHealthDepleted += ()=> DestroyEnemy(true);
+
+        if (AttackPool.Instance != null) AttackPool.Instance.PreWarmPool(EnemyData.AttackPrefab, 20);
     }
 
     private void OnEnable()
