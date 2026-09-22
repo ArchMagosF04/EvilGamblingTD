@@ -7,7 +7,7 @@ public class TowerPool : MonoBehaviour
 {
     public static TowerPool Instance;
 
-    private readonly Dictionary<int, ObjectPool<TowerController>> poolDictionary = new();
+    private readonly Dictionary<string, ObjectPool<TowerController>> poolDictionary = new();
 
     [SerializeField] private SO_SelectedTowersArray selectedTowersArray;
     [SerializeField, Min(0)] private int preWarmTowersAmount = 5;
@@ -75,7 +75,7 @@ public class TowerPool : MonoBehaviour
         return newEffect;
     }
 
-    public void ReturnToPool(int key, TowerController instance)
+    public void ReturnToPool(string key, TowerController instance)
     {
         if (poolDictionary.TryGetValue(key, out var pool))
         {

@@ -1,6 +1,6 @@
 using Alchemy.Inspector;
+using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class EnemyWavesManager : MonoBehaviour
@@ -77,6 +77,8 @@ public class EnemyWavesManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
+
         if (!waveInProgress) return;
 
         if (!spawingInProgess && activeEnemiesAmount <= 0)
@@ -84,14 +86,28 @@ public class EnemyWavesManager : MonoBehaviour
             EndCurrentWave();
         }
 
-        if (currentWaveSpawnQueue.Count <= 0 && spawingInProgess)
+        //if (currentWaveSpawnQueue.Count <= 0 && spawingInProgess)
+        //{
+        //    spawingInProgess = false;
+        //}
+        //else if(spawingInProgess && currentWaveSpawnQueue.Count > 0)
+        //{
+        //    SpawnEnemyEntries();
+        //}
+    }
+
+    private IEnumerator WaveSpawningRoutine()
+    {
+        while (currentWaveSpawnQueue.Count > 0)
         {
-            spawingInProgess = false;
-        }
-        else if(spawingInProgess && currentWaveSpawnQueue.Count > 0)
-        {
+            if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) continue;
+
             SpawnEnemyEntries();
+
+            yield return new WaitForSeconds(currentSpawnInterval);
         }
+
+        spawingInProgess = false;
     }
 
     private void SpawnEnemyEntries()
@@ -154,6 +170,8 @@ public class EnemyWavesManager : MonoBehaviour
 
         spawingInProgess = true;
         waveInProgress = true;
+
+        StartCoroutine(WaveSpawningRoutine());
     }
 
     public void EndCurrentWave()

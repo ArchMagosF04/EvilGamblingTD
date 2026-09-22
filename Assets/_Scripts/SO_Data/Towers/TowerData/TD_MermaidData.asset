@@ -12,8 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4741f620f4db141bc2449b3f7594fb, type: 3}
   m_Name: TD_MermaidData
   m_EditorClassIdentifier: Assembly-CSharp::SO_TowerData
-  <ID>k__BackingField: 1
+  <ID>k__BackingField: Mermaid
   <TowerPrefab>k__BackingField: {fileID: 7034009629477887436, guid: a30b9ac0f125f0c47b16a40976c8052a, type: 3}
   <TowerCost>k__BackingField: 75
   <TowerButtonSprite>k__BackingField: {fileID: -2706993181599527538, guid: 4485ec1d9eea61448a3d7282a9d7dcb7, type: 3}
-  damage: 0
+  <AttackPrefab>k__BackingField: {fileID: 0}
+  <AttackSpeed>k__BackingField: 1.5
+  <Damage>k__BackingField: 1
+  <MaxHealth>k__BackingField: 5
+  <RangeType>k__BackingField: 0
+  <EnemyLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 256
+  <DetectionRange>k__BackingField: 10
+  <DetectionRadius>k__BackingField: 0.4
+  <DetectionAngle>k__BackingField: 0

@@ -8,6 +8,7 @@ public class TowerController : MonoBehaviour
     [BoxGroup("Components"), SerializeField] private BoxCollider towerCollider;
     [BoxGroup("Components"), SerializeField] private Animator animator;
     [BoxGroup("Components"), SerializeField] private HealthController healthController;
+    [field: BoxGroup("Components"), SerializeField] public TowerDetectionRange TowerDetection {  get; private set; }
     [BoxGroup("Components"), SerializeField] private SpriteRenderOrder spriteRenderOrder;
     [BoxGroup("Components"), SerializeField] private SpriteRenderer[] spriteRenderers;
 
@@ -22,11 +23,16 @@ public class TowerController : MonoBehaviour
     private void Awake()
     {
         if (!healthController) healthController = GetComponent<HealthController>();
+        if (!TowerDetection) TowerDetection = GetComponent<TowerDetectionRange>();
         if (!animator) animator = GetComponentInChildren<Animator>();
         if (!towerCollider) towerCollider = GetComponent<BoxCollider>();
         if (!spriteRenderOrder) spriteRenderOrder = GetComponentInChildren<SpriteRenderOrder>();
 
         healthController.OnHealthDepleted += RemoveTower;
+
+        TowerDetection.InitializedDetectionRange(TowerData);
+
+        if (AttackPool.Instance != null && TowerData.AttackPrefab != null) AttackPool.Instance.PreWarmPool(TowerData.AttackPrefab, 20);
     }
 
     private void OnEnable()
@@ -43,6 +49,15 @@ public class TowerController : MonoBehaviour
             tempColor.a = 0.4f;
             sprite.color = tempColor;
         }
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
+
+        if (!TowerPlaced) return;
+
+        TowerDetection.UpdateDetection();
     }
 
     public void ReceiveTowerData(SO_TowerData data) => TowerData = data;

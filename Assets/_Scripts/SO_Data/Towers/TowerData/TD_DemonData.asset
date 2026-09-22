@@ -12,8 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4741f620f4db141bc2449b3f7594fb, type: 3}
   m_Name: TD_DemonData
   m_EditorClassIdentifier: Assembly-CSharp::SO_TowerData
-  ID: 0
+  <ID>k__BackingField: Demon
   <TowerPrefab>k__BackingField: {fileID: 7034009629477887436, guid: 70c60eef0724d614aab0efb832ece60d, type: 3}
   <TowerCost>k__BackingField: 50
   <TowerButtonSprite>k__BackingField: {fileID: 4206020718838052928, guid: 9f009ff83ed3a1c4c95d7d69f793ef6b, type: 3}
-  damage: 0
+  <AttackPrefab>k__BackingField: {fileID: 4359541650571296341, guid: e4c1eaff24c335d41b418a8ff4a3cc5e, type: 3}
+  <AttackSpeed>k__BackingField: 1.5
+  <Damage>k__BackingField: 1
+  <MaxHealth>k__BackingField: 5
+  <RangeType>k__BackingField: 0
+  <EnemyLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 256
+  <DetectionRange>k__BackingField: 10
+  <DetectionRadius>k__BackingField: 0.4
+  <DetectionAngle>k__BackingField: 0

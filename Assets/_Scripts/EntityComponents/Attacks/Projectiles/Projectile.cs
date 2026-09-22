@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     private bool returned;
     private Vector3 direction;
     private bool active;
-    private float startTime;
+    private float lifeTimer;
     private bool hasAttacked;
 
     private void Awake()
@@ -30,21 +30,27 @@ public class Projectile : MonoBehaviour
         entitiesHit.Clear();
         amountOfHits = 0;
         active = true;
-        startTime = Time.time;
+        lifeTimer = 0;
         hasAttacked = false;
     }
 
     private void Update()
     {
+        if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
+
         if (!active) return;
 
         transform.position += direction * AttackData.MoveSpeed * Time.deltaTime;
 
-        if (Time.time > startTime + AttackData.LifeTime) StopAttack();
+        lifeTimer += Time.deltaTime;
+
+        if (lifeTimer > AttackData.LifeTime) StopAttack();
     }
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
+
         if (!active) return;
 
         if (!AttackData.HitsMultipleEnemies)

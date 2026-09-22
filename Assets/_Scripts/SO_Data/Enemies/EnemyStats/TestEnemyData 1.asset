@@ -39,7 +39,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   <DetectionRadius>k__BackingField: 0.7
-  <DetectionRange>k__BackingField: 0.8
+  <DetectionRange>k__BackingField: 0.65
   <DetectionTickTime>k__BackingField: 0.3
   <BaseDetectionMask>k__BackingField:
     serializedVersion: 2

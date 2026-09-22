@@ -2,6 +2,7 @@ using Alchemy.Inspector;
 using System;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
+using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 using static UnityEngine.UI.Image;
 
 [RequireComponent(typeof(HealthController))]
@@ -32,7 +33,7 @@ public class EnemyController : MonoBehaviour
 
         healthController.OnHealthDepleted += ()=> DestroyEnemy(true);
 
-        if (AttackPool.Instance != null) AttackPool.Instance.PreWarmPool(EnemyData.AttackPrefab, 20);
+        if (AttackPool.Instance != null && EnemyData.AttackPrefab != null) AttackPool.Instance.PreWarmPool(EnemyData.AttackPrefab, 20);
     }
 
     private void OnEnable()
@@ -45,6 +46,8 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
+
         if (!towerDetected)
         {
             transform.Translate(Vector3.right * EnemyData.MoveSpeed * Time.deltaTime);
@@ -57,6 +60,8 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
+
         TowerDetection();
         BaseDetection();
     }

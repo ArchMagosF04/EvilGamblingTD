@@ -12,8 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4741f620f4db141bc2449b3f7594fb, type: 3}
   m_Name: TD_DarkElfData
   m_EditorClassIdentifier: Assembly-CSharp::SO_TowerData
-  <ID>k__BackingField: 2
+  <ID>k__BackingField: DarkElf
   <TowerPrefab>k__BackingField: {fileID: 7034009629477887436, guid: 57f14a6f4e5bb394bad35170246e66df, type: 3}
   <TowerCost>k__BackingField: 100
   <TowerButtonSprite>k__BackingField: {fileID: 4688103905211619989, guid: 348abe4baa20b164e920d8e564f8bddf, type: 3}
-  damage: 0
+  <AttackPrefab>k__BackingField: {fileID: 0}
+  <AttackSpeed>k__BackingField: 1.5
+  <Damage>k__BackingField: 1
+  <MaxHealth>k__BackingField: 5
+  <RangeType>k__BackingField: 0
+  <EnemyLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 256
+  <DetectionRange>k__BackingField: 10
+  <DetectionRadius>k__BackingField: 0.4
+  <DetectionAngle>k__BackingField: 0

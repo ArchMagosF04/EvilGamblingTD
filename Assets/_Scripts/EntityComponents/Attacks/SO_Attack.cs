@@ -15,6 +15,7 @@ public class SO_Attack : ScriptableObject
     [field: BoxGroup("Main Stats"), SerializeField] public float LifeTime { get; private set; } = 0.2f;
 
     [field: BoxGroup("Hitbox"), SerializeField] public LayerMask TargetMask { get; private set; }
+    [field: BoxGroup("Hitbox"), SerializeField] public Vector3 OriginOffset { get; private set; }
     [field: BoxGroup("Hitbox"), SerializeField] public bool CanHitMultipleTimes { get; private set; } = false;
     [field: BoxGroup("Hitbox"), SerializeField] public float Range { get; private set; }
     [field: BoxGroup("Hitbox"), SerializeField] public float Radius { get; private set; }

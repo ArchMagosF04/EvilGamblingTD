@@ -8,14 +8,14 @@ public class SphereCastColiision : MonoBehaviour, IProjectileCollider
 
     public RaycastHit[] GetMultipleCollisions()
     {
-        return Physics.SphereCastAll(transform.position, attackData.Radius, transform.right, attackData.Range, attackData.TargetMask);
+        return Physics.SphereCastAll(transform.position + attackData.OriginOffset, attackData.Radius, transform.right, attackData.Range, attackData.TargetMask);
     }
 
     public RaycastHit GetSingleCollision()
     {
         RaycastHit hit;
 
-        Physics.SphereCast(transform.position, attackData.Radius, transform.right, out hit, attackData.Range, attackData.TargetMask);
+        Physics.SphereCast(transform.position + attackData.OriginOffset, attackData.Radius, transform.right, out hit, attackData.Range, attackData.TargetMask);
 
         return hit;
     }
@@ -30,14 +30,14 @@ public class SphereCastColiision : MonoBehaviour, IProjectileCollider
         if (!DebugHitbox) return;
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, attackData.Radius);
+        Gizmos.DrawWireSphere(transform.position + attackData.OriginOffset, attackData.Radius);
 
-        Vector3 endPosition = transform.position + (transform.right * attackData.Range);
+        Vector3 endPosition = (transform.position + attackData.OriginOffset) + (transform.right * attackData.Range);
         Gizmos.DrawWireSphere(endPosition, attackData.Radius);
 
-        Gizmos.DrawLine(transform.position + transform.forward * attackData.Radius, endPosition + transform.forward * attackData.Radius);
-        Gizmos.DrawLine(transform.position - transform.forward * attackData.Radius, endPosition - transform.forward * attackData.Radius);
-        Gizmos.DrawLine(transform.position + transform.up * attackData.Radius, endPosition + transform.up * attackData.Radius);
-        Gizmos.DrawLine(transform.position - transform.up * attackData.Radius, endPosition - transform.up * attackData.Radius);
+        Gizmos.DrawLine((transform.position + attackData.OriginOffset) + transform.forward * attackData.Radius, endPosition + transform.forward * attackData.Radius);
+        Gizmos.DrawLine((transform.position + attackData.OriginOffset) - transform.forward * attackData.Radius, endPosition - transform.forward * attackData.Radius);
+        Gizmos.DrawLine((transform.position + attackData.OriginOffset) + transform.up * attackData.Radius, endPosition + transform.up * attackData.Radius);
+        Gizmos.DrawLine((transform.position + attackData.OriginOffset) - transform.up * attackData.Radius, endPosition - transform.up * attackData.Radius);
     }
 }

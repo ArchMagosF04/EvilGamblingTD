@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New EnemyData", menuName = "Scriptable Objects/Enemies/Enemy Data")]
 public class SO_EnemyData : ScriptableObject
 {
-    [field: SerializeField] public int ID { get; private set; }
+    [field: SerializeField] public string ID { get; private set; }
 
     #region Spawn Settings
 

@@ -8,14 +8,14 @@ public class RaycastCollision : MonoBehaviour, IProjectileCollider
 
     public RaycastHit[] GetMultipleCollisions()
     {
-        return Physics.RaycastAll(transform.position, transform.right, attackData.Range, attackData.TargetMask);
+        return Physics.RaycastAll(transform.position + attackData.OriginOffset, transform.right, attackData.Range, attackData.TargetMask);
     }
 
     public RaycastHit GetSingleCollision()
     {
         RaycastHit hit;
 
-        Physics.Raycast(transform.position, transform.right, out hit, attackData.Range, attackData.TargetMask);
+        Physics.Raycast(transform.position + attackData.OriginOffset, transform.right, out hit, attackData.Range, attackData.TargetMask);
 
         return hit;
     }
@@ -29,6 +29,6 @@ public class RaycastCollision : MonoBehaviour, IProjectileCollider
     {
         if (!DebugHitbox) return;
 
-        Gizmos.DrawLine(transform.position, transform.position + transform.right * attackData.Range);
+        Gizmos.DrawLine(transform.position + attackData.OriginOffset, transform.position + transform.right * attackData.Range);
     }
 }

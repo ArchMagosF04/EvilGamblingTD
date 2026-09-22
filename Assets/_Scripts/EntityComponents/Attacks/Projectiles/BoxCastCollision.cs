@@ -16,8 +16,8 @@ public class BoxCastCollision : MonoBehaviour, IProjectileCollider
 
     public RaycastHit[] GetMultipleCollisions()
     {
-        detectionCubeCenter = new Vector3(transform.position.x + (attackData.Size.x / 2),
-            transform.position.y + (attackData.Size.y / 2), transform.position.z);
+        detectionCubeCenter = new Vector3(transform.position.x + attackData.OriginOffset.x + (attackData.Size.x / 2),
+            transform.position.y + attackData.OriginOffset.y + (attackData.Size.y / 2), transform.position.z + attackData.OriginOffset.z);
 
         detectionCubeSize = new Vector3(attackData.Size.x, attackData.Size.y, attackData.Size.z);
 
@@ -26,8 +26,8 @@ public class BoxCastCollision : MonoBehaviour, IProjectileCollider
 
     public RaycastHit GetSingleCollision()
     {
-        detectionCubeCenter = new Vector3(transform.position.x + (attackData.Size.x / 2),
-            transform.position.y + (attackData.Size.y / 2), transform.position.z);
+        detectionCubeCenter = new Vector3(transform.position.x + attackData.OriginOffset.x + (attackData.Size.x / 2),
+            transform.position.y + attackData.OriginOffset.y + (attackData.Size.y / 2), transform.position.z + attackData.OriginOffset.z);
 
         detectionCubeSize = new Vector3(attackData.Size.x, attackData.Size.y, attackData.Size.z);
 
@@ -44,6 +44,6 @@ public class BoxCastCollision : MonoBehaviour, IProjectileCollider
 
         Vector3 cubeSize = new Vector3(attackData.Size.x, attackData.Size.y, attackData.Size.z);
 
-        DebugBoxCast.SimpleDrawBoxCast(transform.position, cubeSize / 2, Quaternion.LookRotation(transform.right, transform.up), transform.right, attackData.Range, Color.cyan);
+        DebugBoxCast.SimpleDrawBoxCast(transform.position + attackData.OriginOffset, cubeSize / 2, Quaternion.LookRotation(transform.right, transform.up), transform.right, attackData.Range, Color.cyan);
     }
 }
