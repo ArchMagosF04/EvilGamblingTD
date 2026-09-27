@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb67d4834c5b4e479167b24ed11bd19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerDetectionRange
-  towerData: {fileID: 0}
+  towerData: {fileID: 11400000, guid: 4b0e3db2ff2613f41b51ceea1f763f7c, type: 2}
   ShowGizmos: 1
 --- !u!114 &4491991570149578377
 MonoBehaviour:
@@ -603,7 +603,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.75, y: 0.75, z: 1}
-  m_Center: {x: 0, y: -0.33, z: 0}
+  m_Center: {x: 0, y: -0.15, z: 0}
 --- !u!1 &5272553849036069168
 GameObject:
   m_ObjectHideFlags: 0

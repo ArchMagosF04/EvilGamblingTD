@@ -19,7 +19,7 @@ public class TowerDetectionRange : MonoBehaviour
     {
         if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
 
-        attackTimer += Time.deltaTime;
+        attackTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
         
         if (attackTimer > towerData.AttackSpeed) CheckDetection();
     }
@@ -48,13 +48,13 @@ public class TowerDetectionRange : MonoBehaviour
 
     private void ForwardLineDetection()
     {
-        if (Physics.SphereCast(transform.position, towerData.DetectionRadius, -Vector3.right, out RaycastHit hit, towerData.DetectionRange, towerData.EnemyLayer))
+        if (Physics.SphereCast(transform.position + towerData.DetectionOriginOffset, towerData.DetectionRadius, -Vector3.right, out RaycastHit hit, towerData.DetectionRange, towerData.EnemyLayer))
         {
             enemyDetected = true;
 
             attackTimer = 0;
 
-            Projectile instance = null;
+            AttackObject instance = null;
             if (AttackPool.Instance != null)
             {
                 instance = AttackPool.Instance.GetAttack(towerData.AttackPrefab, transform.position,
@@ -64,7 +64,7 @@ public class TowerDetectionRange : MonoBehaviour
                                                        Quaternion.identity);
 
             instance.gameObject.SetActive(true);
-            instance.InitializeProjectile(-Vector3.right);
+            instance.InitializeProjectile(Vector3.left);
         }
         else
         {
@@ -130,15 +130,17 @@ public class TowerDetectionRange : MonoBehaviour
             Gizmos.color = Color.yellow;
         }
 
-        Gizmos.DrawWireSphere(transform.position, towerData.DetectionRadius);
+        Vector3 origin = transform.position + towerData.DetectionOriginOffset;
 
-        Vector3 endPosition = transform.position - (transform.right * towerData.DetectionRange);
+        Gizmos.DrawWireSphere(origin, towerData.DetectionRadius);
+
+        Vector3 endPosition = (origin) - (transform.right * towerData.DetectionRange);
         Gizmos.DrawWireSphere(endPosition, towerData.DetectionRadius);
 
-        Gizmos.DrawLine(transform.position + transform.forward * towerData.DetectionRadius, endPosition + transform.forward * towerData.DetectionRadius);
-        Gizmos.DrawLine(transform.position - transform.forward * towerData.DetectionRadius, endPosition - transform.forward * towerData.DetectionRadius);
-        Gizmos.DrawLine(transform.position + transform.up * towerData.DetectionRadius, endPosition + transform.up * towerData.DetectionRadius);
-        Gizmos.DrawLine(transform.position - transform.up * towerData.DetectionRadius, endPosition - transform.up * towerData.DetectionRadius);
+        Gizmos.DrawLine(origin + transform.forward * towerData.DetectionRadius, endPosition + transform.forward * towerData.DetectionRadius);
+        Gizmos.DrawLine(origin - transform.forward * towerData.DetectionRadius, endPosition - transform.forward * towerData.DetectionRadius);
+        Gizmos.DrawLine(origin + transform.up * towerData.DetectionRadius, endPosition + transform.up * towerData.DetectionRadius);
+        Gizmos.DrawLine(origin - transform.up * towerData.DetectionRadius, endPosition - transform.up * towerData.DetectionRadius);
     }
 
     private void GizmosVerticalLine()

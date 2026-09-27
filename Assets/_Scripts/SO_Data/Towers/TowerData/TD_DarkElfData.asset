@@ -16,14 +16,14 @@ MonoBehaviour:
   <TowerPrefab>k__BackingField: {fileID: 7034009629477887436, guid: 57f14a6f4e5bb394bad35170246e66df, type: 3}
   <TowerCost>k__BackingField: 100
   <TowerButtonSprite>k__BackingField: {fileID: 4688103905211619989, guid: 348abe4baa20b164e920d8e564f8bddf, type: 3}
-  <AttackPrefab>k__BackingField: {fileID: 0}
+  <AttackPrefab>k__BackingField: {fileID: 6281570261476640933, guid: e4c1eaff24c335d41b418a8ff4a3cc5e, type: 3}
   <AttackSpeed>k__BackingField: 1.5
-  <Damage>k__BackingField: 1
-  <MaxHealth>k__BackingField: 5
+  <MaxHealth>k__BackingField: 40
   <RangeType>k__BackingField: 0
   <EnemyLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
   <DetectionRange>k__BackingField: 10
   <DetectionRadius>k__BackingField: 0.4
+  <DetectionOriginOffset>k__BackingField: {x: 0, y: -0.15, z: 0}
   <DetectionAngle>k__BackingField: 0

@@ -33,7 +33,7 @@ public class EnemyWavesManager : MonoBehaviour
     private bool allEnemiesInWaveDead = true;
     private bool waveInProgress;
     private bool spawingInProgess;
-    private float lastSpawnTime;
+    private float spawnTimer;
 
     private int activeEnemiesAmount = 0;
 
@@ -43,6 +43,7 @@ public class EnemyWavesManager : MonoBehaviour
     private void Awake()
     {
         waveNumberTextEvent?.InvokeEvent("Wave: " + CurrentWave);
+        spawnTimer = 0;
     }
 
     [Button]
@@ -102,6 +103,8 @@ public class EnemyWavesManager : MonoBehaviour
         {
             if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) continue;
 
+            spawnTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
+
             SpawnEnemyEntries();
 
             yield return new WaitForSeconds(currentSpawnInterval);
@@ -112,9 +115,9 @@ public class EnemyWavesManager : MonoBehaviour
 
     private void SpawnEnemyEntries()
     {
-        if (Time.time > lastSpawnTime + currentSpawnInterval)
+        if (spawnTimer > currentSpawnInterval)
         {
-            lastSpawnTime = Time.time;
+            spawnTimer = 0;
 
             SpawnEntry entry = currentWaveSpawnQueue.Dequeue();
 

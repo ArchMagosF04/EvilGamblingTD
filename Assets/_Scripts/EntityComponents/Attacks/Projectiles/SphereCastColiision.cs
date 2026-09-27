@@ -6,18 +6,27 @@ public class SphereCastColiision : MonoBehaviour, IProjectileCollider
 
     [SerializeField] private bool DebugHitbox;
 
-    public RaycastHit[] GetMultipleCollisions()
+    public Collider[] GetMultipleCollisions()
     {
-        return Physics.SphereCastAll(transform.position + attackData.OriginOffset, attackData.Radius, transform.right, attackData.Range, attackData.TargetMask);
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position + attackData.OriginOffset, attackData.Radius, transform.right, attackData.Range, attackData.TargetMask);
+
+        Collider[] cols = new Collider[hits.Length];
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            cols[i] = hits[i].collider;
+        }
+
+        return cols;
     }
 
-    public RaycastHit GetSingleCollision()
+    public Collider GetSingleCollision()
     {
         RaycastHit hit;
 
         Physics.SphereCast(transform.position + attackData.OriginOffset, attackData.Radius, transform.right, out hit, attackData.Range, attackData.TargetMask);
 
-        return hit;
+        return hit.collider;
     }
 
     public void GiveAttackData(SO_Attack data)

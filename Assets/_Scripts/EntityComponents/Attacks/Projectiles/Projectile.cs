@@ -15,138 +15,140 @@ public class Projectile : MonoBehaviour
     private float lifeTimer;
     private bool hasAttacked;
 
-    private void Awake()
-    {
-        if (projectileCollider == null) projectileCollider = GetComponent<IProjectileCollider>();
+    //private void Awake()
+    //{
+    //    if (projectileCollider == null) projectileCollider = GetComponent<IProjectileCollider>();
 
-        projectileCollider.GiveAttackData(AttackData);
-    }
+    //    projectileCollider.GiveAttackData(AttackData);
+    //}
 
-    public void InitializeProjectile(Vector3 direction)
-    {
-        transform.right = direction;
-        this.direction = direction;
-        returned = false;
-        entitiesHit.Clear();
-        amountOfHits = 0;
-        active = true;
-        lifeTimer = 0;
-        hasAttacked = false;
-    }
+    //public void InitializeProjectile(Vector3 direction)
+    //{
+    //    transform.right = direction;
+    //    this.direction = direction;
+    //    returned = false;
+    //    entitiesHit.Clear();
+    //    amountOfHits = 0;
+    //    active = true;
+    //    lifeTimer = 0;
+    //    hasAttacked = false;
+    //}
 
-    private void Update()
-    {
-        if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
+    //private void Update()
+    //{
+    //    if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
 
-        if (!active) return;
+    //    if (!active) return;
 
-        transform.position += direction * AttackData.MoveSpeed * Time.deltaTime;
+    //    transform.position += direction * AttackData.MoveSpeed * Time.deltaTime;
 
-        lifeTimer += Time.deltaTime;
+    //    lifeTimer += Time.deltaTime;
 
-        if (lifeTimer > AttackData.LifeTime) StopAttack();
-    }
+    //    if (lifeTimer > AttackData.LifeTime) StopAttack();
 
-    private void FixedUpdate()
-    {
-        if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
+    //    if (!AttackData.HitsMultipleEnemies)
+    //    {
+    //        SingleCollisionAttack();
+    //    }
+    //    else
+    //    {
+    //        MultiCollisionAttack();
+    //    }
+    //}
 
-        if (!active) return;
+    //private void FixedUpdate()
+    //{
+    //    if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
 
-        if (!AttackData.HitsMultipleEnemies)
-        {
-            SingleCollisionAttack();
-        }
-        else
-        {
-            MultiCollisionAttack();
-        }
-    }
+    //    if (!active) return;
 
-    private void SingleCollisionAttack()
-    {
-        if (AttackData.AttacksOnlyOnce && hasAttacked) return;
+        
+    //}
 
-        hasAttacked = true;
+    //private void SingleCollisionAttack()
+    //{
+    //    if (AttackData.AttacksOnlyOnce && hasAttacked) return;
 
-        RaycastHit hit = projectileCollider.GetSingleCollision();
+    //    hasAttacked = true;
 
-        if (hit.collider == null) return;
+    //    Collider hit = projectileCollider.GetSingleCollision();
 
-        if (hit.collider.TryGetComponent<HealthController>(out HealthController health))
-        {
-            if (!AttackData.CanHitMultipleTimes)
-            {
-                if (entitiesHit.Contains(health)) return;
-            }
+    //    if (hit == null) return;
 
-            entitiesHit.Add(health);
+    //    if (hit.TryGetComponent<HealthController>(out HealthController health))
+    //    {
+    //        if (!AttackData.CanHitMultipleTimes)
+    //        {
+    //            if (entitiesHit.Contains(health)) return;
+    //        }
 
-            health.TakeDamage(new AttackInfo(AttackData.Damage));
+    //        entitiesHit.Add(health);
 
-            amountOfHits++;
-        }
+    //        health.TakeDamage(new AttackInfo(AttackData.Damage));
 
-        if (AttackData.Pierce > 0 && amountOfHits >= AttackData.Pierce)
-        {
-            if (AttackData.DestroyOnLastHit) StopAttack();
-        }
-    }
+    //        amountOfHits++;
+    //    }
 
-    private void MultiCollisionAttack()
-    {
-        if (AttackData.AttacksOnlyOnce && hasAttacked) return;
+    //    if (AttackData.Pierce > -1 && amountOfHits >= AttackData.Pierce)
+    //    {
+    //        if (AttackData.DestroyOnLastHit) StopAttack();
+    //    }
+    //}
 
-        hasAttacked = true;
+    //private void MultiCollisionAttack()
+    //{
+    //    if (AttackData.AttacksOnlyOnce && hasAttacked) return;
 
-        RaycastHit[] hits = projectileCollider.GetMultipleCollisions();
+    //    hasAttacked = true;
 
-        if (hits.Length <= 0) return;
+    //    Collider[] hits = projectileCollider.GetMultipleCollisions();
 
-        foreach (RaycastHit hit in hits)
-        {
-            if (hit.collider == null) continue;
+    //    if (hits.Length <= 0) return;
 
-            if (hit.collider.TryGetComponent<HealthController>(out HealthController health))
-            {
-                if (!AttackData.CanHitMultipleTimes)
-                {
-                    if (entitiesHit.Contains(health)) continue;
-                }
+    //    foreach (Collider hit in hits)
+    //    {
+    //        if (hit == null) continue;
 
-                entitiesHit.Add(health);
+    //        if (hit.TryGetComponent<HealthController>(out HealthController health))
+    //        {
+    //            if (!AttackData.CanHitMultipleTimes)
+    //            {
+    //                if (entitiesHit.Contains(health)) continue;
+    //            }
 
-                health.TakeDamage(new AttackInfo(AttackData.Damage));
+    //            entitiesHit.Add(health);
 
-                amountOfHits++;
+    //            health.TakeDamage(new AttackInfo(AttackData.Damage));
 
-                if (AttackData.Pierce > 0 && amountOfHits >= AttackData.Pierce)
-                {
-                    if (AttackData.DestroyOnLastHit)
-                    {
-                        StopAttack();
-                        return;
-                    }
-                }
-            }
-        }
-    }
+    //            amountOfHits++;
 
-    public void StopAttack()
-    {
-        active = false;
+    //            if (AttackData.Pierce > -1 && amountOfHits >= AttackData.Pierce)
+    //            {
+    //                if (AttackData.DestroyOnLastHit)
+    //                {
+    //                    StopAttack();
+    //                    return;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 
-        if (AttackPool.Instance != null)
-        {
-            if (!returned)
-            {
-                AttackPool.Instance.ReturnToPool(AttackData.ID, this);
-                returned = true;
-            }
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    //public void StopAttack()
+    //{
+    //    active = false;
+
+    //    if (AttackPool.Instance != null)
+    //    {
+    //        if (!returned)
+    //        {
+    //            AttackPool.Instance.ReturnToPool(AttackData.ID, this);
+    //            returned = true;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

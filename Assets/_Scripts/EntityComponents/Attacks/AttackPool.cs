@@ -6,7 +6,7 @@ public class AttackPool : MonoBehaviour
 {
     public static AttackPool Instance;
 
-    private readonly Dictionary<string, ObjectPool<Projectile>> poolDictionary = new();
+    private readonly Dictionary<string, ObjectPool<AttackObject>> poolDictionary = new();
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class AttackPool : MonoBehaviour
         }
     }
 
-    public void PreWarmPool(Projectile prefab, int amount)
+    public void PreWarmPool(AttackObject prefab, int amount)
     {
         if (poolDictionary.ContainsKey(prefab.AttackData.ID))
         {
@@ -30,7 +30,7 @@ public class AttackPool : MonoBehaviour
 
         CreatePool(prefab);
 
-        List<Projectile> tempList = new(amount);
+        List<AttackObject> tempList = new(amount);
 
         for (int j = 0; j < amount; j++)
         {
@@ -43,20 +43,20 @@ public class AttackPool : MonoBehaviour
         }
     }
 
-    public Projectile GetAttack(Projectile prefab, Vector3 position, Quaternion rotation, Transform parent = null)
+    public AttackObject GetAttack(AttackObject prefab, Vector3 position, Quaternion rotation, Transform parent = null)
     {
         if (!poolDictionary.ContainsKey(prefab.AttackData.ID))
         {
             CreatePool(prefab);
         }
 
-        Projectile newEffect = poolDictionary[prefab.AttackData.ID].Get();
+        AttackObject newEffect = poolDictionary[prefab.AttackData.ID].Get();
         if (parent != null) newEffect.transform.SetParent(parent);
         newEffect.transform.SetPositionAndRotation(position, rotation);
         return newEffect;
     }
 
-    public void ReturnToPool(string key, Projectile instance)
+    public void ReturnToPool(string key, AttackObject instance)
     {
         if (poolDictionary.TryGetValue(key, out var pool))
         {
@@ -70,9 +70,9 @@ public class AttackPool : MonoBehaviour
         }
     }
 
-    private void CreatePool(Projectile prefab)
+    private void CreatePool(AttackObject prefab)
     {
-        ObjectPool<Projectile> newPool = new ObjectPool<Projectile>
+        ObjectPool<AttackObject> newPool = new ObjectPool<AttackObject>
             (
                 createFunc: () => Instantiate(prefab, transform),
                 actionOnGet: (item) => item.gameObject.SetActive(false),

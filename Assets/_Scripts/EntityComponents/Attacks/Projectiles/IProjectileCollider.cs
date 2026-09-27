@@ -2,9 +2,9 @@ using UnityEngine;
 
 public interface IProjectileCollider
 {
-    public RaycastHit GetSingleCollision();
+    //public Collider GetSingleCollision();
 
-    public RaycastHit[] GetMultipleCollisions();
+    //public Collider[] GetMultipleCollisions();
 
-    public void GiveAttackData(SO_Attack data);
+    //public void GiveAttackData(SO_Attack data);
 }

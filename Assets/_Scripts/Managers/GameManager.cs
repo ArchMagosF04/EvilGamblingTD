@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 
     public bool IsGamePaused {  get; private set; }
 
+    public float GameSpeed { get; private set; } = 1f;
+
     private void Awake()
     {
         if (Instance == null)
@@ -17,10 +19,27 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        SetGameToNormalSpeed();
     }
 
     public void ToggleGamePause(bool value)
     {
         IsGamePaused = value;
+    }
+
+    public void SetGameToDoubleSpeed()
+    {
+        GameSpeed = 2f;
+    }
+
+    public void SetGameToNormalSpeed()
+    {
+        GameSpeed = 1f;
+    }
+
+    public void SetGameToHalfSpeed()
+    {
+        GameSpeed = 0.5f;
     }
 }

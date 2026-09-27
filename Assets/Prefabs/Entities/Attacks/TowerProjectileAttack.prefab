@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6198073555604301720}
-  - component: {fileID: 4359541650571296341}
-  - component: {fileID: 6539492886845001230}
-  m_Layer: 0
+  - component: {fileID: 3335898152396993587}
+  - component: {fileID: 7080780408723327444}
+  - component: {fileID: 6281570261476640933}
+  m_Layer: 7
   m_Name: TowerProjectileAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +35,55 @@ Transform:
   - {fileID: 3529228352856047658}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4359541650571296341
+--- !u!135 &3335898152396993587
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641563564899603047}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.26
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7080780408723327444
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641563564899603047}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 1
+--- !u!114 &6281570261476640933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,24 +92,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2641563564899603047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cf6ac6fc35c754db9e5a3ebea59637, type: 3}
+  m_Script: {fileID: 11500000, guid: 5590ed1d024d14a4891259580594aac8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  m_EditorClassIdentifier: Assembly-CSharp::AttackObject
   <AttackData>k__BackingField: {fileID: 11400000, guid: e46caee15fb7589468755c0b0f3902d0, type: 2}
---- !u!114 &6539492886845001230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2641563564899603047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76eb8caa48a2334e8af794d70bbf502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BoxCastCollision
-  attackData: {fileID: 11400000, guid: e46caee15fb7589468755c0b0f3902d0, type: 2}
-  DebugHitbox: 1
 --- !u!1 &7781784152252389512
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3529228352856047658}
   - component: {fileID: 7441469864135405010}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,14 +6,23 @@ public class SphereOverlapCollision : MonoBehaviour, IProjectileCollider
 
     [SerializeField] private bool DebugHitbox;
 
-    public RaycastHit[] GetMultipleCollisions()
+    public Collider[] GetMultipleCollisions()
     {
-        throw new System.NotImplementedException();
+        return Physics.OverlapSphere(transform.position + attackData.OriginOffset, attackData.Radius, attackData.TargetMask);
     }
 
-    public RaycastHit GetSingleCollision()
+    public Collider GetSingleCollision()
     {
-        throw new System.NotImplementedException();
+        Collider[] cols = Physics.OverlapSphere(transform.position + attackData.OriginOffset, attackData.Radius, attackData.TargetMask);
+
+        Debug.Log(cols.Length);
+
+        foreach (Collider col in cols)
+        {
+            if (col != null) return col;
+        }
+
+        return null;
     }
 
     public void GiveAttackData(SO_Attack data)
@@ -25,6 +34,12 @@ public class SphereOverlapCollision : MonoBehaviour, IProjectileCollider
     {
         if (!DebugHitbox) return;
 
-        Gizmos.DrawWireSphere(transform.position, attackData.Radius);
+        if (Physics.OverlapSphere(transform.position + attackData.OriginOffset, attackData.Radius, attackData.TargetMask).Length > 0)
+        {
+            Gizmos.color = Color.yellow;
+        }
+        else Gizmos.color = Color.white;
+
+        Gizmos.DrawWireSphere(transform.position + attackData.OriginOffset, attackData.Radius);
     }
 }

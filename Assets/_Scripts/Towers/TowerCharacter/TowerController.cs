@@ -151,8 +151,14 @@ public class TowerController : MonoBehaviour
     }
 
     [Button, BoxGroup("Components")]
-    public void GetTowerSprites()
+    public void GetTowerComponents()
     {
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+        healthController = GetComponent<HealthController>();
+        TowerDetection = GetComponent<TowerDetectionRange>();
+        animator = GetComponentInChildren<Animator>();
+        towerCollider = GetComponent<BoxCollider>();
+        spriteRenderOrder = GetComponentInChildren<SpriteRenderOrder>();
     }
 }

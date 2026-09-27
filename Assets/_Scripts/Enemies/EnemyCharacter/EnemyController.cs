@@ -15,10 +15,10 @@ public class EnemyController : MonoBehaviour
     [BoxGroup("Debug"), SerializeField] private bool DebugGizmos;
 
     private bool towerDetected;
-    private float towerDetectionLastTick;
-    private float baseDetectionLastTick;
+    private float towerDetectionTimer;
+    private float baseDetectionTimer;
 
-    private float lastAttackTime;
+    private float attackTimer;
 
     public Action OnRemoveEnemyFromWave;
     private bool returned;
@@ -42,15 +42,22 @@ public class EnemyController : MonoBehaviour
         towerDetected = false;
         spriteRenderOrder.UpdateOrderOfLayers();
         healthController.InitializeHealth(EnemyData.MaxHealth);
+        towerDetectionTimer = 0;
+        attackTimer = 0;
+        baseDetectionTimer = 0;
     }
 
     private void Update()
     {
         if(GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
 
+        attackTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
+        towerDetectionTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
+        baseDetectionTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
+
         if (!towerDetected)
         {
-            transform.Translate(Vector3.right * EnemyData.MoveSpeed * Time.deltaTime);
+            transform.Translate(Vector3.right * EnemyData.MoveSpeed * Time.deltaTime * GameManager.Instance.GameSpeed);
         }
         else
         {
@@ -70,17 +77,17 @@ public class EnemyController : MonoBehaviour
 
     private void TowerDetection()
     {
-        if (Time.time > towerDetectionLastTick + EnemyData.DetectionTickTime)
+        if (towerDetectionTimer > EnemyData.DetectionTickTime)
         {
-            towerDetectionLastTick = Time.time;
+            towerDetectionTimer = 0;
 
             detectionCubeCenter = new Vector3(transform.position.x + (EnemyData.DetectionRange / 2),
             transform.position.y, transform.position.z);
 
             detectionCubeSize = new Vector3(EnemyData.DetectionRange, EnemyData.DetectionRadius, 0.2f);
 
-            //if (Physics.SphereCast(transform.position, EnemyData.DetectionRadius, Vector3.right, out RaycastHit hitInfo, EnemyData.DetectionRange, EnemyData.DetectionMask))
-            if (Physics.BoxCast(detectionCubeCenter, detectionCubeSize / 2, Vector3.right, Quaternion.identity, EnemyData.DetectionRadius, EnemyData.DetectionMask))
+            if (Physics.SphereCast(transform.position, EnemyData.DetectionRadius, Vector3.right, out RaycastHit hitInfo, EnemyData.DetectionRange, EnemyData.DetectionMask))
+            //if (Physics.BoxCast(detectionCubeCenter, detectionCubeSize / 2, Vector3.right, Quaternion.identity, EnemyData.DetectionRadius, EnemyData.DetectionMask))
             {
                 if (!towerDetected)
                 {
@@ -103,9 +110,9 @@ public class EnemyController : MonoBehaviour
 
     private void BaseDetection()
     {
-        if (Time.time > baseDetectionLastTick + EnemyData.BaseDetectionTickTime)
+        if (baseDetectionTimer > EnemyData.BaseDetectionTickTime)
         {
-            baseDetectionLastTick = Time.time;
+            baseDetectionTimer = 0;
 
             if (Physics.Raycast(transform.position + EnemyData.BaseDetectionOffset, Vector3.right, EnemyData.BaseDetectionRange, EnemyData.BaseDetectionMask))
             {
@@ -120,11 +127,11 @@ public class EnemyController : MonoBehaviour
     {
         if (!towerDetected && EnemyData.OnlyAttackOnTowerDetected) return;
 
-        if (Time.time > lastAttackTime + EnemyData.AttackSpeed)
+        if (attackTimer > EnemyData.AttackSpeed)
         {
-            lastAttackTime = Time.time;
+            attackTimer = 0;
 
-            Projectile instance = null;
+            AttackObject instance = null;
             if (AttackPool.Instance != null)
             {
                 instance = AttackPool.Instance.GetAttack(EnemyData.AttackPrefab, transform.position,
@@ -172,12 +179,15 @@ public class EnemyController : MonoBehaviour
 
         Gizmos.color = Color.cyan;
 
-        detectionCubeCenter = new Vector3(transform.position.x + (EnemyData.DetectionRange / 2),
-            transform.position.y, transform.position.z);
+        Gizmos.DrawWireSphere(transform.position, EnemyData.DetectionRadius);
 
-        detectionCubeSize = new Vector3(EnemyData.DetectionRange, EnemyData.DetectionRadius, 0.2f);
+        Vector3 endPosition = transform.position + (transform.right * EnemyData.DetectionRange);
+        Gizmos.DrawWireSphere(endPosition, EnemyData.DetectionRadius);
 
-        DebugBoxCast.SimpleDrawBoxCast(transform.position, detectionCubeSize / 2, Quaternion.identity, transform.right, EnemyData.DetectionRange, Color.cyan);
+        Gizmos.DrawLine(transform.position + transform.forward * EnemyData.DetectionRadius, endPosition + transform.forward * EnemyData.DetectionRadius);
+        Gizmos.DrawLine(transform.position - transform.forward * EnemyData.DetectionRadius, endPosition - transform.forward * EnemyData.DetectionRadius);
+        Gizmos.DrawLine(transform.position + transform.up * EnemyData.DetectionRadius, endPosition + transform.up * EnemyData.DetectionRadius);
+        Gizmos.DrawLine(transform.position - transform.up * EnemyData.DetectionRadius, endPosition - transform.up * EnemyData.DetectionRadius);
 
         Gizmos.color = Color.red;
 

@@ -13,18 +13,16 @@ MonoBehaviour:
   m_Name: TowerProjectileAttack
   m_EditorClassIdentifier: Assembly-CSharp::SO_Attack
   <ID>k__BackingField: TowerProjectileAttack
-  <Damage>k__BackingField: 1
+  <Damage>k__BackingField: 10
   <Pierce>k__BackingField: 0
-  <HitsMultipleEnemies>k__BackingField: 0
+  <CanHitSameEnemyMultipleTimes>k__BackingField: 0
   <DestroyOnLastHit>k__BackingField: 1
-  <AttacksOnlyOnce>k__BackingField: 1
-  <MoveSpeed>k__BackingField: 5
+  <MoveSpeed>k__BackingField: 9
   <LifeTime>k__BackingField: 4
+  <CheckPreviousFramesCollision>k__BackingField: 0
   <TargetMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
-  <OriginOffset>k__BackingField: {x: -0.2, y: 0, z: 0}
-  <CanHitMultipleTimes>k__BackingField: 0
+  <OriginOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <Range>k__BackingField: 0.4
-  <Radius>k__BackingField: 0
-  <Size>k__BackingField: {x: 0.5, y: 0.4, z: 0}
+  <Radius>k__BackingField: 0.19

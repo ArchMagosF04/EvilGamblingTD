@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6396913030892411924}
   - component: {fileID: 3803526498319190743}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,9 +100,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8613673218929496318}
-  - component: {fileID: 6841679849085340367}
-  - component: {fileID: 6327027302112847528}
-  m_Layer: 0
+  - component: {fileID: 4414208620171111754}
+  - component: {fileID: 6255679061690790705}
+  - component: {fileID: 4781447648661329457}
+  m_Layer: 9
   m_Name: EnemyMeleeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +126,7 @@ Transform:
   - {fileID: 6396913030892411924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6841679849085340367
+--- !u!114 &4414208620171111754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,21 +135,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 6980268961261825000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cf6ac6fc35c754db9e5a3ebea59637, type: 3}
+  m_Script: {fileID: 11500000, guid: 5590ed1d024d14a4891259580594aac8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  m_EditorClassIdentifier: Assembly-CSharp::AttackObject
   <AttackData>k__BackingField: {fileID: 11400000, guid: 011b1f1fa6add9a4e96d11d3b3b00b5f, type: 2}
---- !u!114 &6327027302112847528
-MonoBehaviour:
+--- !u!54 &6255679061690790705
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6980268961261825000}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &4781447648661329457
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980268961261825000}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76eb8caa48a2334e8af794d70bbf502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BoxCastCollision
-  attackData: {fileID: 11400000, guid: 011b1f1fa6add9a4e96d11d3b3b00b5f, type: 2}
-  DebugHitbox: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.78, z: 1}
+  m_Center: {x: 0.8, y: 0, z: 0}

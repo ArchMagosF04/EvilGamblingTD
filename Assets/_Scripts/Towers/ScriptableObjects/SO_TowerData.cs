@@ -16,9 +16,8 @@ public class SO_TowerData : ScriptableObject
 
     #region Tower Stats
 
-    [field: BoxGroup("Attack Settings"), SerializeField, AssetsOnly] public Projectile AttackPrefab { get; private set; }
+    [field: BoxGroup("Attack Settings"), SerializeField, AssetsOnly] public AttackObject AttackPrefab { get; private set; }
     [field: BoxGroup("Attack Settings"), SerializeField] public float AttackSpeed { get; private set; } = 1.5f;
-    [field: BoxGroup("Tower Stats"), SerializeField] public float Damage { get; private set; } = 1f;
     [field: BoxGroup("Tower Stats"), SerializeField] public float MaxHealth { get; private set; } = 5f;
 
     #endregion
@@ -29,6 +28,7 @@ public class SO_TowerData : ScriptableObject
     [field: BoxGroup("DetectionRange"), SerializeField] public LayerMask EnemyLayer { get; private set; }
     [field: BoxGroup("DetectionRange"), SerializeField] public float DetectionRange { get; private set; }
     [field: BoxGroup("DetectionRange"), SerializeField] public float DetectionRadius { get; private set; }
+    [field: BoxGroup("DetectionRange"), SerializeField] public Vector3 DetectionOriginOffset { get; private set; }
     [field: BoxGroup("DetectionRange"), SerializeField, Range(0f, 180f)] public float DetectionAngle { get; private set; } = -1f;
 
 
