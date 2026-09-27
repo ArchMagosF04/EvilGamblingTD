@@ -155,7 +155,7 @@ public class TowerDetectionRange : MonoBehaviour
                                                        Quaternion.identity);
 
             instance.gameObject.SetActive(true);
-            instance.InitializeProjectile(Vector3.left, towerData.DetectionRange);
+            instance.InitializeProjectile(Vector3.left, towerData.DetectionRange + towerData.DetectionRadius);
         }
         else
         {
@@ -186,7 +186,7 @@ public class TowerDetectionRange : MonoBehaviour
                                                        Quaternion.identity);
 
             instance.gameObject.SetActive(true);
-            instance.InitializeProjectile(Vector3.up, towerData.DetectionRange);
+            instance.InitializeProjectile(Vector3.up, towerData.DetectionRange + towerData.DetectionRadius);
 
             AttackObject instance2 = null;
             if (AttackPool.Instance != null)
@@ -198,7 +198,7 @@ public class TowerDetectionRange : MonoBehaviour
                                                        Quaternion.identity);
 
             instance2.gameObject.SetActive(true);
-            instance2.InitializeProjectile(Vector3.down, towerData.DetectionRange);
+            instance2.InitializeProjectile(Vector3.down, towerData.DetectionRange + towerData.DetectionRadius);
         }
         else if (Physics.SphereCast(transform.position + towerData.DetectionOriginOffset, towerData.DetectionRadius, Vector3.down,
                                out lowerhit, towerData.DetectionRange, towerData.EnemyLayer))
@@ -219,7 +219,7 @@ public class TowerDetectionRange : MonoBehaviour
                                                        Quaternion.identity);
 
             instance.gameObject.SetActive(true);
-            instance.InitializeProjectile(Vector3.up, towerData.DetectionRange);
+            instance.InitializeProjectile(Vector3.up, towerData.DetectionRange + towerData.DetectionRadius);
 
             AttackObject instance2 = null;
             if (AttackPool.Instance != null)
@@ -231,7 +231,7 @@ public class TowerDetectionRange : MonoBehaviour
                                                        Quaternion.identity);
 
             instance2.gameObject.SetActive(true);
-            instance2.InitializeProjectile(Vector3.down, towerData.DetectionRange);
+            instance2.InitializeProjectile(Vector3.down, towerData.DetectionRange + towerData.DetectionRadius);
         }
         else
         {

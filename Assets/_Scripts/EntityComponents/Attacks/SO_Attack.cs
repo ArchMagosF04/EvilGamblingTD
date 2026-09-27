@@ -20,4 +20,7 @@ public class SO_Attack : ScriptableObject
     [field: BoxGroup("Double Check Collision"), SerializeField, ShowIf("CheckPreviousFramesCollision")] public float Range { get; private set; }
     [field: BoxGroup("Double Check Collision"), SerializeField, ShowIf("CheckPreviousFramesCollision")] public float Radius { get; private set; }
 
+    [field: BoxGroup("SFXs"), SerializeField, AssetsOnly] public PoolableEffect HitParticle { get; private set; }
+    [field: BoxGroup("SFXs"), SerializeField, AssetsOnly] public bool DoEffectOnDeath { get; private set; }
+
 }

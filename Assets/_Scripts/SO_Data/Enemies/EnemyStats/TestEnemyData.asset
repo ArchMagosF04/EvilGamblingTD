@@ -33,8 +33,6 @@ MonoBehaviour:
   <AttackPrefab>k__BackingField: {fileID: 4414208620171111754, guid: 3a206517e1a27f24e976c2c9426b75ac, type: 3}
   <AttackSpeed>k__BackingField: 1.5
   <OnlyAttackOnTowerDetected>k__BackingField: 1
-  <AttackRadius>k__BackingField: 1
-  <AttackRange>k__BackingField: 0.5
   <DetectionMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 64

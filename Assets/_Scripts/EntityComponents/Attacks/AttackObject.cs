@@ -35,6 +35,20 @@ public class AttackObject : MonoBehaviour
 
     public virtual void StopAttack()
     {
+        if (AttackData.DoEffectOnDeath)
+        {
+            PoolableEffect instance = null;
+            if (ParticlesPool.Instance != null)
+            {
+                instance = ParticlesPool.Instance.GetEffect(AttackData.HitParticle, transform.position,
+                                                       Quaternion.identity);
+            }
+            else instance = Instantiate(AttackData.HitParticle, transform.position,
+                                                       Quaternion.identity);
+
+            instance.PlayEffect();
+        }
+
         active = false;
 
         if (AttackPool.Instance != null)
@@ -85,6 +99,17 @@ public class AttackObject : MonoBehaviour
             entitiesHit.Add(health);
 
             health.TakeDamage(new AttackInfo(AttackData.Damage));
+
+            PoolableEffect instance = null;
+            if (ParticlesPool.Instance != null)
+            {
+                instance = ParticlesPool.Instance.GetEffect(AttackData.HitParticle, other.transform.position,
+                                                       Quaternion.identity);
+            }
+            else instance = Instantiate(AttackData.HitParticle, other.transform.position,
+                                                       Quaternion.identity);
+
+            instance.PlayEffect();
 
             amountOfHits++;
 
