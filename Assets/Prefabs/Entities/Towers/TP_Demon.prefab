@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerDetectionRange
   towerData: {fileID: 11400000, guid: 4b0e3db2ff2613f41b51ceea1f763f7c, type: 2}
-  ShowGizmos: 1
+  ShowGizmos: 0
 --- !u!114 &4491991570149578377
 MonoBehaviour:
   m_ObjectHideFlags: 0

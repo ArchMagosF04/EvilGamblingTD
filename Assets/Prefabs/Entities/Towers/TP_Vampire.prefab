@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerDetectionRange
   towerData: {fileID: 11400000, guid: 7d8105406a891644a9641cee1f5fb772, type: 2}
-  ShowGizmos: 1
+  ShowGizmos: 0
 --- !u!114 &8678062688050495423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +351,6 @@ MonoBehaviour:
   - {fileID: 8091372572168715529}
   - {fileID: 3333364021959012896}
   - {fileID: 3976736978700113411}
-  orderOnAwake: 0
 --- !u!95 &7810915487053535468
 Animator:
   serializedVersion: 7

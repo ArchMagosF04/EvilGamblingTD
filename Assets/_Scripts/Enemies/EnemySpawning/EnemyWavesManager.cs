@@ -107,7 +107,7 @@ public class EnemyWavesManager : MonoBehaviour
 
             SpawnEnemyEntries();
 
-            yield return new WaitForSeconds(currentSpawnInterval);
+            yield return null /*new WaitForSeconds(currentSpawnInterval)*/;
         }
 
         spawingInProgess = false;

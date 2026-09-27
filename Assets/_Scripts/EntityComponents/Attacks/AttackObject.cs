@@ -16,7 +16,9 @@ public class AttackObject : MonoBehaviour
 
     public virtual void InitializeProjectile(Vector3 direction)
     {
-        transform.right = direction;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
         this.direction = direction;
         returned = false;
         entitiesHit.Clear();

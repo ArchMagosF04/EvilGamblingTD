@@ -5,12 +5,6 @@ public class SpriteRenderOrder : MonoBehaviour
 {
     [HelpBox("Place in ascending order starting with the one in the back")]
     [SerializeField] private SpriteRenderer[] spriteArray;
-    [SerializeField] private bool orderOnAwake = false;
-
-    private void Awake()
-    {
-        if (orderOnAwake) UpdateOrderOfLayers();
-    }
 
     public void UpdateOrderOfLayers()
     {

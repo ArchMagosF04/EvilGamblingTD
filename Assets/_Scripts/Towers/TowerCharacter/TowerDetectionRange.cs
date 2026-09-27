@@ -4,15 +4,19 @@ using UnityEngine;
 public class TowerDetectionRange : MonoBehaviour
 {
     [BoxGroup("Components"), SerializeField] private SO_TowerData towerData;
+     private Animator animator;
 
     [BoxGroup("Debug"), SerializeField] private bool ShowGizmos;
 
     private bool enemyDetected;
     private float attackTimer;
 
-    public void InitializedDetectionRange(SO_TowerData data)
+    public static readonly int actionAnim = Animator.StringToHash("Attack");
+
+    public void InitializedDetectionRange(SO_TowerData data, Animator anim)
     {
         towerData = data;
+        animator = anim;
     }
 
     public void UpdateDetection()
@@ -52,6 +56,8 @@ public class TowerDetectionRange : MonoBehaviour
         {
             enemyDetected = true;
 
+            animator.SetTrigger(actionAnim);
+
             attackTimer = 0;
 
             AttackObject instance = null;
@@ -69,8 +75,6 @@ public class TowerDetectionRange : MonoBehaviour
         else
         {
             enemyDetected = false;
-
-
         }
     }
 

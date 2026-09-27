@@ -30,7 +30,7 @@ public class TowerController : MonoBehaviour
 
         healthController.OnHealthDepleted += RemoveTower;
 
-        TowerDetection.InitializedDetectionRange(TowerData);
+        TowerDetection.InitializedDetectionRange(TowerData, animator);
 
         if (AttackPool.Instance != null && TowerData.AttackPrefab != null) AttackPool.Instance.PreWarmPool(TowerData.AttackPrefab, 20);
     }

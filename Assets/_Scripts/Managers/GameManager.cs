@@ -1,12 +1,13 @@
+using Alchemy.Inspector;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public bool IsGamePaused {  get; private set; }
+    [field:SerializeField, ReadOnly] public bool IsGamePaused {  get; private set; }
 
-    public float GameSpeed { get; private set; } = 1f;
+    [field: SerializeField, ReadOnly] public float GameSpeed { get; private set; } = 1f;
 
     private void Awake()
     {
