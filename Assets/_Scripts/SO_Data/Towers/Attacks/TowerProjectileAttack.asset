@@ -19,6 +19,7 @@ MonoBehaviour:
   <DestroyOnLastHit>k__BackingField: 1
   <MoveSpeed>k__BackingField: 9
   <LifeTime>k__BackingField: 4
+  <DestroyBeyondRange>k__BackingField: 1
   <CheckPreviousFramesCollision>k__BackingField: 0
   <TargetMask>k__BackingField:
     serializedVersion: 2
@@ -26,3 +27,4 @@ MonoBehaviour:
   <OriginOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <Range>k__BackingField: 0.4
   <Radius>k__BackingField: 0.19
+  <HitParticle>k__BackingField: {fileID: 4108722051297211494, guid: ba322016f69b80243be4f685e6782f39, type: 3}

@@ -13,9 +13,14 @@ public class AttackObject : MonoBehaviour
     protected Vector3 direction;
     protected bool active;
     protected float lifeTimer;
+    protected float range;
+    protected Vector3 startingPoint;
 
-    public virtual void InitializeProjectile(Vector3 direction)
+    public virtual void InitializeProjectile(Vector3 direction, float range)
     {
+        this.range = range;
+        startingPoint = transform.position;
+
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
@@ -25,10 +30,25 @@ public class AttackObject : MonoBehaviour
         amountOfHits = 0;
         active = true;
         lifeTimer = 0;
+
     }
 
     public virtual void StopAttack()
     {
+        if (AttackData.DoEffectOnDeath)
+        {
+            PoolableEffect instance = null;
+            if (ParticlesPool.Instance != null)
+            {
+                instance = ParticlesPool.Instance.GetEffect(AttackData.HitParticle, transform.position,
+                                                       Quaternion.identity);
+            }
+            else instance = Instantiate(AttackData.HitParticle, transform.position,
+                                                       Quaternion.identity);
+
+            instance.PlayEffect();
+        }
+
         active = false;
 
         if (AttackPool.Instance != null)
@@ -56,6 +76,8 @@ public class AttackObject : MonoBehaviour
         lifeTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
 
         if (lifeTimer > AttackData.LifeTime) StopAttack();
+
+        if (AttackData.DestroyBeyondRange && Vector3.Distance(transform.position, startingPoint) > range) StopAttack();
     }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -77,6 +99,17 @@ public class AttackObject : MonoBehaviour
             entitiesHit.Add(health);
 
             health.TakeDamage(new AttackInfo(AttackData.Damage));
+
+            PoolableEffect instance = null;
+            if (ParticlesPool.Instance != null)
+            {
+                instance = ParticlesPool.Instance.GetEffect(AttackData.HitParticle, other.transform.position,
+                                                       Quaternion.identity);
+            }
+            else instance = Instantiate(AttackData.HitParticle, other.transform.position,
+                                                       Quaternion.identity);
+
+            instance.PlayEffect();
 
             amountOfHits++;
 

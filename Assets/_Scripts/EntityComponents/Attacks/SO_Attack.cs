@@ -12,11 +12,15 @@ public class SO_Attack : ScriptableObject
     [field: BoxGroup("Main Stats"), SerializeField] public bool DestroyOnLastHit { get; private set; } = true;
     [field: BoxGroup("Main Stats"), SerializeField] public float MoveSpeed { get; private set; }
     [field: BoxGroup("Main Stats"), SerializeField] public float LifeTime { get; private set; } = 0.2f;
+    [field: BoxGroup("Main Stats"), SerializeField] public bool DestroyBeyondRange { get; private set; } = true;
 
     [field: BoxGroup("Double Check Collision"), SerializeField] public bool CheckPreviousFramesCollision { get; private set; } = false;
     [field: BoxGroup("Double Check Collision"), SerializeField, ShowIf("CheckPreviousFramesCollision")] public LayerMask TargetMask { get; private set; }
     [field: BoxGroup("Double Check Collision"), SerializeField, ShowIf("CheckPreviousFramesCollision")] public Vector3 OriginOffset { get; private set; }
     [field: BoxGroup("Double Check Collision"), SerializeField, ShowIf("CheckPreviousFramesCollision")] public float Range { get; private set; }
     [field: BoxGroup("Double Check Collision"), SerializeField, ShowIf("CheckPreviousFramesCollision")] public float Radius { get; private set; }
+
+    [field: BoxGroup("SFXs"), SerializeField, AssetsOnly] public PoolableEffect HitParticle { get; private set; }
+    [field: BoxGroup("SFXs"), SerializeField, AssetsOnly] public bool DoEffectOnDeath { get; private set; }
 
 }

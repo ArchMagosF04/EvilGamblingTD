@@ -23,7 +23,7 @@ public class TowerController : MonoBehaviour
     private void Awake()
     {
         if (!healthController) healthController = GetComponent<HealthController>();
-        if (!TowerDetection) TowerDetection = GetComponent<TowerDetectionRange>();
+        if (!TowerDetection) TowerDetection = GetComponentInChildren<TowerDetectionRange>();
         if (!animator) animator = GetComponentInChildren<Animator>();
         if (!towerCollider) towerCollider = GetComponent<BoxCollider>();
         if (!spriteRenderOrder) spriteRenderOrder = GetComponentInChildren<SpriteRenderOrder>();
@@ -31,6 +31,7 @@ public class TowerController : MonoBehaviour
         healthController.OnHealthDepleted += RemoveTower;
 
         TowerDetection.InitializedDetectionRange(TowerData, animator);
+        TowerDetection.CreateRangeIndicator();
 
         if (AttackPool.Instance != null && TowerData.AttackPrefab != null) AttackPool.Instance.PreWarmPool(TowerData.AttackPrefab, 20);
     }
@@ -42,6 +43,8 @@ public class TowerController : MonoBehaviour
         TowerPlaced = false;
             
         spriteRenderOrder.BringToFront();
+        TowerDetection.ToggleRangeIndicator(true);
+
 
         foreach (var sprite in spriteRenderers)
         {
@@ -66,6 +69,7 @@ public class TowerController : MonoBehaviour
 
     public void PlaceTower()
     {
+        TowerDetection.ToggleRangeIndicator(false);
         TowerPlaced = true;
         towerCollider.isTrigger = false;
 
@@ -156,7 +160,7 @@ public class TowerController : MonoBehaviour
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
         healthController = GetComponent<HealthController>();
-        TowerDetection = GetComponent<TowerDetectionRange>();
+        TowerDetection = GetComponentInChildren<TowerDetectionRange>();
         animator = GetComponentInChildren<Animator>();
         towerCollider = GetComponent<BoxCollider>();
         spriteRenderOrder = GetComponentInChildren<SpriteRenderOrder>();
