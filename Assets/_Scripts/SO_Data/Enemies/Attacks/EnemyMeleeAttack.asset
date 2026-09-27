@@ -19,6 +19,7 @@ MonoBehaviour:
   <DestroyOnLastHit>k__BackingField: 0
   <MoveSpeed>k__BackingField: 0
   <LifeTime>k__BackingField: 0.2
+  <DestroyBeyondRange>k__BackingField: 0
   <CheckPreviousFramesCollision>k__BackingField: 0
   <TargetMask>k__BackingField:
     serializedVersion: 2

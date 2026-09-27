@@ -141,7 +141,7 @@ public class EnemyController : MonoBehaviour
                                                        Quaternion.identity);
 
             instance.gameObject.SetActive(true);
-            instance.InitializeProjectile(Vector3.right);
+            instance.InitializeProjectile(Vector3.right, EnemyData.DetectionRange);
         }
     }
 

@@ -19,11 +19,11 @@ MonoBehaviour:
   <AttackPrefab>k__BackingField: {fileID: 6281570261476640933, guid: e4c1eaff24c335d41b418a8ff4a3cc5e, type: 3}
   <AttackSpeed>k__BackingField: 1.5
   <MaxHealth>k__BackingField: 30
-  <RangeType>k__BackingField: 0
+  <RangeType>k__BackingField: 1
   <EnemyLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
-  <DetectionRange>k__BackingField: 10
-  <DetectionRadius>k__BackingField: 0.4
+  <DetectionRange>k__BackingField: 3
+  <DetectionRadius>k__BackingField: 0.25
   <DetectionOriginOffset>k__BackingField: {x: 0, y: -0.15, z: 0}
   <DetectionAngle>k__BackingField: 0

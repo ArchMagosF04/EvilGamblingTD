@@ -38,8 +38,8 @@ public class SO_EnemyData : ScriptableObject
     [field: BoxGroup("Attack Settings"), SerializeField, AssetsOnly] public AttackObject AttackPrefab { get; private set; }
     [field: BoxGroup("Attack Settings"), SerializeField] public float AttackSpeed { get; private set; } = 1.5f;
     [field: BoxGroup("Attack Settings"), SerializeField] public bool OnlyAttackOnTowerDetected { get; private set; } = true;
-    [field: BoxGroup("Attack Settings"), SerializeField] public float AttackRadius { get; private set; } = 1f;
-    [field: BoxGroup("Attack Settings"), SerializeField] public float AttackRange { get; private set; } = 0.5f;
+    //[field: BoxGroup("Attack Settings"), SerializeField] public float AttackRadius { get; private set; } = 1f;
+    //[field: BoxGroup("Attack Settings"), SerializeField] public float AttackRange { get; private set; } = 0.5f;
 
     #endregion
 

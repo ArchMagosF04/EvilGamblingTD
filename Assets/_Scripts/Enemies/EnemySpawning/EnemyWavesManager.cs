@@ -25,6 +25,9 @@ public class EnemyWavesManager : MonoBehaviour
     [BoxGroup("Spawn Timing Settings"), SerializeField, Tooltip("How much faster enemies spawn each wave"), Range(0.1f, 0.9999f)]
     private float intervalDecayRate = 0.95f;
 
+    [BoxGroup("Money Reward Per Wave"), SerializeField] private float BaseReward = 50f;
+    [BoxGroup("Money Reward Per Wave"), SerializeField] private float AddedRewardPerWave = 1f;
+
     [BoxGroup("Event Channels"), SerializeField] private StringEvent waveNumberTextEvent;
 
     [BoxGroup("Debug"), SerializeField, ReadOnly] private Queue<SpawnEntry> currentWaveSpawnQueue = new Queue<SpawnEntry>();
@@ -183,6 +186,8 @@ public class EnemyWavesManager : MonoBehaviour
 
         waveInProgress = false;
         allEnemiesInWaveDead = true;
+
+        PlayerManager.Instance.GainMoney(BaseReward + (AddedRewardPerWave * CurrentWave));
     }
 
     private void CreateProceduralWave()

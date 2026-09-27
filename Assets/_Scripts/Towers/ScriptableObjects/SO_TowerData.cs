@@ -53,5 +53,5 @@ public enum TowerRangeType
     VerticalLine,
     Radius,
     ForwardCone,
-    VerticalCone,
+    //VerticalCone,
 }
