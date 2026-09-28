@@ -10,7 +10,8 @@ public class MenuManager : MonoBehaviour
 
     void Start() 
     {
-        fadeMaterial.SetFloat("_Fade", 0);
+        fadeMaterial.SetFloat("_Fade", 1);
+        fadeMaterial.DOFloat(0, "_Fade", 3);
     }
 
     public void SceneFadeChange(string sceneName)
@@ -23,7 +24,7 @@ public class MenuManager : MonoBehaviour
     {
         fadeMaterial.DOFloat(1, "_Fade", 1);
         yield return new WaitForSeconds(1.5f);
-        fadeMaterial.SetFloat("_Fade", 0);
+        //fadeMaterial.SetFloat("_Fade", 0);
         SceneManager.LoadScene(sceneName);
     }
 
