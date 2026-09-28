@@ -13,6 +13,8 @@ public class HealthController : MonoBehaviour, IDamageable
 
     public Action OnHealthDepleted;
 
+    public DamagePopUp damagePopUp;
+
 
     public void InitializeHealth(float maxHealth)
     {
@@ -27,6 +29,13 @@ public class HealthController : MonoBehaviour, IDamageable
         if (IsDead) return;
 
         currentHealth -= info.Damage;
+
+        if(damagePopUp != null) 
+        {
+            DamagePopUp popUp = Instantiate(damagePopUp, transform.position, Quaternion.identity);
+            popUp.damage = info.Damage;
+
+        }
 
         if (currentHealth <= 0)
         {
