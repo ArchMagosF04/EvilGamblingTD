@@ -568,6 +568,7 @@ GameObject:
   - component: {fileID: 440556718}
   - component: {fileID: 440556717}
   - component: {fileID: 440556720}
+  - component: {fileID: 440556721}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -652,6 +653,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 440556721}
+        m_TargetAssemblyTypeName: Ami.BroAudio.SoundSource, BroAudio
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &440556718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +717,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PauseTimeButton
   pauseIcon: {fileID: 1690079256}
   resumeIcon: {fileID: 2135659265}
+--- !u!114 &440556721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440556715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385ffc06106304cc3824d5bcf25a7037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: BroAudio::Ami.BroAudio.SoundSource
+  _onlyPlayOnce: 0
+  _playOnEnable: 0
+  _stopOnDisable: 0
+  _overrideFadeOut: -1
+  _sound:
+    _entity: {fileID: 11400000, guid: f355ebf7bc90ca448ad95128e4b183ad, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 440556715}
+  _overrideGroup: {fileID: 0}
+  _positionMode: 0
+  _delay: 0
 --- !u!1001 &471660740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1150,6 +1186,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 548371186}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ToggleGamePause
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &586495504
 Transform:
   m_ObjectHideFlags: 0
@@ -1177,6 +1225,7 @@ GameObject:
   - component: {fileID: 603397951}
   - component: {fileID: 603397950}
   - component: {fileID: 603397949}
+  - component: {fileID: 603397952}
   m_Layer: 5
   m_Name: WaveButton
   m_TagString: Untagged
@@ -1260,6 +1309,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 603397952}
+        m_TargetAssemblyTypeName: Ami.BroAudio.SoundSource, BroAudio
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &603397950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1298,6 +1359,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603397947}
   m_CullTransparentMesh: 1
+--- !u!114 &603397952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603397947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385ffc06106304cc3824d5bcf25a7037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: BroAudio::Ami.BroAudio.SoundSource
+  _onlyPlayOnce: 0
+  _playOnEnable: 0
+  _stopOnDisable: 0
+  _overrideFadeOut: -1
+  _sound:
+    _entity: {fileID: 11400000, guid: f355ebf7bc90ca448ad95128e4b183ad, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 603397947}
+  _overrideGroup: {fileID: 0}
+  _positionMode: 0
+  _delay: 0
 --- !u!1 &625814175
 GameObject:
   m_ObjectHideFlags: 0
@@ -4615,6 +4699,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5148347118719175961}
+        m_TargetAssemblyTypeName: Ami.BroAudio.SoundSource, BroAudio
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2472122048601133954
 GameObject:
   m_ObjectHideFlags: 0
@@ -4786,6 +4882,7 @@ GameObject:
   - component: {fileID: 3861882659106198627}
   - component: {fileID: 2484293420391654862}
   - component: {fileID: 2424390667892769612}
+  - component: {fileID: 5148347118719175961}
   m_Layer: 5
   m_Name: ReturnButton
   m_TagString: Untagged
@@ -4956,6 +5053,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 293.7595, y: 127.43919}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5148347118719175961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3996103057318165059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385ffc06106304cc3824d5bcf25a7037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: BroAudio::Ami.BroAudio.SoundSource
+  _onlyPlayOnce: 0
+  _playOnEnable: 0
+  _stopOnDisable: 0
+  _overrideFadeOut: -1
+  _sound:
+    _entity: {fileID: 11400000, guid: f355ebf7bc90ca448ad95128e4b183ad, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 3996103057318165059}
+  _overrideGroup: {fileID: 0}
+  _positionMode: 0
+  _delay: 0
 --- !u!222 &5286588793684285130
 CanvasRenderer:
   m_ObjectHideFlags: 0

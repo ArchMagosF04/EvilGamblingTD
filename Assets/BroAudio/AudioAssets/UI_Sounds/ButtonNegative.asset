@@ -17,12 +17,12 @@ MonoBehaviour:
   _group: {fileID: 0}
   Clips:
   - AudioClip: {fileID: 8300000, guid: 80cfae9a4c518b841982b08809915db4, type: 3}
-    Volume: 1
+    Volume: 0.27520686
     Delay: 0
     StartPosition: 0.008
-    EndPosition: 1.073
-    FadeIn: 0.02
-    FadeOut: 0.13
+    EndPosition: 1.235
+    FadeIn: 0.012
+    FadeOut: 0.034
     Weight: 0
   <AudioAsset>k__BackingField: {fileID: 11400000, guid: 39841da4eb664bc46bddb2b4c2fabd61, type: 2}
   <AudioType>k__BackingField: 2
@@ -35,7 +35,7 @@ MonoBehaviour:
   <Pitch>k__BackingField: 1
   <PitchRandomRange>k__BackingField: 0.099999964
   <VolumeRandomRange>k__BackingField: 0
-  <RandomFlags>k__BackingField: 1
+  <RandomFlags>k__BackingField: 0
   <Flags>k__BackingField: 0
   SeamlessTransitionType: 0
   TransitionTempo:

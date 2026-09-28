@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -13,8 +14,18 @@ public class BuyTowerButton : MonoBehaviour
 
     [BoxGroup("Event Channels"), SerializeField] private TowerControllerEvent selectTowerEvent;
 
+    [BoxGroup("Sounds"), SerializeField] private SoundID PressSound;
+    [BoxGroup("Sounds"), SerializeField] private SoundID NoEffectSound;
+
     private Sequence cantBuySequence;
     private Tween buyTween;
+
+    private Color startingColor;
+
+    private void Awake()
+    {
+        startingColor = buttonImage.color;
+    }
 
     [Button]
     public void InitializeTowerSlot(SO_TowerData data)
@@ -38,12 +49,16 @@ public class BuyTowerButton : MonoBehaviour
         {
             if (cantBuySequence != null && cantBuySequence.IsActive()) cantBuySequence.Kill(true);
 
+            BroAudio.Play(PressSound);
+
             selectTowerEvent?.InvokeEvent(towerData);
             TowerBoughtAnim();
         }
         else
         {
             if (buyTween != null && buyTween.IsActive()) buyTween.Kill(true);
+
+            BroAudio.Play(NoEffectSound);
 
             CantBuyAnim();
         }
@@ -64,6 +79,6 @@ public class BuyTowerButton : MonoBehaviour
 
         cantBuySequence.Append(buttonImage.DOColor(Color.red, 0.1f))
                        .AppendInterval(0.1f)
-                       .Append(buttonImage.DOColor(Color.white, 0.15f)).SetLink(gameObject);
+                       .Append(buttonImage.DOColor(startingColor, 0.15f)).SetLink(gameObject);
     }
 }

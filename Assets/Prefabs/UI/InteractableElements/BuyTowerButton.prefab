@@ -170,6 +170,14 @@ MonoBehaviour:
   buttonImage: {fileID: 4423406083604532430}
   costText: {fileID: 7927484311065030534}
   selectTowerEvent: {fileID: 11400000, guid: 9e979f5bcd9f4e14e9da54786ec7e613, type: 2}
+  PressSound:
+    _entity: {fileID: 11400000, guid: f355ebf7bc90ca448ad95128e4b183ad, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 4619626524163365390}
+  NoEffectSound:
+    _entity: {fileID: 11400000, guid: fda267d064c6aef47aee68ef9ce758a3, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 4619626524163365390}
 --- !u!1 &5112580910043114936
 GameObject:
   m_ObjectHideFlags: 0
