@@ -503,6 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
   fadeMaterial: {fileID: 2100000, guid: 003c57910352bf44199959829a6ffa6f, type: 2}
+  fadeInDuration: 1
 --- !u!4 &229872928
 Transform:
   m_ObjectHideFlags: 0
