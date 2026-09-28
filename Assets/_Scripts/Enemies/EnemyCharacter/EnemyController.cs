@@ -240,4 +240,12 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawLine(transform.position + EnemyData.BaseDetectionOffset, 
                        (transform.position + EnemyData.BaseDetectionOffset) + (Vector3.right * EnemyData.BaseDetectionRange));
     }
+
+    public void PauseOrPlayAnimator(bool toggle)
+    {
+        if (dead) return;
+
+        if (toggle) animator.speed = 0;
+        else animator.speed = 1;
+    }
 }

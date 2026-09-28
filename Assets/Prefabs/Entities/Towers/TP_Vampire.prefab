@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 6758566214392257312}
   - component: {fileID: 8678062688050495423}
   - component: {fileID: 8617921741686087828}
+  - component: {fileID: 4611092598433641546}
   m_Layer: 6
   m_Name: TP_Vampire
   m_TagString: Untagged
@@ -194,6 +195,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.75, y: 0.75, z: 1}
   m_Center: {x: 0, y: -0.15, z: 0}
+--- !u!114 &4611092598433641546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160814537590468583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37dfe87445b9c54f9ec2a0d08584df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoolEventListener
+  eventToListen: {fileID: 11400000, guid: b25ed966643304a4a9ea68a87752cd43, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6758566214392257312}
+        m_TargetAssemblyTypeName: TowerController, Assembly-CSharp
+        m_MethodName: PauseOrPlayAnimator
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &3438302222328813301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 7d8105406a891644a9641cee1f5fb772, type: 2}
     - target: {fileID: 4874331514567860443, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7852231134601660774, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
       propertyPath: m_Name

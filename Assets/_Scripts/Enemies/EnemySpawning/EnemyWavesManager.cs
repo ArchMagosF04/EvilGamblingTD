@@ -107,7 +107,7 @@ public class EnemyWavesManager : MonoBehaviour
     {
         while (currentWaveSpawnQueue.Count > 0)
         {
-            if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) continue;
+            if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) yield return null;
 
             spawnTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
 

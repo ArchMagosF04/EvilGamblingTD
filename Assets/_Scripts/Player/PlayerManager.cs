@@ -86,8 +86,6 @@ public class PlayerManager : MonoBehaviour
 
         if (CurrentHealth <= 0 && !playerLost)
         {
-            Time.timeScale = 0f;
-
             playerLost = true;
 
             CurrentHealth = 0;

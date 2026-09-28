@@ -1044,6 +1044,7 @@ MonoBehaviour:
     _entity: {fileID: 11400000, guid: a6d22f534e65ee9439b58f4d2f94bd47, type: 2}
     ID: 0
     <DebugObject>k__BackingField: {fileID: 548371184}
+  PauseStateChangeEvent: {fileID: 11400000, guid: b25ed966643304a4a9ea68a87752cd43, type: 2}
 --- !u!1 &577911865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,7 +1646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -209.11145, y: 0.5057373}
+  m_AnchoredPosition: {x: -209.11133, y: 0.5058594}
   m_SizeDelta: {x: 418.2224, y: 14.0502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &866445078
@@ -2201,6 +2202,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 349252813}
     m_Modifications:
+    - target: {fileID: 3903424026202297250, guid: c5ec04ff2104cda4ba247e5daabc8638, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1083c498f59716744a52f265eab7907c, type: 2}
     - target: {fileID: 4161406925303034439, guid: c5ec04ff2104cda4ba247e5daabc8638, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.76
@@ -2256,6 +2261,10 @@ PrefabInstance:
     - target: {fileID: 7675819818123771519, guid: c5ec04ff2104cda4ba247e5daabc8638, type: 3}
       propertyPath: m_Name
       value: SceneBackGroundSprites
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675819818123771519, guid: c5ec04ff2104cda4ba247e5daabc8638, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9019194547520084860, guid: c5ec04ff2104cda4ba247e5daabc8638, type: 3}
       propertyPath: m_LocalScale.x
@@ -4309,7 +4318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 82.3, y: -29.7}
+  m_AnchoredPosition: {x: 82.299805, y: -29.699951}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2147469480

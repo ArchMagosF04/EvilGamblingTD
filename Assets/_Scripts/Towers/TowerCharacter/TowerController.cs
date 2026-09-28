@@ -168,4 +168,12 @@ public class TowerController : MonoBehaviour
         towerCollider = GetComponent<BoxCollider>();
         spriteRenderOrder = GetComponentInChildren<SpriteRenderOrder>();
     }
+
+    public void PauseOrPlayAnimator(bool toggle)
+    {
+        if (!TowerPlaced) return;
+
+        if (toggle) animator.speed = 0;
+        else animator.speed = 1;
+    }
 }

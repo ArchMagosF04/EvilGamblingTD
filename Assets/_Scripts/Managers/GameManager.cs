@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private SoundID levelMusic = default;
 
+    [SerializeField] private BoolEvent PauseStateChangeEvent;
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
     public void ToggleGamePause(bool value)
     {
         IsGamePaused = value;
+
+        PauseStateChangeEvent?.InvokeEvent(value);
     }
 
     public void SetGameToDoubleSpeed()
@@ -55,7 +59,7 @@ public class GameManager : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
-
+        BroAudio.Stop(levelMusic);
         SceneManager.LoadScene(0);
     }
 }
