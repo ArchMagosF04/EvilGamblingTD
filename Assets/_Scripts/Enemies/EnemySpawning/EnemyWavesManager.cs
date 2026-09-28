@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class EnemyWavesManager : MonoBehaviour
 {
+    public static EnemyWavesManager Instance;
+
     [BoxGroup("Components"), SerializeField] private List<SO_EnemyData> availableEnemies;
     [BoxGroup("Components"), SerializeField] private SO_EnemyWavesBlueprint wavesBlueprint;
 
@@ -36,8 +38,8 @@ public class EnemyWavesManager : MonoBehaviour
     [BoxGroup("Debug"), SerializeField, ReadOnly] private Queue<SpawnEntry> currentWaveSpawnQueue = new Queue<SpawnEntry>();
 
     public int CurrentWave { get; private set; } = 0;
+    public bool WaveInProgress { get; private set; }
     private bool allEnemiesInWaveDead = true;
-    private bool waveInProgress;
     private bool spawingInProgess;
     private float spawnTimer;
 
@@ -48,6 +50,16 @@ public class EnemyWavesManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         waveNumberTextEvent?.InvokeEvent("Wave: " + CurrentWave);
         spawnTimer = 0;
     }
@@ -86,7 +98,7 @@ public class EnemyWavesManager : MonoBehaviour
     {
         if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
 
-        if (!waveInProgress) return;
+        if (!WaveInProgress) return;
 
         if (!spawingInProgess && activeEnemiesAmount <= 0)
         {
@@ -178,7 +190,7 @@ public class EnemyWavesManager : MonoBehaviour
         }
 
         spawingInProgess = true;
-        waveInProgress = true;
+        WaveInProgress = true;
 
         StartCoroutine(WaveSpawningRoutine());
     }
@@ -187,7 +199,7 @@ public class EnemyWavesManager : MonoBehaviour
     {
         Debug.Log($"Wave {CurrentWave} Defeated.");
 
-        waveInProgress = false;
+        WaveInProgress = false;
         allEnemiesInWaveDead = true;
 
         PlayerManager.Instance.GainMoney(BaseReward + (AddedRewardPerWave * CurrentWave));

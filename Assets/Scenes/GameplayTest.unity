@@ -1238,6 +1238,7 @@ GameObject:
   - component: {fileID: 603397950}
   - component: {fileID: 603397949}
   - component: {fileID: 603397952}
+  - component: {fileID: 603397953}
   m_Layer: 5
   m_Name: WaveButton
   m_TagString: Untagged
@@ -1309,9 +1310,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 542298364}
-        m_TargetAssemblyTypeName: EnemyWavesManager, Assembly-CSharp
-        m_MethodName: StartNextWave
+      - m_Target: {fileID: 603397953}
+        m_TargetAssemblyTypeName: GameWaveSpeedButton, Assembly-CSharp
+        m_MethodName: GameSpeedPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1394,6 +1395,18 @@ MonoBehaviour:
   _overrideGroup: {fileID: 0}
   _positionMode: 0
   _delay: 0
+--- !u!114 &603397953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603397947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957980b7f4c70cd44bf4b7fda61b9331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameWaveSpeedButton
 --- !u!1 &625814175
 GameObject:
   m_ObjectHideFlags: 0
