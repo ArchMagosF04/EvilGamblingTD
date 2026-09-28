@@ -58,5 +58,8 @@ TagManager:
   - name: Attacks
     uniqueID: 2530123955
     locked: 0
+  - name: Foreground
+    uniqueID: 3434465573
+    locked: 0
   m_RenderingLayers:
   - Default
