@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676390f0f0f18b345aa78e58fe117dba, type: 3}
+  m_Name: BloodProjectile
+  m_EditorClassIdentifier: Assembly-CSharp::SO_Attack
+  <ID>k__BackingField: BloodProjectile
+  <Damage>k__BackingField: 15
+  <Pierce>k__BackingField: 0
+  <CanHitSameEnemyMultipleTimes>k__BackingField: 0
+  <DestroyOnLastHit>k__BackingField: 1
+  <MoveSpeed>k__BackingField: 10
+  <LifeTime>k__BackingField: 4
+  <DestroyBeyondRange>k__BackingField: 1
+  <CheckPreviousFramesCollision>k__BackingField: 0
+  <TargetMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 256
+  <OriginOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <Range>k__BackingField: 0.4
+  <Radius>k__BackingField: 0.19
+  <HitParticle>k__BackingField: {fileID: 5681189084192880311, guid: e3d2b168de363a747ae5ee1c29defa17, type: 3}
+  <DoEffectOnDeath>k__BackingField: 1

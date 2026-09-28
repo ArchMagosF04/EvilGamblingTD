@@ -333,12 +333,17 @@ public class TowerDetectionRange : MonoBehaviour
 
         if (furthestEnemy == null) return;
 
-        Vector2 targetPos = furthestEnemy.transform.position;
-        Vector2 targetVel = Vector2.right * (furthestEnemy.EnemyData.MoveSpeed * (furthestEnemy.TowerDetected ? 0f : 1f));
-        Vector2 firePos = transform.position + towerData.DetectionOriginOffset;
+        Vector2 baseDirection = Vector2.left;
 
-        Vector2 predictedPosition = CalculateInterceptPosition(firePos, towerData.AttackPrefab.AttackData.MoveSpeed, targetPos, targetVel);
-        Vector2 baseDirection = (predictedPosition - firePos).normalized;
+        if (towerData.TrackTarget)
+        {
+            Vector2 targetPos = furthestEnemy.transform.position;
+            Vector2 targetVel = Vector2.right * (furthestEnemy.EnemyData.MoveSpeed * (furthestEnemy.TowerDetected ? 0f : 1f));
+            Vector2 firePos = transform.position + towerData.DetectionOriginOffset;
+
+            Vector2 predictedPosition = CalculateInterceptPosition(firePos, towerData.AttackPrefab.AttackData.MoveSpeed, targetPos, targetVel);
+            baseDirection = (predictedPosition - firePos).normalized;
+        }
 
         // Calculate the starting angle shift (half of the total spread)
         float startAngleOffset = -towerData.ShotSpread / 2f;
