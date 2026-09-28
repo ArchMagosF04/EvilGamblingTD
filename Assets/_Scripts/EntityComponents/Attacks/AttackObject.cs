@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttackObject : MonoBehaviour
 {
     [field: BoxGroup("Components"), SerializeField] public SO_Attack AttackData { get; private set; }
+    [field: BoxGroup("Components"), SerializeField] public TrailRenderer trailRenderer { get; private set; }
 
     protected HashSet<HealthController> entitiesHit = new HashSet<HealthController>();
 
@@ -16,8 +17,15 @@ public class AttackObject : MonoBehaviour
     protected float range;
     protected Vector3 startingPoint;
 
+    protected virtual void Awake()
+    {
+        if (!trailRenderer) trailRenderer = GetComponentInChildren<TrailRenderer>();
+    }
+
     public virtual void InitializeProjectile(Vector3 direction, float range)
     {
+        trailRenderer?.Clear();
+
         this.range = range;
         startingPoint = transform.position;
 
@@ -31,6 +39,7 @@ public class AttackObject : MonoBehaviour
         active = true;
         lifeTimer = 0;
 
+        if (trailRenderer) trailRenderer.emitting = true;
     }
 
     public virtual void StopAttack()
@@ -41,6 +50,9 @@ public class AttackObject : MonoBehaviour
         {
             if (!returned)
             {
+                if (trailRenderer) trailRenderer.emitting = false;
+                if (trailRenderer) trailRenderer.Clear();
+
                 AttackPool.Instance.ReturnToPool(AttackData.ID, this);
                 returned = true;
             }

@@ -20,6 +20,7 @@ public class SO_TowerData : ScriptableObject
     [field: BoxGroup("Attack Settings"), SerializeField] public float AttackSpeed { get; private set; } = 1.5f;
     [field: BoxGroup("Attack Settings"), SerializeField, Min(1)] public int NumberOfShots { get; private set; } = 1;
     [field: BoxGroup("Attack Settings"), SerializeField, Range(0, 360)] public float ShotSpread { get; private set; } = 0;
+    [field: BoxGroup("Attack Settings"), SerializeField] public bool TrackTarget { get; private set; }
     [field: BoxGroup("Tower Stats"), SerializeField] public float MaxHealth { get; private set; } = 5f;
 
     #endregion

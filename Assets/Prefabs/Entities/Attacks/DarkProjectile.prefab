@@ -307,3 +307,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackObject
   <AttackData>k__BackingField: {fileID: 11400000, guid: 83b2215131923a9469472c4e0e14ec51, type: 2}
+  <trailRenderer>k__BackingField: {fileID: 0}

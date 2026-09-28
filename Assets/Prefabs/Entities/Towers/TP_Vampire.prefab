@@ -242,6 +242,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4502177441304704727, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: towerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d8105406a891644a9641cee1f5fb772, type: 2}
     - target: {fileID: 7852231134601660774, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
       propertyPath: m_Name
       value: TowerDetection

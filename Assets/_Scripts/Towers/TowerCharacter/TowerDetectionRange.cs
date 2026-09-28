@@ -288,7 +288,73 @@ public class TowerDetectionRange : MonoBehaviour
 
     private void ForwardConeDetection()
     {
+        Collider[] cols = Physics.OverlapSphere(transform.position + towerData.DetectionOriginOffset, towerData.DetectionRange, towerData.EnemyLayer);
 
+        if (cols.Length <= 0)
+        {
+            enemyDetected = false;
+            return;
+        }
+
+        HashSet<EnemyController> healths = new HashSet<EnemyController>();
+
+        for (int i = 0; i < cols.Length; i++)
+        {
+            if (cols[i].TryGetComponent<EnemyController>(out EnemyController health))
+            {
+                Vector3 dir = health.transform.position - (transform.position + towerData.DetectionOriginOffset);
+                float angle = Vector3.Angle(-transform.right, dir);
+
+                if (angle > towerData.DetectionAngle / 2) continue;
+
+                healths.Add(health);
+            }
+        }
+
+        if (healths.Count <= 0) return;
+
+        enemyDetected = true;
+
+        animator.SetTrigger(actionAnim);
+
+        attackTimer = 0;
+
+        float furthestDistance = -99999999;
+        EnemyController furthestEnemy = null;
+
+        foreach (EnemyController health in healths)
+        {
+            if (health.transform.position.x > furthestDistance)
+            {
+                furthestDistance = health.transform.position.x;
+                furthestEnemy = health;
+            }
+        }
+
+        if (furthestEnemy == null) return;
+
+        Vector2 targetPos = furthestEnemy.transform.position;
+        Vector2 targetVel = Vector2.right * (furthestEnemy.EnemyData.MoveSpeed * (furthestEnemy.TowerDetected ? 0f : 1f));
+        Vector2 firePos = transform.position + towerData.DetectionOriginOffset;
+
+        Vector2 predictedPosition = CalculateInterceptPosition(firePos, towerData.AttackPrefab.AttackData.MoveSpeed, targetPos, targetVel);
+        Vector2 baseDirection = (predictedPosition - firePos).normalized;
+
+        // Calculate the starting angle shift (half of the total spread)
+        float startAngleOffset = -towerData.ShotSpread / 2f;
+
+        // Calculate the step angle between each bullet
+        float angleStep = (towerData.NumberOfShots > 1) ? towerData.ShotSpread / (towerData.NumberOfShots - 1) : 0f;
+
+        for (int i = 0; i < towerData.NumberOfShots; i++)
+        {
+            float currentAngleOffset = startAngleOffset + (angleStep * i);
+
+            // Rotate the base direction vector by the offset angle
+            Vector2 bulletDirection = RotateVector(baseDirection, currentAngleOffset);
+
+            CreateAttack(bulletDirection);
+        }
     }
 
     #endregion
@@ -384,7 +450,19 @@ public class TowerDetectionRange : MonoBehaviour
 
     private void GizmosForwardCone()
     {
+        if (enemyDetected)
+        {
+            Gizmos.color = Color.red;
+        }
+        else
+        {
+            Gizmos.color = Color.yellow;
+        }
 
+        Gizmos.DrawWireSphere(transform.position + towerData.DetectionOriginOffset, towerData.DetectionRange);
+
+        Gizmos.DrawRay(transform.position + towerData.DetectionOriginOffset, Quaternion.Euler(0, 0, towerData.DetectionAngle / 2) * -transform.right * towerData.DetectionRange);
+        Gizmos.DrawRay(transform.position + towerData.DetectionOriginOffset, Quaternion.Euler(0, 0, -towerData.DetectionAngle / 2) * -transform.right * towerData.DetectionRange);
     }
 
     #endregion
