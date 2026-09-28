@@ -1,9 +1,7 @@
 using Alchemy.Inspector;
 using System;
+using System.Collections;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
-using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
-using static UnityEngine.UI.Image;
 
 [RequireComponent(typeof(HealthController))]
 public class EnemyController : MonoBehaviour
@@ -11,10 +9,11 @@ public class EnemyController : MonoBehaviour
     [field: BoxGroup("Components"), SerializeField] public SO_EnemyData EnemyData { get; private set; }
     [BoxGroup("Components"), SerializeField] private HealthController healthController;
     [BoxGroup("Components"), SerializeField] private SpriteRenderOrder spriteRenderOrder;
+    [BoxGroup("Components"), SerializeField] private Animator animator;
 
     [BoxGroup("Debug"), SerializeField] private bool DebugGizmos;
 
-    private bool towerDetected;
+    public bool TowerDetected { get; private set; }
     private float towerDetectionTimer;
     private float baseDetectionTimer;
 
@@ -22,14 +21,20 @@ public class EnemyController : MonoBehaviour
 
     public Action OnRemoveEnemyFromWave;
     private bool returned;
+    private bool dead;
 
     private Vector3 detectionCubeCenter = Vector3.zero;
     private Vector3 detectionCubeSize = Vector3.zero;
+
+    public static readonly int moveAnim = Animator.StringToHash("Moving");
+    public static readonly int attackAnim = Animator.StringToHash("Attack");
+    public static readonly int deathAnim = Animator.StringToHash("Dead");
 
     private void Awake()
     {
         if (!healthController) healthController = GetComponent<HealthController>();
         if (!spriteRenderOrder) spriteRenderOrder = GetComponentInChildren<SpriteRenderOrder>();
+        if (!animator) animator = GetComponentInChildren<Animator>();
 
         healthController.OnHealthDepleted += ()=> DestroyEnemy(true);
 
@@ -38,8 +43,12 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
+        dead = false;
+        animator.SetBool(deathAnim, false);
+        animator.SetBool(moveAnim, true);
+
         returned = false;
-        towerDetected = false;
+        TowerDetected = false;
         spriteRenderOrder.UpdateOrderOfLayers();
         healthController.InitializeHealth(EnemyData.MaxHealth);
         towerDetectionTimer = 0;
@@ -49,13 +58,13 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
+        if((GameManager.Instance != null && GameManager.Instance.IsGamePaused) || dead) return;
 
         attackTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
         towerDetectionTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
         baseDetectionTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
 
-        if (!towerDetected)
+        if (!TowerDetected)
         {
             transform.Translate(Vector3.right * EnemyData.MoveSpeed * Time.deltaTime * GameManager.Instance.GameSpeed);
         }
@@ -89,20 +98,24 @@ public class EnemyController : MonoBehaviour
             if (Physics.SphereCast(transform.position, EnemyData.DetectionRadius, Vector3.right, out RaycastHit hitInfo, EnemyData.DetectionRange, EnemyData.DetectionMask))
             //if (Physics.BoxCast(detectionCubeCenter, detectionCubeSize / 2, Vector3.right, Quaternion.identity, EnemyData.DetectionRadius, EnemyData.DetectionMask))
             {
-                if (!towerDetected)
+                if (!TowerDetected)
                 {
                     //Debug.Log("Tower detected");
 
-                    towerDetected = true;
+                    TowerDetected = true;
+
+                    animator.SetBool(moveAnim, false);
                 }
             }
             else
             {
-                if (towerDetected)
+                if (TowerDetected)
                 {
                     //Debug.Log("No towers");
 
-                    towerDetected = false;
+                    TowerDetected = false;
+
+                    animator.SetBool(moveAnim, true);
                 }
             }
         }
@@ -125,10 +138,12 @@ public class EnemyController : MonoBehaviour
 
     private void EnemyAttack()
     {
-        if (!towerDetected && EnemyData.OnlyAttackOnTowerDetected) return;
+        if (!TowerDetected && EnemyData.OnlyAttackOnTowerDetected) return;
 
         if (attackTimer > EnemyData.AttackSpeed)
         {
+            animator.SetTrigger(attackAnim);
+
             attackTimer = 0;
 
             AttackObject instance = null;
@@ -151,13 +166,39 @@ public class EnemyController : MonoBehaviour
 
     public void DestroyEnemy(bool gainMoneyForKill = true)
     {
+        dead = true;
+
         OnRemoveEnemyFromWave?.Invoke();
         OnRemoveEnemyFromWave = null;
 
         if (gainMoneyForKill)
         {
             PlayerManager.Instance.GainMoney(EnemyData.MoneyReward);
+
+            animator.SetBool(deathAnim, true);
+
+            StartCoroutine(DelayDestruction());
+
+            return;
         }
+
+        if (EnemyPool.Instance != null)
+        {
+            if (!returned)
+            {
+                EnemyPool.Instance.ReturnToPool(EnemyData.ID, this);
+                returned = true;
+            }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator DelayDestruction()
+    {
+        yield return new WaitForSeconds(0.55f);
 
         if (EnemyPool.Instance != null)
         {
