@@ -148,9 +148,6 @@ MonoBehaviour:
   <TowerDetection>k__BackingField: {fileID: 2502278751494740579}
   spriteRenderOrder: {fileID: 1053911668296911117}
   spriteRenderers:
-  - {fileID: 6926470949696990502}
-  - {fileID: 5519303564495374376}
-  - {fileID: 6874192241295576175}
   - {fileID: 1255652520015881486}
   - {fileID: 4825683347859960052}
   - {fileID: 6596098568599000279}
@@ -299,21 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb67d4834c5b4e479167b24ed11bd19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerDetectionRange
---- !u!212 &5519303564495374376 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5790382939228284060, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
-  m_PrefabInstance: {fileID: 2072521985239575732}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6874192241295576175 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4874331514567860443, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
-  m_PrefabInstance: {fileID: 2072521985239575732}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6926470949696990502 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8997302974583931282, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
-  m_PrefabInstance: {fileID: 2072521985239575732}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5568123101966208282
 PrefabInstance:
   m_ObjectHideFlags: 0

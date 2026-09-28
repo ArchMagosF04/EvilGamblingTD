@@ -41,6 +41,7 @@ public class TowerController : MonoBehaviour
     {
         returned = false;
         towerCollider.isTrigger = true;
+        towerCollider.enabled = false;
         TowerPlaced = false;
             
         spriteRenderOrder.BringToFront();
@@ -73,6 +74,7 @@ public class TowerController : MonoBehaviour
         TowerDetection.ToggleRangeIndicator(false);
         TowerPlaced = true;
         towerCollider.isTrigger = false;
+        towerCollider.enabled = true;
 
         spriteRenderOrder.UpdateOrderOfLayers();
         healthController.InitializeHealth(TowerData.MaxHealth);

@@ -547,9 +547,6 @@ MonoBehaviour:
   <TowerDetection>k__BackingField: {fileID: 7909849871514682928}
   spriteRenderOrder: {fileID: 1550613655732447641}
   spriteRenderers:
-  - {fileID: 3414655860886417781}
-  - {fileID: 280365096844924027}
-  - {fileID: 1160387895647539260}
   - {fileID: 1255652520015881486}
   - {fileID: 6260229022409725332}
   - {fileID: 5733791493767377335}
@@ -1078,21 +1075,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
---- !u!212 &280365096844924027 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5790382939228284060, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
-  m_PrefabInstance: {fileID: 6034713598015779047}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1160387895647539260 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4874331514567860443, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
-  m_PrefabInstance: {fileID: 6034713598015779047}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &3414655860886417781 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8997302974583931282, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
-  m_PrefabInstance: {fileID: 6034713598015779047}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6866861884135226944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 933479372306747047, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}

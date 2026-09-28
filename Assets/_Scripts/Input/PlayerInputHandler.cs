@@ -9,7 +9,6 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerInput playerInput;
     private Camera cam;
 
-
     public Vector2 PointerScreenPosition { get; private set; }
     public Vector2 PointerRawPosition { get; private set; }
     public bool PointerPress { get; private set; }
@@ -42,6 +41,8 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (PointerRelease && Time.time > realeaseStartTime + releasePeriodDuration) PointerRelease = false;
     }
+
+    public void ToggleInputs(bool value) => processInputs = value;
 
     public void OnPointerPositionInput(InputAction.CallbackContext context)
     {

@@ -29,7 +29,7 @@ MonoBehaviour:
   <DetectionRange>k__BackingField: 0
   <DetectionRadius>k__BackingField: 0
   <DetectionOriginOffset>k__BackingField: {x: 0, y: 0, z: 0}
-  <DetectionAngle>k__BackingField: -1
+  <DetectionAngle>k__BackingField: 0
   <DeathSound>k__BackingField:
     _entity: {fileID: 11400000, guid: c74c3d2a7c7fc324dbca8062298694bf, type: 2}
     ID: 0

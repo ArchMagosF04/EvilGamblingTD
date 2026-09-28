@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: DarkProjectile
   m_EditorClassIdentifier: Assembly-CSharp::SO_Attack
   <ID>k__BackingField: DarkProjectile
-  <Damage>k__BackingField: 10
+  <Damage>k__BackingField: 3
   <Pierce>k__BackingField: 1
   <CanHitSameEnemyMultipleTimes>k__BackingField: 0
   <DestroyOnLastHit>k__BackingField: 1
-  <MoveSpeed>k__BackingField: 15
+  <MoveSpeed>k__BackingField: 18
   <LifeTime>k__BackingField: 4
   <DestroyBeyondRange>k__BackingField: 1
   <CheckPreviousFramesCollision>k__BackingField: 0

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: MermaidWaterBeam
   m_EditorClassIdentifier: Assembly-CSharp::SO_Attack
   <ID>k__BackingField: MermaidWaterBeam
-  <Damage>k__BackingField: 15
+  <Damage>k__BackingField: 20
   <Pierce>k__BackingField: 9999
   <CanHitSameEnemyMultipleTimes>k__BackingField: 0
   <DestroyOnLastHit>k__BackingField: 0
   <MoveSpeed>k__BackingField: 0
-  <LifeTime>k__BackingField: 0.2
+  <LifeTime>k__BackingField: 0.3
   <DestroyBeyondRange>k__BackingField: 0
   <CheckPreviousFramesCollision>k__BackingField: 1
   <TargetMask>k__BackingField:
@@ -26,7 +26,7 @@ MonoBehaviour:
     m_Bits: 256
   <OriginOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <Range>k__BackingField: 0
-  <Radius>k__BackingField: 0.15
+  <Radius>k__BackingField: 0.2
   <HitParticle>k__BackingField: {fileID: 7163451841770775768, guid: f7c83c1c206a02b469f01ed98c2c8b40, type: 3}
   <DoEffectOnDeath>k__BackingField: 0
   <ImpactSound>k__BackingField:

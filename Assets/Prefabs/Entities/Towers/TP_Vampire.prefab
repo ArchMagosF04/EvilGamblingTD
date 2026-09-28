@@ -148,9 +148,6 @@ MonoBehaviour:
   <TowerDetection>k__BackingField: {fileID: 1282891613045399586}
   spriteRenderOrder: {fileID: 8841139760631830377}
   spriteRenderers:
-  - {fileID: 6011068299511355239}
-  - {fileID: 9217987991454577257}
-  - {fileID: 7787382399345063470}
   - {fileID: 8204546701279027568}
   - {fileID: 3976736978700113411}
   - {fileID: 3333364021959012896}
@@ -273,15 +270,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3099155287728108392, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.75
+      value: 4.14
       objectReference: {fileID: 0}
     - target: {fileID: 3099155287728108392, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 7
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 3099155287728108392, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -3.42
       objectReference: {fileID: 0}
     - target: {fileID: 3099155287728108392, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -318,21 +315,6 @@ MonoBehaviour:
 --- !u!4 &2540926483328129106 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 933479372306747047, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
-  m_PrefabInstance: {fileID: 3438302222328813301}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6011068299511355239 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8997302974583931282, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
-  m_PrefabInstance: {fileID: 3438302222328813301}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &7787382399345063470 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4874331514567860443, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
-  m_PrefabInstance: {fileID: 3438302222328813301}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &9217987991454577257 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5790382939228284060, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
   m_PrefabInstance: {fileID: 3438302222328813301}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4075056364697086957
