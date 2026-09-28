@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private Material fadeMaterial;
+    [SerializeField] private float fadeInDuration = .5f;
 
 
     void Start() 
     {
         fadeMaterial.SetFloat("_Fade", 1);
-        fadeMaterial.DOFloat(0, "_Fade", 3);
+        fadeMaterial.DOFloat(0, "_Fade", fadeInDuration);
     }
 
     public void SceneFadeChange(string sceneName)
