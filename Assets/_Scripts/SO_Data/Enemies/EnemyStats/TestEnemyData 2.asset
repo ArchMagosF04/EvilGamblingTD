@@ -16,7 +16,7 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 439606636570254557, guid: 6496e2e37e155b14ca8e700907974ec4, type: 3}
   <SpawnCost>k__BackingField: 1
   <MinWaveRequirement>k__BackingField: 0
-  <BaseWeight>k__BackingField: 100
+  <BaseWeight>k__BackingField: 30
   <WaveWeightShift>k__BackingField: 5
   <WeightShiftPerWave>k__BackingField: -5
   <MinWeightClamp>k__BackingField: 0

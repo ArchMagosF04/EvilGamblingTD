@@ -1,6 +1,7 @@
 using Alchemy.Inspector;
 using Ami.BroAudio;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour
 
         SetGameToNormalSpeed();
 
+        Time.timeScale = 1f;
+
         BroAudio.Play(levelMusic);
     }
 
@@ -47,5 +50,12 @@ public class GameManager : MonoBehaviour
     public void SetGameToHalfSpeed()
     {
         GameSpeed = 0.5f;
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene(0);
     }
 }

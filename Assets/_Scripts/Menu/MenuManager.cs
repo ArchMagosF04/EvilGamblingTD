@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private float fadeInDuration = .5f;
 
 
-    void Start() 
+    private void Start() 
     {
         fadeMaterial.SetFloat("_Fade", 1);
         fadeMaterial.DOFloat(0, "_Fade", fadeInDuration);

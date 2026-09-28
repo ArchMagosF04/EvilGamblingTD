@@ -814,6 +814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1167492862}
   - component: {fileID: 1167492861}
+  - component: {fileID: 1167492863}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -850,6 +851,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1167492863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167492860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385ffc06106304cc3824d5bcf25a7037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: BroAudio::Ami.BroAudio.SoundSource
+  _onlyPlayOnce: 1
+  _playOnEnable: 1
+  _stopOnDisable: 0
+  _overrideFadeOut: -1
+  _sound:
+    _entity: {fileID: 11400000, guid: c1d697b0073a3504ab2506b8012f737c, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 1167492860}
+  _overrideGroup: {fileID: 0}
+  _positionMode: 0
+  _delay: 0
 --- !u!1 &1650831758
 GameObject:
   m_ObjectHideFlags: 0

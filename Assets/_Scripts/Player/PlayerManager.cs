@@ -23,6 +23,8 @@ public class PlayerManager : MonoBehaviour
     private float money;
     private float currentHealth;
 
+    private bool playerLost;
+
     public float Money
     {
         get { return money; }
@@ -55,6 +57,8 @@ public class PlayerManager : MonoBehaviour
 
         moneyValueText?.InvokeEvent("Money: " + Money.ToString());
         healthValueText?.InvokeEvent("Health: " + CurrentHealth.ToString());
+
+        playerLost = false;
     }
 
     [Button]
@@ -80,8 +84,12 @@ public class PlayerManager : MonoBehaviour
 
         BroAudio.Play(BaseLoseHealthSound);
 
-        if (CurrentHealth <= 0)
+        if (CurrentHealth <= 0 && !playerLost)
         {
+            Time.timeScale = 0f;
+
+            playerLost = true;
+
             CurrentHealth = 0;
 
             BroAudio.Play(GameOverSound);
