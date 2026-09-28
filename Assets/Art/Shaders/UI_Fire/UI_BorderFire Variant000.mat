@@ -28,6 +28,6 @@ Material:
     - _MaskSize: 0.3
     - _NoiseScale: 364.75
     m_Colors:
-    - _Color: {r: 5.3507514, g: 3.5501142, b: 2.1571093, a: 1}
+    - _Color: {r: 2.185124, g: 3.0327132, b: 5.3507514, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
