@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -124,6 +125,8 @@ public class AttackObject : MonoBehaviour
                                                        Quaternion.identity);
 
             instance.PlayEffect();
+
+            BroAudio.Play(AttackData.ImpactSound);
 
             amountOfHits++;
 

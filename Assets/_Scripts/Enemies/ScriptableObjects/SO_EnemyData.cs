@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New EnemyData", menuName = "Scriptable Objects/Enemies/Enemy Data")]
@@ -56,6 +57,9 @@ public class SO_EnemyData : ScriptableObject
 
 
     #endregion
+
+    [field: BoxGroup("Sounds"), SerializeField] public SoundID AttackSound { get; private set; }
+    [field: BoxGroup("Sounds"), SerializeField] public SoundID DeathSound { get; private set; }
 
     [Button]
     public void GiveEnemyDataToPrefab()

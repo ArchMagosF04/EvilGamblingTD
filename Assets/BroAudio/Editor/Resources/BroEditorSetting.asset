@@ -25,7 +25,7 @@ MonoBehaviour:
   EditTheNewClipAfterSaveAs: 1
   PingTheNewClipAfterSaveAs: 1
   PromptForPathOnAssetCreation: 0
-  HasSetupWizardAutoLaunched: 0
+  HasSetupWizardAutoLaunched: 1
   VirtualTrackCount: 4
   AudioTypeSettings:
   - AudioType: 1
@@ -33,7 +33,7 @@ MonoBehaviour:
     DrawedProperty: 3087
   - AudioType: 2
     Color: {r: 0.05490196, g: 0.6117647, b: 0.53333336, a: 0.29803923}
-    DrawedProperty: 33807
+    DrawedProperty: 50191
   - AudioType: 4
     Color: {r: 0, g: 0.6901961, b: 0.15686275, a: 0.29803923}
     DrawedProperty: 11279

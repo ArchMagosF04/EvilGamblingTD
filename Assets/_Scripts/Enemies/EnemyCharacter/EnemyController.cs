@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -142,6 +143,8 @@ public class EnemyController : MonoBehaviour
 
         if (attackTimer > EnemyData.AttackSpeed)
         {
+            BroAudio.Play(EnemyData.AttackSound);
+
             animator.SetTrigger(attackAnim);
 
             attackTimer = 0;
@@ -176,6 +179,8 @@ public class EnemyController : MonoBehaviour
             PlayerManager.Instance.GainMoney(EnemyData.MoneyReward);
 
             animator.SetBool(deathAnim, true);
+
+            BroAudio.Play(EnemyData.DeathSound);
 
             StartCoroutine(DelayDestruction());
 

@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
     [field:SerializeField, ReadOnly] public bool IsGamePaused {  get; private set; }
 
     [field: SerializeField, ReadOnly] public float GameSpeed { get; private set; } = 1f;
+
+    [SerializeField] private SoundID levelMusic = default;
 
     private void Awake()
     {
@@ -22,6 +25,8 @@ public class GameManager : MonoBehaviour
         }
 
         SetGameToNormalSpeed();
+
+        BroAudio.Play(levelMusic);
     }
 
     public void ToggleGamePause(bool value)

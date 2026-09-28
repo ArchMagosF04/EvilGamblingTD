@@ -45,3 +45,11 @@ MonoBehaviour:
   <BaseDetectionRange>k__BackingField: 1
   <BaseDetectionTickTime>k__BackingField: 0.3
   <BaseDetectionOffset>k__BackingField: {x: -0.75, y: 0, z: 0}
+  <AttackSound>k__BackingField:
+    _entity: {fileID: 11400000, guid: 5ac281d87696bfe49a5c9164de4b7d60, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 0}
+  <DeathSound>k__BackingField:
+    _entity: {fileID: 11400000, guid: c0e6dad6e805a194fb0b8f414189a180, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 0}

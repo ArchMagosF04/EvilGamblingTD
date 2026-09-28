@@ -1,7 +1,9 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
 public class TowerDetectionRange : MonoBehaviour
 {
@@ -474,6 +476,8 @@ public class TowerDetectionRange : MonoBehaviour
 
     private void CreateAttack(Vector3 direction)
     {
+        BroAudio.Play(towerData.AttackSound);
+
         AttackObject instance = null;
         if (AttackPool.Instance != null)
         {
@@ -489,6 +493,8 @@ public class TowerDetectionRange : MonoBehaviour
 
     private void CreateAttack(Quaternion direction)
     {
+        BroAudio.Play(towerData.AttackSound);
+
         AttackObject instance = null;
         if (AttackPool.Instance != null)
         {

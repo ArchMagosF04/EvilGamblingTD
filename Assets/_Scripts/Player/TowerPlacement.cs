@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
@@ -10,6 +11,8 @@ public class TowerPlacement : MonoBehaviour
 
     [BoxGroup("Layer Info"), SerializeField] private LayerMask generalLayer;
     [BoxGroup("Layer Info"), SerializeField] private LayerMask spawnableLayer;
+
+    [BoxGroup("Sounds"), SerializeField] private SoundID PlaceTowerSound;
 
     private void Awake()
     {
@@ -40,6 +43,8 @@ public class TowerPlacement : MonoBehaviour
                     currentPlacingTower.PlaceTower();
                     currentPlacingTower = null;
                     currentTowerData = null;
+
+                    BroAudio.Play(PlaceTowerSound);
                 }
                 else
                 {

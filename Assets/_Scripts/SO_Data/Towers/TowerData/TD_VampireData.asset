@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_TowerData
   <ID>k__BackingField: Vampire
   <TowerPrefab>k__BackingField: {fileID: 6758566214392257312, guid: 99c8b5225c3fa394ea578a0a7edd50a9, type: 3}
-  <TowerCost>k__BackingField: 200
+  <TowerCost>k__BackingField: 140
   <TowerButtonSprite>k__BackingField: {fileID: 7321554724934918619, guid: 4808cf2dd336c144096ac59e899ef7ca, type: 3}
   <AttackPrefab>k__BackingField: {fileID: 1621654242826879010, guid: ac1b3e54e5f316f4aa2bfb9351043157, type: 3}
   <AttackSpeed>k__BackingField: 0.85
@@ -30,3 +30,11 @@ MonoBehaviour:
   <DetectionRadius>k__BackingField: 0.4
   <DetectionOriginOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <DetectionAngle>k__BackingField: 65
+  <DeathSound>k__BackingField:
+    _entity: {fileID: 11400000, guid: c74c3d2a7c7fc324dbca8062298694bf, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 0}
+  <AttackSound>k__BackingField:
+    _entity: {fileID: 11400000, guid: ea667b2c6a2b09e488eed31b05f96669, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 0}

@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using UnityEngine;
 
 public class AO_HitScan : AttackObject
@@ -72,6 +73,8 @@ public class AO_HitScan : AttackObject
 
                     instance.PlayEffect();
 
+                    BroAudio.Play(AttackData.ImpactSound);
+                    
                     amountOfHits++;
                 }
             }
@@ -103,6 +106,8 @@ public class AO_HitScan : AttackObject
                                                            Quaternion.identity);
 
                 instance.PlayEffect();
+
+                BroAudio.Play(AttackData.ImpactSound);
             }
         }
     }

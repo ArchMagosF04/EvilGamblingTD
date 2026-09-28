@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,8 @@ public class EnemyWavesManager : MonoBehaviour
     [BoxGroup("Money Reward Per Wave"), SerializeField] private float AddedRewardPerWave = 1f;
 
     [BoxGroup("Event Channels"), SerializeField] private StringEvent waveNumberTextEvent;
+
+    [BoxGroup("Sounds"), SerializeField] private SoundID waveCompletedSound;
 
     [BoxGroup("Debug"), SerializeField, ReadOnly] private Queue<SpawnEntry> currentWaveSpawnQueue = new Queue<SpawnEntry>();
 
@@ -188,6 +191,8 @@ public class EnemyWavesManager : MonoBehaviour
         allEnemiesInWaveDead = true;
 
         PlayerManager.Instance.GainMoney(BaseReward + (AddedRewardPerWave * CurrentWave));
+
+        BroAudio.Play(waveCompletedSound);
     }
 
     private void CreateProceduralWave()

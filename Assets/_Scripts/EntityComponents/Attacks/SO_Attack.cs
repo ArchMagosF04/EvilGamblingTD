@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Attack Data", menuName = "Scriptable Objects/Attack")]
@@ -20,7 +21,9 @@ public class SO_Attack : ScriptableObject
     [field: BoxGroup("Double Check Collision"), SerializeField, ShowIf("CheckPreviousFramesCollision")] public float Range { get; private set; }
     [field: BoxGroup("Double Check Collision"), SerializeField, ShowIf("CheckPreviousFramesCollision")] public float Radius { get; private set; }
 
-    [field: BoxGroup("SFXs"), SerializeField, AssetsOnly] public PoolableEffect HitParticle { get; private set; }
-    [field: BoxGroup("SFXs"), SerializeField, AssetsOnly] public bool DoEffectOnDeath { get; private set; }
+    [field: BoxGroup("VFXs"), SerializeField, AssetsOnly] public PoolableEffect HitParticle { get; private set; }
+    [field: BoxGroup("VFXs"), SerializeField, AssetsOnly] public bool DoEffectOnDeath { get; private set; }
+
+    [field: BoxGroup("Sounds"), SerializeField] public SoundID ImpactSound { get; private set; }
 
 }

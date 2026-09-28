@@ -1,5 +1,7 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -12,6 +14,11 @@ public class PlayerManager : MonoBehaviour
     [Header("Event Channels")]
     [SerializeField] private StringEvent moneyValueText;
     [SerializeField] private StringEvent healthValueText;
+
+    [BoxGroup("Sounds"), SerializeField] private SoundID BaseLoseHealthSound;
+    [BoxGroup("Sounds"), SerializeField] private SoundID GameOverSound;
+
+    public UnityEvent OnGameOver;
 
     private float money;
     private float currentHealth;
@@ -71,9 +78,17 @@ public class PlayerManager : MonoBehaviour
 
         healthValueText?.InvokeEvent("Health: " + CurrentHealth.ToString());
 
+        BroAudio.Play(BaseLoseHealthSound);
+
         if (CurrentHealth <= 0)
         {
+            CurrentHealth = 0;
+
+            BroAudio.Play(GameOverSound);
+
             //Game over.
+
+            OnGameOver?.Invoke();
         }
     }
 

@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Tower Data", menuName = "Scriptable Objects/Towers/Tower Data")]
@@ -36,6 +37,9 @@ public class SO_TowerData : ScriptableObject
 
 
     #endregion
+
+    [field: BoxGroup("Sounds"), SerializeField] public SoundID DeathSound { get; private set; }
+    [field: BoxGroup("Sounds"), SerializeField] public SoundID AttackSound { get; private set; }
 
     [Button]
     public void GiveTowerDataToPrefab()

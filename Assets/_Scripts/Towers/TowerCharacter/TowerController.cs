@@ -1,4 +1,5 @@
 using Alchemy.Inspector;
+using Ami.BroAudio;
 using UnityEngine;
 
 [RequireComponent(typeof(HealthController))]
@@ -139,6 +140,8 @@ public class TowerController : MonoBehaviour
     public void RemoveTower()
     {
         animator.SetBool(idleAnim, false);
+
+        BroAudio.Play(TowerData.DeathSound);
 
         if (TowerPool.Instance != null)
         {

@@ -29,3 +29,7 @@ MonoBehaviour:
   <Radius>k__BackingField: 0.19
   <HitParticle>k__BackingField: {fileID: 4108722051297211494, guid: ba322016f69b80243be4f685e6782f39, type: 3}
   <DoEffectOnDeath>k__BackingField: 1
+  <ImpactSound>k__BackingField:
+    _entity: {fileID: 11400000, guid: ceaf255d581e16949819b6b0cc3b537c, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 0}
