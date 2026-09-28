@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 676390f0f0f18b345aa78e58fe117dba, type: 3}
-  m_Name: TowerProjectileAttack
+  m_Name: DarkProjectile
   m_EditorClassIdentifier: Assembly-CSharp::SO_Attack
-  <ID>k__BackingField: TowerProjectileAttack
+  <ID>k__BackingField: DarkProjectile
   <Damage>k__BackingField: 10
-  <Pierce>k__BackingField: 0
+  <Pierce>k__BackingField: 1
   <CanHitSameEnemyMultipleTimes>k__BackingField: 0
   <DestroyOnLastHit>k__BackingField: 1
-  <MoveSpeed>k__BackingField: 9
+  <MoveSpeed>k__BackingField: 15
   <LifeTime>k__BackingField: 4
   <DestroyBeyondRange>k__BackingField: 1
   <CheckPreviousFramesCollision>k__BackingField: 0
@@ -27,5 +27,5 @@ MonoBehaviour:
   <OriginOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <Range>k__BackingField: 0.4
   <Radius>k__BackingField: 0.19
-  <HitParticle>k__BackingField: {fileID: 4108722051297211494, guid: ba322016f69b80243be4f685e6782f39, type: 3}
+  <HitParticle>k__BackingField: {fileID: 8399510711859672573, guid: cb4b4b61b045f7b4d9d11a99fb2f1150, type: 3}
   <DoEffectOnDeath>k__BackingField: 1

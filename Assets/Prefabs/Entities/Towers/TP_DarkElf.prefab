@@ -142,11 +142,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerController
   <TowerData>k__BackingField: {fileID: 11400000, guid: 8dbd802a473db1c48934b42ebc0e23d8, type: 2}
   towerCollider: {fileID: 4002816615081537345}
-  animator: {fileID: 0}
+  animator: {fileID: 8005252953295897732}
   healthController: {fileID: 4491991570149578377}
-  <TowerDetection>k__BackingField: {fileID: 0}
+  <TowerDetection>k__BackingField: {fileID: 2275120400340740285}
   spriteRenderOrder: {fileID: 4271181516227882551}
   spriteRenderers:
+  - {fileID: 6716270115930218488}
+  - {fileID: 8193096579190405878}
+  - {fileID: 7083372607075827377}
   - {fileID: 1255652520015881486}
   - {fileID: 655217121616384971}
   - {fileID: 1181497109850453992}
@@ -433,6 +436,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1086155531856573522, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086155531856573522, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086155531856573522, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086155531856573522, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249128677810436842, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502177441304704727, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: towerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8dbd802a473db1c48934b42ebc0e23d8, type: 2}
+    - target: {fileID: 4502177441304704727, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: ShowGizmos
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7852231134601660774, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
       propertyPath: m_Name
       value: TowerDetection
@@ -442,8 +473,34 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+--- !u!114 &2275120400340740285 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4502177441304704727, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+  m_PrefabInstance: {fileID: 2443250578071199338}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb67d4834c5b4e479167b24ed11bd19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerDetectionRange
 --- !u!4 &3250554393376592077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 933479372306747047, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+  m_PrefabInstance: {fileID: 2443250578071199338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6716270115930218488 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8997302974583931282, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+  m_PrefabInstance: {fileID: 2443250578071199338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7083372607075827377 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4874331514567860443, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+  m_PrefabInstance: {fileID: 2443250578071199338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8193096579190405878 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5790382939228284060, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
   m_PrefabInstance: {fileID: 2443250578071199338}
   m_PrefabAsset: {fileID: 0}

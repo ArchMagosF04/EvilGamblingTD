@@ -24,8 +24,8 @@ public class GizmoMeasurer : MonoBehaviour
         {
             Gizmos.color = angleColor;
 
-            Gizmos.DrawRay(transform.position, Quaternion.Euler(0, angleToMeasure / 2, 0) * transform.right * distanceToMeasure);
-            Gizmos.DrawRay(transform.position, Quaternion.Euler(0, -angleToMeasure / 2, 0) * transform.right * distanceToMeasure);
+            Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, angleToMeasure / 2) * transform.right * distanceToMeasure);
+            Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, -angleToMeasure / 2) * transform.right * distanceToMeasure);
         }
     }
 }

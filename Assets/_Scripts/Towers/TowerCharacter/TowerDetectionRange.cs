@@ -1,5 +1,7 @@
 using Alchemy.Inspector;
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class TowerDetectionRange : MonoBehaviour
 {
@@ -123,7 +125,8 @@ public class TowerDetectionRange : MonoBehaviour
 
     private void RadiusIndicator()
     {
-
+        radiusVisual.transform.localScale = new Vector3(towerData.DetectionRange * 2, towerData.DetectionRange * 2, 1);
+        radiusVisual.transform.localPosition = Vector3.zero + towerData.DetectionOriginOffset;
     }
 
     private void ConeIndicator()
@@ -145,17 +148,18 @@ public class TowerDetectionRange : MonoBehaviour
 
             attackTimer = 0;
 
-            AttackObject instance = null;
-            if (AttackPool.Instance != null)
-            {
-                instance = AttackPool.Instance.GetAttack(towerData.AttackPrefab, transform.position,
-                                                       Quaternion.identity);
-            }
-            else instance = Instantiate(towerData.AttackPrefab, transform.position,
-                                                       Quaternion.identity);
+            float angleStep = (towerData.NumberOfShots > 1) ? towerData.ShotSpread / (towerData.NumberOfShots - 1) : 0f;
 
-            instance.gameObject.SetActive(true);
-            instance.InitializeProjectile(Vector3.left, towerData.DetectionRange + towerData.DetectionRadius);
+            float startAngle = (-towerData.ShotSpread / 2f) + 180f;
+
+            for (int i = 0; i < towerData.NumberOfShots; i++)
+            {
+                float currentAngle = startAngle + (angleStep * i);
+
+                Quaternion bulletRotation = transform.rotation * Quaternion.Euler(0, 0, currentAngle);
+
+                CreateAttack(bulletRotation);
+            }
         }
         else
         {
@@ -171,77 +175,115 @@ public class TowerDetectionRange : MonoBehaviour
                                out upperHit, towerData.DetectionRange, towerData.EnemyLayer))
         {
             enemyDetected = true;
-
-            animator.SetTrigger(actionAnim);
-
-            attackTimer = 0;
-
-            AttackObject instance = null;
-            if (AttackPool.Instance != null)
-            {
-                instance = AttackPool.Instance.GetAttack(towerData.AttackPrefab, transform.position,
-                                                       Quaternion.identity);
-            }
-            else instance = Instantiate(towerData.AttackPrefab, transform.position,
-                                                       Quaternion.identity);
-
-            instance.gameObject.SetActive(true);
-            instance.InitializeProjectile(Vector3.up, towerData.DetectionRange + towerData.DetectionRadius);
-
-            AttackObject instance2 = null;
-            if (AttackPool.Instance != null)
-            {
-                instance2 = AttackPool.Instance.GetAttack(towerData.AttackPrefab, transform.position,
-                                                       Quaternion.identity);
-            }
-            else instance2 = Instantiate(towerData.AttackPrefab, transform.position,
-                                                       Quaternion.identity);
-
-            instance2.gameObject.SetActive(true);
-            instance2.InitializeProjectile(Vector3.down, towerData.DetectionRange + towerData.DetectionRadius);
         }
         else if (Physics.SphereCast(transform.position + towerData.DetectionOriginOffset, towerData.DetectionRadius, Vector3.down,
                                out lowerhit, towerData.DetectionRange, towerData.EnemyLayer))
         {
             enemyDetected = true;
-
-            animator.SetTrigger(actionAnim);
-
-            attackTimer = 0;
-
-            AttackObject instance = null;
-            if (AttackPool.Instance != null)
-            {
-                instance = AttackPool.Instance.GetAttack(towerData.AttackPrefab, transform.position,
-                                                       Quaternion.identity);
-            }
-            else instance = Instantiate(towerData.AttackPrefab, transform.position,
-                                                       Quaternion.identity);
-
-            instance.gameObject.SetActive(true);
-            instance.InitializeProjectile(Vector3.up, towerData.DetectionRange + towerData.DetectionRadius);
-
-            AttackObject instance2 = null;
-            if (AttackPool.Instance != null)
-            {
-                instance2 = AttackPool.Instance.GetAttack(towerData.AttackPrefab, transform.position,
-                                                       Quaternion.identity);
-            }
-            else instance2 = Instantiate(towerData.AttackPrefab, transform.position,
-                                                       Quaternion.identity);
-
-            instance2.gameObject.SetActive(true);
-            instance2.InitializeProjectile(Vector3.down, towerData.DetectionRange + towerData.DetectionRadius);
         }
         else
         {
             enemyDetected = false;
         }
+
+        if (enemyDetected)
+        {
+            animator.SetTrigger(actionAnim);
+
+            attackTimer = 0;
+
+            float angleStep = (towerData.NumberOfShots > 1) ? towerData.ShotSpread / (towerData.NumberOfShots - 1) : 0f;
+
+            float startAngle = (-towerData.ShotSpread / 2f) + 90f;
+
+            for (int i = 0; i < towerData.NumberOfShots; i++)
+            {
+                float currentAngle = startAngle + (angleStep * i);
+
+                Quaternion bulletRotation = transform.rotation * Quaternion.Euler(0, 0, currentAngle);
+
+                CreateAttack(bulletRotation);
+            }
+
+            float angleStep2 = (towerData.NumberOfShots > 1) ? towerData.ShotSpread / (towerData.NumberOfShots - 1) : 0f;
+
+            float startAngle2 = (-towerData.ShotSpread / 2f) + -90f;
+
+            for (int i = 0; i < towerData.NumberOfShots; i++)
+            {
+                float currentAngle2 = startAngle2 + (angleStep2 * i);
+
+                Quaternion bulletRotation2 = transform.rotation * Quaternion.Euler(0, 0, currentAngle2);
+
+                CreateAttack(bulletRotation2);
+            }
+        }
     }
 
     private void RadiusDetection()
     {
+        Collider[] cols = Physics.OverlapSphere(transform.position + towerData.DetectionOriginOffset, towerData.DetectionRange, towerData.EnemyLayer);
 
+        if (cols.Length <= 0)
+        {
+            enemyDetected = false;
+            return;
+        }
+
+        HashSet<EnemyController> healths = new HashSet<EnemyController>();
+
+        for (int i = 0; i < cols.Length; i++)
+        {
+            if (cols[i].TryGetComponent<EnemyController>(out EnemyController health))
+            {
+                healths.Add(health);
+            }
+        }
+
+        if (healths.Count <= 0) return;
+
+        enemyDetected = true;
+
+        animator.SetTrigger(actionAnim);
+
+        attackTimer = 0;
+
+        float furthestDistance = -99999999;
+        EnemyController furthestEnemy = null;
+
+        foreach (EnemyController health in healths)
+        {
+            if (health.transform.position.x > furthestDistance)
+            {
+                furthestDistance = health.transform.position.x;
+                furthestEnemy = health;
+            }
+        }
+
+        if (furthestEnemy == null) return;
+
+        Vector2 targetPos = furthestEnemy.transform.position;
+        Vector2 targetVel = furthestEnemy.EnemyData.MoveSpeed * Vector2.right;
+        Vector2 firePos = transform.position + towerData.DetectionOriginOffset;
+
+        Vector2 predictedPosition = CalculateInterceptPosition(firePos, towerData.AttackPrefab.AttackData.MoveSpeed, targetPos, targetVel);
+        Vector2 baseDirection = (predictedPosition - firePos).normalized;
+
+        // Calculate the starting angle shift (half of the total spread)
+        float startAngleOffset = -towerData.ShotSpread / 2f;
+
+        // Calculate the step angle between each bullet
+        float angleStep = (towerData.NumberOfShots > 1) ? towerData.ShotSpread / (towerData.NumberOfShots - 1) : 0f;
+
+        for (int i = 0; i < towerData.NumberOfShots; i++)
+        {
+            float currentAngleOffset = startAngleOffset + (angleStep * i);
+
+            // Rotate the base direction vector by the offset angle
+            Vector2 bulletDirection = RotateVector(baseDirection, currentAngleOffset);
+
+            CreateAttack(bulletDirection);
+        }
     }
 
     private void ForwardConeDetection()
@@ -328,7 +370,16 @@ public class TowerDetectionRange : MonoBehaviour
 
     private void GizmosRadius()
     {
+        if (enemyDetected)
+        {
+            Gizmos.color = Color.red;
+        }
+        else
+        {
+            Gizmos.color = Color.yellow;
+        }
 
+        Gizmos.DrawWireSphere(transform.position + towerData.DetectionOriginOffset, towerData.DetectionRange);
     }
 
     private void GizmosForwardCone()
@@ -337,4 +388,75 @@ public class TowerDetectionRange : MonoBehaviour
     }
 
     #endregion
+
+    private void CreateAttack(Vector3 direction)
+    {
+        AttackObject instance = null;
+        if (AttackPool.Instance != null)
+        {
+            instance = AttackPool.Instance.GetAttack(towerData.AttackPrefab, transform.position,
+                                                   Quaternion.identity);
+        }
+        else instance = Instantiate(towerData.AttackPrefab, transform.position,
+                                                   Quaternion.identity);
+
+        instance.gameObject.SetActive(true);
+        instance.InitializeProjectile(direction, towerData.DetectionRange + towerData.DetectionRadius);
+    }
+
+    private void CreateAttack(Quaternion direction)
+    {
+        AttackObject instance = null;
+        if (AttackPool.Instance != null)
+        {
+            instance = AttackPool.Instance.GetAttack(towerData.AttackPrefab, transform.position,
+                                                   direction);
+        }
+        else instance = Instantiate(towerData.AttackPrefab, transform.position,
+                                                   direction);
+
+        instance.gameObject.SetActive(true);
+        instance.InitializeProjectile(instance.transform.right, towerData.DetectionRange + towerData.DetectionRadius);
+    }
+
+    private Vector2 CalculateInterceptPosition(Vector2 shooterPos, float bSpeed, Vector2 tPos, Vector2 tVel)
+    {
+        Vector2 targetToShooter = tPos - shooterPos;
+
+        // Quadratic equation coefficients: a*t^2 + b*t + c = 0
+        float a = Vector2.Dot(tVel, tVel) - (bSpeed * bSpeed);
+        float b = 2f * Vector2.Dot(tVel, targetToShooter);
+        float c = Vector2.Dot(targetToShooter, targetToShooter);
+
+        float discriminant = (b * b) - (4f * a * c);
+
+        if (discriminant < 0)
+        {
+            // No algebraic solution possible (target is moving too fast / away). Fallback to current position.
+            return tPos;
+        }
+
+        // Use the quadratic formula to find time (t)
+        float t1 = (-b + Mathf.Sqrt(discriminant)) / (2f * a);
+        float t2 = (-b - Mathf.Sqrt(discriminant)) / (2f * a);
+
+        // We want the smallest positive time
+        float t = Mathf.Min(t1, t2);
+        if (t < 0) t = Mathf.Max(t1, t2);
+        if (t < 0) return tPos; // Interception happens in the past; fallback
+
+        // Future location = Current Position + (Velocity * Time)
+        return tPos + (tVel * t);
+    }
+
+    private Vector2 RotateVector(Vector2 v, float degrees)
+    {
+        float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
+        float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
+
+        float tx = v.x;
+        float ty = v.y;
+
+        return new Vector2((cos * tx) - (sin * ty), (sin * tx) + (cos * ty));
+    }
 }
