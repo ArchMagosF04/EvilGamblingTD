@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthController
   maxHealth: 0
   currentHealth: 0
+  dmgTextColor: 1
 --- !u!65 &8617921741686087828
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -13,8 +13,7 @@ public class HealthController : MonoBehaviour, IDamageable
 
     public Action OnHealthDepleted;
 
-    public DamagePopUp damagePopUp;
-
+    [SerializeField] private DamageTextColor dmgTextColor;
 
     public void InitializeHealth(float maxHealth)
     {
@@ -30,11 +29,10 @@ public class HealthController : MonoBehaviour, IDamageable
 
         currentHealth -= info.Damage;
 
-        if(damagePopUp != null) 
+        if (DamageTextPool.Instance != null)
         {
-            DamagePopUp popUp = Instantiate(damagePopUp, transform.position, Quaternion.identity);
-            popUp.damage = info.Damage;
-
+            DamagePopUp popUp = DamageTextPool.Instance.GetPopUp(transform.position, transform);
+            popUp.InitialzeDamageText(info.Damage, dmgTextColor);
         }
 
         if (currentHealth <= 0)
