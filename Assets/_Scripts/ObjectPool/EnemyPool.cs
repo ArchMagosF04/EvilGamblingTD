@@ -7,7 +7,7 @@ public class EnemyPool : MonoBehaviour
 {
     public static EnemyPool Instance;
 
-    private readonly Dictionary<string, ObjectPool<EnemyController>> poolDictionary = new();
+    private readonly Dictionary<EnemyIndex, ObjectPool<EnemyController>> poolDictionary = new();
 
     [SerializeField] private EnemyPoolPreWarm[] preWarmArray;
 
@@ -66,7 +66,7 @@ public class EnemyPool : MonoBehaviour
         return newEffect;
     }
 
-    public void ReturnToPool(string key, EnemyController instance)
+    public void ReturnToPool(EnemyIndex key, EnemyController instance)
     {
         if (poolDictionary.TryGetValue(key, out var pool))
         {

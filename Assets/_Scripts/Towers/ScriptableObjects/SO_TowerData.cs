@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Tower Data", menuName = "Scriptable Objects/Towers/Tower Data")]
 public class SO_TowerData : ScriptableObject
 {
-    [field: SerializeField] public string ID {  get; private set; }
+    [field: SerializeField] public TowerIndex ID {  get; private set; }
 
     #region Buy Settings
 

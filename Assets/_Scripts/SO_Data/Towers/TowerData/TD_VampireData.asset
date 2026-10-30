@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4741f620f4db141bc2449b3f7594fb, type: 3}
   m_Name: TD_VampireData
   m_EditorClassIdentifier: Assembly-CSharp::SO_TowerData
-  <ID>k__BackingField: Vampire
+  <ID>k__BackingField: 3
   <TowerPrefab>k__BackingField: {fileID: 6758566214392257312, guid: 99c8b5225c3fa394ea578a0a7edd50a9, type: 3}
   <TowerCost>k__BackingField: 140
   <TowerButtonSprite>k__BackingField: {fileID: 7321554724934918619, guid: 4808cf2dd336c144096ac59e899ef7ca, type: 3}

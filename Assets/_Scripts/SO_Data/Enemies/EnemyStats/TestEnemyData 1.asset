@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf1a5e7f8c52c148bd60a8bf2fedbb3, type: 3}
   m_Name: TestEnemyData 1
   m_EditorClassIdentifier: Assembly-CSharp::SO_EnemyData
-  <ID>k__BackingField: Conehead
+  <ID>k__BackingField: 1
   EnemyPrefab: {fileID: 439606636570254557, guid: 989d3796947f3764d843f4afdad44eae, type: 3}
   <SpawnCost>k__BackingField: 1
   <MinWaveRequirement>k__BackingField: 0
