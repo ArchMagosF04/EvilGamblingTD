@@ -1,3 +1,4 @@
+using Alchemy.Inspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -89,6 +90,7 @@ public class SO_PlayerSavedData : ScriptableObject
         return false;
     }
 
+    [Button]
     public void UnlockTower(TowerIndex index)
     {
         if (TowersUnlockedDict.ContainsKey(index))
