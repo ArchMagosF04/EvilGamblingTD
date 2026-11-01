@@ -2,7 +2,7 @@ using Alchemy.Inspector;
 using DG.Tweening;
 using UnityEngine;
 
-public class UIAnimatedElement : MonoBehaviour
+public abstract class UIAnimatedElement : MonoBehaviour
 {
     [SerializeField] protected bool useUnscaledTime = true;
 

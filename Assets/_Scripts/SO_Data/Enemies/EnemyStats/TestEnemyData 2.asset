@@ -15,15 +15,15 @@ MonoBehaviour:
   <ID>k__BackingField: 2
   EnemyPrefab: {fileID: 439606636570254557, guid: 6496e2e37e155b14ca8e700907974ec4, type: 3}
   <SpawnCost>k__BackingField: 1
-  <MinWaveRequirement>k__BackingField: 0
+  <MinWaveRequirement>k__BackingField: 6
   <BaseWeight>k__BackingField: 30
   <WaveWeightShift>k__BackingField: 5
-  <WeightShiftPerWave>k__BackingField: -5
+  <WeightShiftPerWave>k__BackingField: 2
   <MinWeightClamp>k__BackingField: 0
-  <MaxWeightClamp>k__BackingField: 100
+  <MaxWeightClamp>k__BackingField: 1000
   <AmountToSpawn>k__BackingField: 1
-  <WaveBurstShift>k__BackingField: 10
-  <BurstShiftPerWave>k__BackingField: 0.2
+  <WaveBurstShift>k__BackingField: 20
+  <BurstShiftPerWave>k__BackingField: 0.1
   <MinBurstClamp>k__BackingField: 1
   <MaxBurstClamp>k__BackingField: 15
   <MoneyReward>k__BackingField: 2

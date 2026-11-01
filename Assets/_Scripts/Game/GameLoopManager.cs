@@ -7,8 +7,6 @@ public class GameLoopManager : MonoBehaviour
 
     public bool ShouldLoopEnd { get; private set; }
 
-
-
     private void Awake()
     {
         if (Instance == null)
@@ -35,8 +33,6 @@ public class GameLoopManager : MonoBehaviour
             //Tick Towers
 
             //Apply Effects
-
-            //Damage Enemies
 
             //Remove Enemies
 

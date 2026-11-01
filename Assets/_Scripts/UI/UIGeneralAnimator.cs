@@ -8,6 +8,8 @@ public class UIGeneralAnimator : UIAnimatedElement
     [BoxGroup("Components"), SerializeField] private CanvasGroup canvasGroup;
     [BoxGroup("Components"), SerializeField] private RectTransform rectTransform;
 
+    [TabGroup("Hide Animations"), SerializeField] private bool hideOnShowEnd;
+
     [TabGroup("Show Animations", "Fade"), SerializeField] private bool showFadeAnim;
     [TabGroup("Hide Animations", "Fade"), SerializeField] private bool hideFadeAnim;
 
@@ -30,6 +32,9 @@ public class UIGeneralAnimator : UIAnimatedElement
     private Tween scaleTween;
     private Tween moveTween;
 
+    private bool showEnded;
+    private bool hideEnded;
+
     private void Awake()
     {
         if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
@@ -41,9 +46,12 @@ public class UIGeneralAnimator : UIAnimatedElement
         canvasGroup.blocksRaycasts = false;
     }
 
+    [TabGroup("Animation Settings", "Show"), Button]
     public override void ShowElement()
     {
         base.ShowElement();
+
+        showEnded = false;
 
         ToggleInteraction(false);
 
@@ -53,8 +61,9 @@ public class UIGeneralAnimator : UIAnimatedElement
 
             if (fadeTween != null && fadeTween.IsActive()) fadeTween.Kill(true);
 
-            fadeTween = canvasGroup.DOFade(1, showDuration).SetDelay(showDelay).SetEase(showEase).SetLink(gameObject).SetUpdate(useUnscaledTime).OnComplete(() => ToggleInteraction(true));
+            fadeTween = canvasGroup.DOFade(1, showDuration).SetDelay(showDelay).SetEase(showEase).SetLink(gameObject).SetUpdate(useUnscaledTime).OnComplete(() => OnShowEnd());
         }
+        else canvasGroup.alpha = 1;
 
         if (showScaleAnim)
         {
@@ -71,7 +80,7 @@ public class UIGeneralAnimator : UIAnimatedElement
                     rectTransform.localScale = scaleVector;
                     rectTransform.sizeDelta = startSizeDelta;
                 })
-                .SetDelay(showDelay).SetEase(showEase).SetLink(gameObject).SetUpdate(useUnscaledTime).OnComplete(() => ToggleInteraction(true));
+                .SetDelay(showDelay).SetEase(showEase).SetLink(gameObject).SetUpdate(useUnscaledTime).OnComplete(() => OnShowEnd());
         }
 
         if (showMoveAnim)
@@ -80,13 +89,16 @@ public class UIGeneralAnimator : UIAnimatedElement
 
             if (moveTween != null && moveTween.IsActive()) moveTween.Kill(true);
 
-            moveTween = rectTransform.DOAnchorPos(startingPosition, showDuration).SetDelay(showDelay).SetEase(showEase).SetLink(gameObject).SetUpdate(useUnscaledTime).OnComplete(() => ToggleInteraction(true));
+            moveTween = rectTransform.DOAnchorPos(startingPosition, showDuration).SetDelay(showDelay).SetEase(showEase).SetLink(gameObject).SetUpdate(useUnscaledTime).OnComplete(() => OnShowEnd());
         }
     }
 
+    [TabGroup("Animation Settings", "Hide"), Button]
     public override void HideElement()
     {
         base.HideElement();
+
+        hideEnded = false;
 
         ToggleInteraction(false);
 
@@ -126,6 +138,24 @@ public class UIGeneralAnimator : UIAnimatedElement
             moveTween = rectTransform.DOAnchorPos(hideMoveEndPos.anchoredPosition, hideDuration).SetDelay(hideDelay)
                 .SetEase(hideEase).SetLink(gameObject).SetUpdate(useUnscaledTime);
         }
+    }
+
+    private void OnShowEnd()
+    {
+        if (showEnded) return;
+
+        showEnded = true;
+
+        ToggleInteraction(true);
+
+        if (hideOnShowEnd) HideElement();
+    }
+
+    private void OnHideEnd()
+    {
+        if (hideEnded) return;
+
+        hideEnded = true;
     }
 
     private void ToggleInteraction(bool toggle)
