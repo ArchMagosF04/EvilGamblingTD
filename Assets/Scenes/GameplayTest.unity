@@ -6282,6 +6282,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5549197767219524625, guid: 7552873e5b089d443896d37a0284cd2d, type: 3}
+      propertyPath: m_fontSize
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549197767219524625, guid: 7552873e5b089d443896d37a0284cd2d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819289153016763124, guid: 7552873e5b089d443896d37a0284cd2d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -158
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918486675515156186, guid: 7552873e5b089d443896d37a0284cd2d, type: 3}
+      propertyPath: m_text
+      value: 'Resume
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918486675515156186, guid: 7552873e5b089d443896d37a0284cd2d, type: 3}
+      propertyPath: m_fontSize
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918486675515156186, guid: 7552873e5b089d443896d37a0284cd2d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 9201642328346155650, guid: 7552873e5b089d443896d37a0284cd2d, type: 3}
       propertyPath: m_Material
       value: 
