@@ -53,7 +53,9 @@ public class SO_PlayerSavedData : ScriptableObject
 
     public void ReceiveGachaCoins(int coins)
     {
-        gachaCoins += coins; 
+        gachaCoins += coins;
+
+        if (gachaCoins > 999999999) gachaCoins = 999999999;
     }
 
     public void SpendGachaCoins(int coins)
