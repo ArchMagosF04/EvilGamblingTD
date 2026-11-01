@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_TowerData
   <ID>k__BackingField: 4
   <Rarity>k__BackingField: 2
-  <Name>k__BackingField: Mummy
+  <TowerName>k__BackingField: Mummy
   <InventoryImage>k__BackingField: {fileID: 7822453410278953956, guid: cfe4b70779b41fe4ab44e9829a8f1975, type: 3}
   <TowerPrefab>k__BackingField: {fileID: 7566042404265177375, guid: 9c90a207f65cc6f4c88d59a598d066be, type: 3}
   <TowerCost>k__BackingField: 80

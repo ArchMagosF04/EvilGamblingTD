@@ -1,7 +1,4 @@
-using System;
 using System.IO;
-using System.Text;
-using UnityEditor.Overlays;
 using UnityEngine;
 
 public class DataSaveManager : MonoBehaviour
@@ -53,6 +50,8 @@ public class DataSaveManager : MonoBehaviour
             // Convert the JSON string back into a C# object
             JsonUtility.FromJsonOverwrite(json, savedData);
 
+            savedData.LoadToDictionary();
+
             Debug.Log($"Loaded Data.");
         }
         else
@@ -70,6 +69,8 @@ public class DataSaveManager : MonoBehaviour
             Debug.LogError("PlayerSavedData: Data asset not asigned! Please assign it in the Inspector");
             return;
         }
+
+        savedData.SaveToWrapper();
 
         string json = JsonUtility.ToJson(savedData, true); //Serialize to JSON
         File.WriteAllText(SettingsFilePath, json/*, Encoding.UTF8*/);

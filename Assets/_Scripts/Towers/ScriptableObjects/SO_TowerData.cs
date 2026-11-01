@@ -10,7 +10,7 @@ public class SO_TowerData : ScriptableObject
     #region Gacha/Inventory Settings
 
     [field: BoxGroup("Gacha Inventory Settings"), SerializeField] public TowerRarities Rarity { get; private set; }
-    [field: BoxGroup("Gacha Inventory Settings"), SerializeField] public string Name { get; private set; }
+    [field: BoxGroup("Gacha Inventory Settings"), SerializeField] public string TowerName { get; private set; }
     [field: BoxGroup("Gacha Inventory Settings"), SerializeField] public Sprite InventoryImage { get; private set; }
 
     #endregion

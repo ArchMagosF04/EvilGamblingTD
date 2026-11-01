@@ -19,26 +19,36 @@ public class SO_PlayerSavedData : ScriptableObject
 
     public SerializationDictionaryWrapper<TowerIndex, bool> towersUnlocked;
 
-
+    public Dictionary<TowerIndex, bool> TowersUnlockedDict;
 
     public void SetDefaultValues()
     {
         gachaCoins = 500;
 
-        Dictionary<TowerIndex, bool> defaultUnlocks = new Dictionary<TowerIndex, bool>();
+        TowersUnlockedDict = new Dictionary<TowerIndex, bool>();
 
-        FillDictionary(ref defaultUnlocks);
+        FillDictionary();
 
-        towersUnlocked = new SerializationDictionaryWrapper<TowerIndex, bool>(defaultUnlocks);
+        towersUnlocked = new SerializationDictionaryWrapper<TowerIndex, bool>(TowersUnlockedDict);
     }
 
-    private void FillDictionary(ref Dictionary<TowerIndex, bool> dictionary)
+    public void SaveToWrapper()
     {
-        dictionary.Add(TowerIndex.Demon, true);
-        dictionary.Add(TowerIndex.DarkElf, false);
-        dictionary.Add(TowerIndex.Siren, true);
-        dictionary.Add(TowerIndex.Vampire, false);
-        dictionary.Add(TowerIndex.Mummy, true);
+        towersUnlocked = new SerializationDictionaryWrapper<TowerIndex, bool>(TowersUnlockedDict);
+    }
+
+    public void LoadToDictionary()
+    {
+        TowersUnlockedDict = towersUnlocked.ConvertToDictionary();
+    }
+
+    private void FillDictionary()
+    {
+        TowersUnlockedDict.Add(TowerIndex.Demon, true);
+        TowersUnlockedDict.Add(TowerIndex.DarkElf, false);
+        TowersUnlockedDict.Add(TowerIndex.Siren, true);
+        TowersUnlockedDict.Add(TowerIndex.Vampire, false);
+        TowersUnlockedDict.Add(TowerIndex.Mummy, true);
     }
 
     public void ReceiveGachaCoins(int coins)
@@ -62,6 +72,30 @@ public class SO_PlayerSavedData : ScriptableObject
         else
         {
             return false;
+        }
+    }
+
+    public bool IsTowerUnlocked(TowerIndex index)
+    {
+        if (TowersUnlockedDict.ContainsKey(index))
+        {
+            return TowersUnlockedDict[index];
+        }
+
+        Debug.LogWarning($"Index: {index} not found in Dictionary");
+
+        return false;
+    }
+
+    public void UnlockTower(TowerIndex index)
+    {
+        if (TowersUnlockedDict.ContainsKey(index))
+        {
+            TowersUnlockedDict[index] = true;
+        }
+        else
+        {
+            Debug.LogWarning($"Index: {index} not found in Dictionary");
         }
     }
 }
