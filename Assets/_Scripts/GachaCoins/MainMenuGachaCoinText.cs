@@ -12,7 +12,7 @@ public class MainMenuGachaCoinText : MonoBehaviour
         if (!textField) textField = GetComponent<TMP_Text>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         UpdateTextValue();
     }
