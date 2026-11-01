@@ -3703,7 +3703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e68362ebf354024cbcddaa35d9a8569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerButtonsInitialiazer
-  selectedTowersArray: {fileID: 11400000, guid: a636c9434dc4b8745ae8373075a67c7f, type: 2}
+  selectedTowersArray: {fileID: 11400000, guid: 2ec54145f4993084fb49cf8606182b6a, type: 2}
   button1: {fileID: 390087849}
   button2: {fileID: 1583411084}
   button3: {fileID: 1275353119}
@@ -5392,7 +5392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b01b3be8d3bfb499cd0a20931a0c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerPool
-  selectedTowersArray: {fileID: 11400000, guid: a636c9434dc4b8745ae8373075a67c7f, type: 2}
+  selectedTowersArray: {fileID: 11400000, guid: 2ec54145f4993084fb49cf8606182b6a, type: 2}
   preWarmTowersAmount: 5
 --- !u!4 &2011623627
 Transform:

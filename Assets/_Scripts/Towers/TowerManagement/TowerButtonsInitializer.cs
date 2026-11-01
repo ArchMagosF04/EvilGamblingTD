@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TowerButtonsInitializer : MonoBehaviour
 {
-    [SerializeField] private SO_SelectedTowersArray selectedTowersArray;
+    [SerializeField] private SO_PlayerSavedData selectedTowersArray;
 
     [BoxGroup("Tower Buttons"), SerializeField] private BuyTowerButton button1;
     [BoxGroup("Tower Buttons"), SerializeField] private BuyTowerButton button2;

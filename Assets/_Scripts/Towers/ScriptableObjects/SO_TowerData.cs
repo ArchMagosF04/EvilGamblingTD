@@ -7,6 +7,14 @@ public class SO_TowerData : ScriptableObject
 {
     [field: SerializeField] public TowerIndex ID {  get; private set; }
 
+    #region Gacha/Inventory Settings
+
+    [field: BoxGroup("Gacha Inventory Settings"), SerializeField] public TowerRarities Rarity { get; private set; }
+    [field: BoxGroup("Gacha Inventory Settings"), SerializeField] public string Name { get; private set; }
+    [field: BoxGroup("Gacha Inventory Settings"), SerializeField] public Sprite InventoryImage { get; private set; }
+
+    #endregion
+
     #region Buy Settings
 
     [field: BoxGroup("Buy Settings"), SerializeField, AssetsOnly] public TowerController TowerPrefab {  get; private set; }
@@ -61,4 +69,13 @@ public enum TowerRangeType
     Radius,
     ForwardCone,
     //VerticalCone,
+}
+
+public enum TowerRarities
+{
+    Common,
+    Rare,
+    VeryRare,
+    Epic,
+    Legendary
 }

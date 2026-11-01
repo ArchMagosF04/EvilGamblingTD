@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: TD_DarkElfData
   m_EditorClassIdentifier: Assembly-CSharp::SO_TowerData
   <ID>k__BackingField: 1
+  <Rarity>k__BackingField: 3
+  <Name>k__BackingField: Dark Elf
+  <InventoryImage>k__BackingField: {fileID: -4397440104506894357, guid: dbd40c24724d4b24e86d37b3317b9126, type: 3}
   <TowerPrefab>k__BackingField: {fileID: 7034009629477887436, guid: 57f14a6f4e5bb394bad35170246e66df, type: 3}
   <TowerCost>k__BackingField: 100
   <TowerButtonSprite>k__BackingField: {fileID: 4688103905211619989, guid: 348abe4baa20b164e920d8e564f8bddf, type: 3}

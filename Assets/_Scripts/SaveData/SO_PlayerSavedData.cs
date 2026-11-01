@@ -7,6 +7,16 @@ public class SO_PlayerSavedData : ScriptableObject
 {
     public int gachaCoins;
 
+    [Space(10)]
+
+    public SO_TowerData Slot1Tower;
+    public SO_TowerData Slot2Tower;
+    public SO_TowerData Slot3Tower;
+    public SO_TowerData Slot4Tower;
+    public SO_TowerData Slot5Tower;
+
+    [Space(10)]
+
     public SerializationDictionaryWrapper<TowerIndex, bool> towersUnlocked;
 
 
@@ -26,9 +36,9 @@ public class SO_PlayerSavedData : ScriptableObject
     {
         dictionary.Add(TowerIndex.Demon, true);
         dictionary.Add(TowerIndex.DarkElf, false);
-        dictionary.Add(TowerIndex.Siren, false);
+        dictionary.Add(TowerIndex.Siren, true);
         dictionary.Add(TowerIndex.Vampire, false);
-        dictionary.Add(TowerIndex.Mummy, false);
+        dictionary.Add(TowerIndex.Mummy, true);
     }
 
     public void ReceiveGachaCoins(int coins)

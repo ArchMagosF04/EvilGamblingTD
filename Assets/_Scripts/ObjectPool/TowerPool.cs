@@ -9,7 +9,7 @@ public class TowerPool : MonoBehaviour
 
     private readonly Dictionary<TowerIndex, ObjectPool<TowerController>> poolDictionary = new();
 
-    [SerializeField] private SO_SelectedTowersArray selectedTowersArray;
+    [SerializeField] private SO_PlayerSavedData selectedTowersArray;
     [SerializeField, Min(0)] private int preWarmTowersAmount = 5;
 
     private void Awake()
