@@ -25,10 +25,34 @@ public class SO_PlayerSavedData : ScriptableObject
     private void FillDictionary(ref Dictionary<TowerIndex, bool> dictionary)
     {
         dictionary.Add(TowerIndex.Demon, true);
-        dictionary.Add(TowerIndex.DarkElf, true);
-        dictionary.Add(TowerIndex.Siren, true);
-        dictionary.Add(TowerIndex.Vampire, true);
-        dictionary.Add(TowerIndex.Mummy, true);
+        dictionary.Add(TowerIndex.DarkElf, false);
+        dictionary.Add(TowerIndex.Siren, false);
+        dictionary.Add(TowerIndex.Vampire, false);
+        dictionary.Add(TowerIndex.Mummy, false);
+    }
+
+    public void ReceiveGachaCoins(int coins)
+    {
+        gachaCoins += coins; 
+    }
+
+    public void SpendGachaCoins(int coins)
+    {
+        gachaCoins -= coins;
+
+        if (gachaCoins < 0) gachaCoins = 0;
+    }
+
+    public bool HasEnoughCoins(int coins)
+    {
+        if (gachaCoins >= coins)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 

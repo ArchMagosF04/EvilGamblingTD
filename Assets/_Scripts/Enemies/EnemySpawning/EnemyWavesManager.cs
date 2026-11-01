@@ -32,6 +32,7 @@ public class EnemyWavesManager : MonoBehaviour
     [BoxGroup("Money Reward Per Wave"), SerializeField] private float AddedRewardPerWave = 1f;
 
     [BoxGroup("Event Channels"), SerializeField] private StringEvent waveNumberTextEvent;
+    [BoxGroup("Event Channels"), SerializeField] private IntEvent waveCompletedEvent;
 
     [BoxGroup("Sounds"), SerializeField] private SoundID waveCompletedSound;
 
@@ -69,10 +70,11 @@ public class EnemyWavesManager : MonoBehaviour
     {
         if (allEnemiesInWaveDead)
         {
-            CurrentWave++;
+            CurrentWave++; //Increase the current wave number
 
-            waveNumberTextEvent?.InvokeEvent("Wave: " + CurrentWave);
+            waveNumberTextEvent?.InvokeEvent("Wave: " + CurrentWave); //Update the UI text with the current wave number.
 
+            //Calculate the budget to spawn enemies and the time interval between each spawn.
             currentWaveBudget = CalculateWaveBudget(CurrentWave);
             currentSpawnInterval = CalculateSpawnInterval(CurrentWave);
 
@@ -94,26 +96,17 @@ public class EnemyWavesManager : MonoBehaviour
         return Mathf.Max(calculatedInterval, minSpawnInterval);
     }
 
-    private void Update()
-    {
-        if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
+    //private void Update()
+    //{
+    //    if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
 
-        if (!WaveInProgress) return;
+    //    if (!WaveInProgress) return;
 
-        if (!spawingInProgess && activeEnemiesAmount <= 0)
-        {
-            EndCurrentWave();
-        }
-
-        //if (currentWaveSpawnQueue.Count <= 0 && spawingInProgess)
-        //{
-        //    spawingInProgess = false;
-        //}
-        //else if(spawingInProgess && currentWaveSpawnQueue.Count > 0)
-        //{
-        //    SpawnEnemyEntries();
-        //}
-    }
+    //    if (!spawingInProgess && activeEnemiesAmount <= 0) //If there are no more ene
+    //    {
+    //        EndCurrentWave();
+    //    }
+    //}
 
     private IEnumerator WaveSpawningRoutine()
     {
@@ -204,6 +197,8 @@ public class EnemyWavesManager : MonoBehaviour
 
         PlayerManager.Instance.GainMoney(BaseReward + (AddedRewardPerWave * CurrentWave));
 
+        waveCompletedEvent.InvokeEvent(CurrentWave);
+
         BroAudio.Play(waveCompletedSound);
     }
 
@@ -213,7 +208,7 @@ public class EnemyWavesManager : MonoBehaviour
         {
             SO_EnemyData chosenEnemy = SelectAffordableEnemy(currentWaveBudget);
 
-            if (chosenEnemy == null)
+            if (chosenEnemy == null) //When no enemy can be chosen because of lack of budget then the queue to spawn is completed.
             {
                 currentWaveBudget = 0;
                 continue;
@@ -221,6 +216,7 @@ public class EnemyWavesManager : MonoBehaviour
 
             int amount = chosenEnemy.AmountToSpawn;
 
+            //Apply burst shift if the current wave has surpassed the threshold.
             if (CurrentWave > chosenEnemy.WaveBurstShift)
             {
                 int wavesPastShift = CurrentWave - chosenEnemy.WaveBurstShift;
@@ -230,6 +226,7 @@ public class EnemyWavesManager : MonoBehaviour
 
             SpawnEntry enemyEntry = new SpawnEntry(chosenEnemy, amount);
 
+            //Add the chosen enemy to the queue and subtract its cost from the budget.
             currentWaveSpawnQueue.Enqueue(enemyEntry);
             currentWaveBudget -= chosenEnemy.SpawnCost;
         }
@@ -237,13 +234,13 @@ public class EnemyWavesManager : MonoBehaviour
 
     private SO_EnemyData SelectAffordableEnemy(float budget)
     {
-        // 1. Filter by budget AND wave requirement
+        //Filters by budget and wave requirement
         List<SO_EnemyData> eligibleEnemies = availableEnemies.FindAll(e =>
             e.SpawnCost <= budget && CurrentWave >= e.MinWaveRequirement);
 
         if (eligibleEnemies.Count == 0) return null;
 
-        // 2. Calculate dynamic weights and total weight pool
+        //Calculates dynamic weights and total weight pool
         float totalWeight = 0f;
         List<float> calculatedWeights = new List<float>();
 
@@ -264,17 +261,17 @@ public class EnemyWavesManager : MonoBehaviour
             totalWeight += dynamicWeight;
         }
 
-        // Edge case: If all weights drop to 0, fallback to standard random pick
+        // Edge case: If all weights drop to 0 then it picks at random with equal odds.
         if (totalWeight <= 0)
         {
             return eligibleEnemies[Random.Range(0, eligibleEnemies.Count)];
         }
 
-        // 3. Roll a value within the dynamic weight total
+        //Rolls a value within the dynamic weight total
         float roll = Random.Range(0f, totalWeight);
         float cumulativeWeight = 0f;
 
-        // 4. Select the matching enemy
+        //Selects a matching enemy
         for (int i = 0; i < eligibleEnemies.Count; i++)
         {
             cumulativeWeight += calculatedWeights[i];
@@ -290,5 +287,10 @@ public class EnemyWavesManager : MonoBehaviour
     public void EnemyKilled()
     {
         activeEnemiesAmount--;
+
+        if (!spawingInProgess && activeEnemiesAmount <= 0) //If there are no more enemies to spawn and in the field then end the wave.
+        {
+            EndCurrentWave();
+        }
     }
 }
