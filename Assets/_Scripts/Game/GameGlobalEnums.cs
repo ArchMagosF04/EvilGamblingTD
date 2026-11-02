@@ -11,7 +11,9 @@ public enum TowerIndex
     DarkElf,
     Siren,
     Vampire,
-    Mummy
+    Mummy,
+    Fairy,
+    Chimera
 }
 
 public enum EnemyIndex

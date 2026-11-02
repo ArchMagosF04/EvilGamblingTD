@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4741f620f4db141bc2449b3f7594fb, type: 3}
+  m_Name: TD_ChimeraData
+  m_EditorClassIdentifier: Assembly-CSharp::SO_TowerData
+  <ID>k__BackingField: 6
+  <Rarity>k__BackingField: 0
+  <TowerName>k__BackingField: Chimera
+  <InventoryImage>k__BackingField: {fileID: 3167286101334695244, guid: 235dcc9d46e6eb848be889aa96a8e6e6, type: 3}
+  <TowerPrefab>k__BackingField: {fileID: 1147264340987522680, guid: 2805fcfc5e6b6a14cab146aced3d45b8, type: 3}
+  <TowerCost>k__BackingField: 65
+  <TowerButtonSprite>k__BackingField: {fileID: -3060947051045668959, guid: 235dcc9d46e6eb848be889aa96a8e6e6, type: 3}
+  <AttackPrefab>k__BackingField: {fileID: 1206158986360971960, guid: 469978f9bd042ac49b3dec623c3698a3, type: 3}
+  <AttackSpeed>k__BackingField: 0.7
+  <NumberOfShots>k__BackingField: 1
+  <ShotSpread>k__BackingField: 0
+  <TrackTarget>k__BackingField: 0
+  <MaxHealth>k__BackingField: 20
+  <RangeType>k__BackingField: 0
+  <EnemyLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 256
+  <DetectionRange>k__BackingField: 7
+  <DetectionRadius>k__BackingField: 0.4
+  <DetectionOriginOffset>k__BackingField: {x: 0, y: -0.15, z: 0}
+  <DetectionAngle>k__BackingField: 0
+  <DeathSound>k__BackingField:
+    _entity: {fileID: 11400000, guid: c74c3d2a7c7fc324dbca8062298694bf, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 0}
+  <AttackSound>k__BackingField:
+    _entity: {fileID: 11400000, guid: ea667b2c6a2b09e488eed31b05f96669, type: 2}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 0}
