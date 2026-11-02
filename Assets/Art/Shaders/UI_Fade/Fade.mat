@@ -55,7 +55,7 @@ Material:
     m_Floats:
     - _ColorMask: 15
     - _EnableExternalAlpha: 0
-    - _Fade: 0
+    - _Fade: 0.19243962
     - _Scale: 22.49
     - _Stencil: 0
     - _StencilComp: 8
