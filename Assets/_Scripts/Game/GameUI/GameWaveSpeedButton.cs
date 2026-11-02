@@ -15,6 +15,7 @@ public class GameWaveSpeedButton : MonoBehaviour
         {
             GameManager.Instance.SetGameToNormalSpeed();
             EnemyWavesManager.Instance.StartNextWave();
+            SpeedUpImg?.SetActive(false);
         }
         else
         {

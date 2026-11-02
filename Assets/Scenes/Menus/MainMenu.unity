@@ -9450,6 +9450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GachaController
   savedData: {fileID: 11400000, guid: 2ec54145f4993084fb49cf8606182b6a, type: 2}
+  gachaCoinUI: {fileID: 40794688}
   chestButtons:
   - {fileID: 91780556}
   - {fileID: 1547643059}

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GachaController : MonoBehaviour
 {
     [BoxGroup("Components"), SerializeField] private SO_PlayerSavedData savedData;
+    [BoxGroup("Components"), SerializeField] private MainMenuGachaCoinText gachaCoinUI;
     [BoxGroup("Components"), SerializeField] private BuyChestButton[] chestButtons;
     [BoxGroup("Components"), SerializeField] private Image unlockedTowerImage;
 
@@ -50,6 +51,7 @@ public class GachaController : MonoBehaviour
     public void RollRarity(ProbabilityTable table, int cost)
     {
         savedData.SpendGachaCoins(cost);
+        gachaCoinUI.UpdateTextValue();
 
         foreach (BuyChestButton chestButton in chestButtons)
         {
