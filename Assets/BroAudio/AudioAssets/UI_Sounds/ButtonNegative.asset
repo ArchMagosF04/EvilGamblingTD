@@ -25,7 +25,7 @@ MonoBehaviour:
     FadeOut: 0.034
     Weight: 0
   <AudioAsset>k__BackingField: {fileID: 11400000, guid: 39841da4eb664bc46bddb2b4c2fabd61, type: 2}
-  <AudioType>k__BackingField: 2
+  <AudioType>k__BackingField: 8
   <MasterVolume>k__BackingField: 1
   <Loop>k__BackingField: 0
   <SeamlessLoop>k__BackingField: 0
