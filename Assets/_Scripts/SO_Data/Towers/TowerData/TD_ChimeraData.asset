@@ -15,10 +15,10 @@ MonoBehaviour:
   <ID>k__BackingField: 6
   <Rarity>k__BackingField: 0
   <TowerName>k__BackingField: Chimera
-  <InventoryImage>k__BackingField: {fileID: 3167286101334695244, guid: 235dcc9d46e6eb848be889aa96a8e6e6, type: 3}
+  <InventoryImage>k__BackingField: {fileID: 4974986765394429864, guid: 5300c477d201e1a4fa7585cec77f588b, type: 3}
   <TowerPrefab>k__BackingField: {fileID: 1147264340987522680, guid: 2805fcfc5e6b6a14cab146aced3d45b8, type: 3}
   <TowerCost>k__BackingField: 65
-  <TowerButtonSprite>k__BackingField: {fileID: -3060947051045668959, guid: 235dcc9d46e6eb848be889aa96a8e6e6, type: 3}
+  <TowerButtonSprite>k__BackingField: {fileID: 4974986765394429864, guid: 5300c477d201e1a4fa7585cec77f588b, type: 3}
   <AttackPrefab>k__BackingField: {fileID: 1206158986360971960, guid: 469978f9bd042ac49b3dec623c3698a3, type: 3}
   <AttackSpeed>k__BackingField: 0.7
   <NumberOfShots>k__BackingField: 1

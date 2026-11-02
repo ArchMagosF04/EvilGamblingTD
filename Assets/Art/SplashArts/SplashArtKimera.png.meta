@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b937597a7f53248428749de293ba13bf
+guid: 5300c477d201e1a4fa7585cec77f588b
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: SplashArtKimera_0
       rect:
         serializedVersion: 2
-        x: 459
+        x: 457
         y: 60
-        width: 2069
-        height: 2939
+        width: 2070
+        height: 2940
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
