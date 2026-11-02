@@ -18,7 +18,7 @@ MonoBehaviour:
   <InventoryImage>k__BackingField: {fileID: 8758390072256013037, guid: b8fbab54dfbe4db4097aeb5ae4d19554, type: 3}
   <TowerPrefab>k__BackingField: {fileID: 8644869587425619769, guid: cded3b5f05c5f104dbbbbe4bd4bd00ec, type: 3}
   <TowerCost>k__BackingField: 120
-  <TowerButtonSprite>k__BackingField: {fileID: 6441766931150156726, guid: a384a2fe411cdef4e95979d347e6ef98, type: 3}
+  <TowerButtonSprite>k__BackingField: {fileID: 3706916884901405706, guid: f6938ff7013809240a1c21cbdb3ffaa9, type: 3}
   <AttackPrefab>k__BackingField: {fileID: 4549725967017625675, guid: 878af3bfaa8ebe347a0ad56b632eca9c, type: 3}
   <AttackSpeed>k__BackingField: 1
   <NumberOfShots>k__BackingField: 1
