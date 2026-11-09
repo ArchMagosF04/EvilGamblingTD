@@ -17,20 +17,20 @@ MonoBehaviour:
   <TowerName>k__BackingField: Mummy
   <InventoryImage>k__BackingField: {fileID: 7822453410278953956, guid: cfe4b70779b41fe4ab44e9829a8f1975, type: 3}
   <TowerPrefab>k__BackingField: {fileID: 7566042404265177375, guid: 9c90a207f65cc6f4c88d59a598d066be, type: 3}
-  <TowerCost>k__BackingField: 80
+  <TowerCost>k__BackingField: 120
   <TowerButtonSprite>k__BackingField: {fileID: 8194005773296502417, guid: c408f46800ed2fe4b8aef5bcb9e896ea, type: 3}
-  <AttackPrefab>k__BackingField: {fileID: 1206158986360971960, guid: 3d672c22e9a4fa5429fd17586c538355, type: 3}
-  <AttackSpeed>k__BackingField: 0.4
-  <NumberOfShots>k__BackingField: 1
-  <ShotSpread>k__BackingField: 0
+  <AttackPrefab>k__BackingField: {fileID: 2308713055811738541, guid: 5c661476d8a267947a55549edd375bfc, type: 3}
+  <AttackSpeed>k__BackingField: 2
+  <NumberOfShots>k__BackingField: 3
+  <ShotSpread>k__BackingField: 20
   <TrackTarget>k__BackingField: 0
   <MaxHealth>k__BackingField: 20
-  <RangeType>k__BackingField: 0
+  <RangeType>k__BackingField: 1
   <EnemyLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
   <DetectionRange>k__BackingField: 5
-  <DetectionRadius>k__BackingField: 0.4
+  <DetectionRadius>k__BackingField: 1
   <DetectionOriginOffset>k__BackingField: {x: 0, y: -0.15, z: 0}
   <DetectionAngle>k__BackingField: 0
   <DeathSound>k__BackingField:
