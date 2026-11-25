@@ -115,25 +115,29 @@ public class TowerDetectionRange : MonoBehaviour
 
     private void ForwardLineIndicator()
     {
-        lineVisual.transform.localScale = new Vector3(towerData.DetectionRange + (towerData.DetectionRadius * 2), towerData.DetectionRadius * 2f, 1);
+        lineVisual.transform.localScale = new Vector3(towerData.DetectionRange + (towerData.DetectionRadius * 2), towerData.DetectionRadius * 2f, 1f);
         lineVisual.transform.localPosition = new Vector3(-towerData.DetectionRange * 0.5f, 0, 0) + towerData.DetectionOriginOffset;
     }
 
     private void VerticalLineIndicator()
     {
-        lineVisual.transform.localScale = new Vector3(towerData.DetectionRadius * 2f, (towerData.DetectionRange + towerData.DetectionRadius) * 2f, 1);
+        lineVisual.transform.localScale = new Vector3(towerData.DetectionRadius * 2f, (towerData.DetectionRange + towerData.DetectionRadius) * 2f, 1f);
         lineVisual.transform.localPosition = Vector3.zero + towerData.DetectionOriginOffset;
     }
 
     private void RadiusIndicator()
     {
-        radiusVisual.transform.localScale = new Vector3(towerData.DetectionRange * 2, towerData.DetectionRange * 2, 1);
+        radiusVisual.transform.localScale = new Vector3(towerData.DetectionRange * 2, towerData.DetectionRange * 2, 1f);
         radiusVisual.transform.localPosition = Vector3.zero + towerData.DetectionOriginOffset;
     }
 
     private void ConeIndicator()
     {
+        //Width is calculated from the half-angle tangent
+        float halfAngleRad = (towerData.DetectionAngle * 0.5f) * Mathf.Deg2Rad;
+        float width = 2f * towerData.DetectionRange * Mathf.Tan(halfAngleRad);
 
+        coneVisual.transform.localScale = new Vector3(width, towerData.DetectionRange, 1f);
     }
 
     #endregion

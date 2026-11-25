@@ -1067,9 +1067,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1086155531856573522, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086155531856573522, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086155531856573522, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086155531856573522, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249128677810436842, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249128677810436842, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249128677810436842, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249128677810436842, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249128677810436842, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502177441304704727, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: towerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b0e3db2ff2613f41b51ceea1f763f7c, type: 2}
+    - target: {fileID: 4874331514567860443, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5790382939228284060, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7852231134601660774, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
       propertyPath: m_Name
       value: TowerDetection
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997302974583931282, guid: 7c06e04450d3d5f429828a9ffae015a3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

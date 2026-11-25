@@ -40,7 +40,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6964458904772226256}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackObject
   <AttackData>k__BackingField: {fileID: 11400000, guid: 011b1f1fa6add9a4e96d11d3b3b00b5f, type: 2}
+  <trailRenderer>k__BackingField: {fileID: 0}
 --- !u!54 &6255679061690790705
 Rigidbody:
   m_ObjectHideFlags: 0
