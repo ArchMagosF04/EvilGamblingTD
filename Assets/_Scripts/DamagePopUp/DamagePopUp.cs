@@ -6,16 +6,19 @@ using UnityEngine;
 
 public class DamagePopUp : MonoBehaviour
 {
+    //Text component
     [BoxGroup("Components"), SerializeField] private TMP_Text damageText;
 
     [BoxGroup("Settings"), SerializeField, ReadOnly] private float dmgNumber;
     [BoxGroup("Settings"), SerializeField] private float lifeTime;
 
-
+    //Random position offset apply on spawn
     [BoxGroup("Positioning"), SerializeField, Range(0f, 1f)] private float randomOffsetX;
     [BoxGroup("Positioning"), SerializeField, Range (0f, 1f)] private float randomOffsetY;
+    //Movement applied across the popup's lifetime
     [BoxGroup("Positioning"), SerializeField, Range(0f, 1f)] private float displacementX;
     [BoxGroup("Positioning"), SerializeField, Range(0f, 1f)] private float displacementY;
+    //Easing for the movement
     [BoxGroup("Positioning"), SerializeField] private Ease displacementEase;
 
     [BoxGroup("Fade Settings"), SerializeField] private float fadeInDuration = 0.1f;
@@ -38,14 +41,10 @@ public class DamagePopUp : MonoBehaviour
 
     private void Awake()
     {
+        //If component isn't assigned then gets it.
         if (damageText == null) damageText = GetComponent<TMP_Text>();
 
         SetTextAlpha(0);
-    }
-
-    private void Start()
-    {
-        transform.DOMove(new Vector2(transform.position.x, transform.position.y + 0.7f), 0.5f, false);
     }
 
     private void OnEnable()
@@ -55,6 +54,7 @@ public class DamagePopUp : MonoBehaviour
 
     public void ReturnObjectToPool()
     {
+        //If pool exists return to it, else destroy the object.
         if (DamageTextPool.Instance != null)
         {
             if (!returned)
@@ -71,23 +71,29 @@ public class DamagePopUp : MonoBehaviour
 
     public void InitialzeDamageText(float dmgAmount = 0, DamageTextColor color = DamageTextColor.Normal)
     {
+        //Update text
         dmgNumber = dmgAmount;
         damageText.text = dmgNumber.ToString("F0");
 
+        //Change color of text, depending on color type.
         ChangeColor(color);
 
-        transform.position += new Vector3(Random.Range(-randomOffsetX, randomOffsetX), Random.Range(0, randomOffsetY), 0);
+        //Apply spawn offset.
+        transform.localPosition += new Vector3(Random.Range(-randomOffsetX, randomOffsetX), Random.Range(0, randomOffsetY), 0);
 
         fading = false;
 
         if (moveTween != null && moveTween.IsActive()) moveTween.Kill();
 
+        //Start fade tween animation.
         fadeTween = damageText.DOFade(1, fadeInDuration).SetLink(gameObject).SetEase(fadeInEase);
 
         Vector3 displacement = new Vector3(Random.Range(-displacementX, displacementX),
                                            Random.Range(displacementY * 0.75f, displacementY));
 
-        moveTween = transform.DOLocalMove(displacement, lifeTime).SetLink(gameObject).SetEase(displacementEase).OnComplete(StartToFadeOut);
+        //Start move tween animation.
+        moveTween = transform.DOLocalMove(displacement + transform.localPosition, lifeTime).SetLink(gameObject).SetEase(displacementEase).OnComplete(StartToFadeOut);
+        //Once it completes it calls the fade out function.
     }
 
     private void StartToFadeOut()
@@ -98,7 +104,9 @@ public class DamagePopUp : MonoBehaviour
 
         fading = true;
 
+        //Start fade out tween anim.
         fadeTween = damageText.DOFade(0, fadeOutDuration).SetLink(gameObject).SetEase(fadeOutEase).OnComplete(ReturnObjectToPool);
+        //Once completed return to pool.
     }
 
     private void OnDisable()
@@ -108,6 +116,7 @@ public class DamagePopUp : MonoBehaviour
         SetTextAlpha(0);
     }
 
+    //Modify opacity of the text.
     private void SetTextAlpha(float alpha)
     {
         fadeColor = damageText.color;
@@ -115,6 +124,7 @@ public class DamagePopUp : MonoBehaviour
         damageText.color = fadeColor;
     }
 
+    //Change color of text.
     private void ChangeColor(DamageTextColor color)
     {
         switch (color)

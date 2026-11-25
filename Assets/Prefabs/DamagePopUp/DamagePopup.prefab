@@ -197,9 +197,9 @@ MonoBehaviour:
   damageText: {fileID: 2424417029237086675}
   dmgNumber: 0
   lifeTime: 0.7
-  randomOffsetX: 0.1
-  randomOffsetY: 0
-  displacementX: 0.2
+  randomOffsetX: 1
+  randomOffsetY: 0.5
+  displacementX: 0
   displacementY: 1
   displacementEase: 12
   fadeInDuration: 0.15

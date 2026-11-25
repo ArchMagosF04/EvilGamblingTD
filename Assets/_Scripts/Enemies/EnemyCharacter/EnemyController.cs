@@ -7,9 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(HealthController))]
 public class EnemyController : MonoBehaviour
 {
-    [field: BoxGroup("Components"), SerializeField] public SO_EnemyData EnemyData { get; private set; }
+    [field: BoxGroup("Components"), SerializeField] public SO_EnemyData EnemyData { get; private set; } //Contains all data about the enemy.
     [BoxGroup("Components"), SerializeField] private HealthController healthController;
-    [BoxGroup("Components"), SerializeField] private SpriteRenderOrder spriteRenderOrder;
+    [BoxGroup("Components"), SerializeField] private SpriteRenderOrder spriteRenderOrder; //Handles sorting order of sprites.
     [BoxGroup("Components"), SerializeField] private Animator animator;
 
     [BoxGroup("Debug"), SerializeField] private bool DebugGizmos;
@@ -33,25 +33,29 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
+        //If components aren't assigned then get them. 
         if (!healthController) healthController = GetComponent<HealthController>();
         if (!spriteRenderOrder) spriteRenderOrder = GetComponentInChildren<SpriteRenderOrder>();
         if (!animator) animator = GetComponentInChildren<Animator>();
 
+        //Subscribe to the death event of the health script to return the enemy to the pool.
         healthController.OnHealthDepleted += ()=> DestroyEnemy(true);
 
+        //Pre warm instances of the enemy's attack to be reused during the game.
         if (AttackPool.Instance != null && EnemyData.AttackPrefab != null) AttackPool.Instance.PreWarmPool(EnemyData.AttackPrefab, 20);
     }
 
     private void OnEnable()
     {
         dead = false;
+        //Reset animator.
         animator.SetBool(deathAnim, false);
         animator.SetBool(moveAnim, true);
 
         returned = false;
         TowerDetected = false;
-        spriteRenderOrder.UpdateOrderOfLayers();
-        healthController.InitializeHealth(EnemyData.MaxHealth);
+        spriteRenderOrder.UpdateOrderOfLayers(); //Apply sorting order of sprites based on Y world position.
+        healthController.InitializeHealth(EnemyData.MaxHealth); //Reset the enemies health.
         towerDetectionTimer = 0;
         attackTimer = 0;
         baseDetectionTimer = 0;
@@ -59,13 +63,17 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if((GameManager.Instance != null && GameManager.Instance.IsGamePaused) || dead) return;
+        if((GameManager.Instance != null && GameManager.Instance.IsGamePaused) || dead) return; //Don't update if the game is paused or the enemy is dead.
 
+        //All timers are linked to the speed multipler of the game so they can finish faster when turbo mode is enabled.
         attackTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
         towerDetectionTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
         baseDetectionTimer += Time.deltaTime * GameManager.Instance.GameSpeed;
 
-        if (!TowerDetected)
+        TowerDetection();
+        BaseDetection();
+
+        if (!TowerDetected) //If there isn't a tower in its attack range then keep moving, else stop to attack towers.
         {
             transform.Translate(Vector3.right * EnemyData.MoveSpeed * Time.deltaTime * GameManager.Instance.GameSpeed);
         }
@@ -75,29 +83,16 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
-
-        TowerDetection();
-        BaseDetection();
-    }
-
     #region Detection
 
     private void TowerDetection()
     {
-        if (towerDetectionTimer > EnemyData.DetectionTickTime)
+        if (towerDetectionTimer > EnemyData.DetectionTickTime) //If the detection tick is up then check detection.
         {
+            //Reset timer.
             towerDetectionTimer = 0;
 
-            detectionCubeCenter = new Vector3(transform.position.x + (EnemyData.DetectionRange / 2),
-            transform.position.y, transform.position.z);
-
-            detectionCubeSize = new Vector3(EnemyData.DetectionRange, EnemyData.DetectionRadius, 0.2f);
-
             if (Physics.SphereCast(transform.position, EnemyData.DetectionRadius, Vector3.right, out RaycastHit hitInfo, EnemyData.DetectionRange, EnemyData.DetectionMask))
-            //if (Physics.BoxCast(detectionCubeCenter, detectionCubeSize / 2, Vector3.right, Quaternion.identity, EnemyData.DetectionRadius, EnemyData.DetectionMask))
             {
                 if (!TowerDetected)
                 {
