@@ -15,7 +15,7 @@ MonoBehaviour:
   <ID>k__BackingField: ChimeraAttack
   <Damage>k__BackingField: 13
   <Pierce>k__BackingField: 9999
-  <CanHitSameEnemyMultipleTimes>k__BackingField: 0
+  <CanHitSameEnemyMultipleTimes>k__BackingField: 1
   <DestroyOnLastHit>k__BackingField: 0
   <MoveSpeed>k__BackingField: 0
   <LifeTime>k__BackingField: 0.25

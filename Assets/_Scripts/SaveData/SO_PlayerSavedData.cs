@@ -52,6 +52,7 @@ public class SO_PlayerSavedData : ScriptableObject
         TowersUnlockedDict.Add(TowerIndex.Mummy, true);
         TowersUnlockedDict.Add(TowerIndex.Fairy, false);
         TowersUnlockedDict.Add(TowerIndex.Chimera, false);
+        TowersUnlockedDict.Add(TowerIndex.Ghost, false);
     }
 
     public void ReceiveGachaCoins(int coins)
