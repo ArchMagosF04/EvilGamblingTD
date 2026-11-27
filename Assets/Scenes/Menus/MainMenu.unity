@@ -9467,6 +9467,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 52c2ae892280cec46962ca7cef6e3b30, type: 2}
   - {fileID: 11400000, guid: 23f5ddd93ca7e5840a0226e3458b7829, type: 2}
   - {fileID: 11400000, guid: 3a5457dc09a260c4a9c6a6d1b350ab7f, type: 2}
+  - {fileID: 11400000, guid: d1e60d469ac96cc43944ffd8ae3b8962, type: 2}
 --- !u!1 &1193217737
 GameObject:
   m_ObjectHideFlags: 0
@@ -15467,7 +15468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerInventoryEntry
   savedData: {fileID: 11400000, guid: 2ec54145f4993084fb49cf8606182b6a, type: 2}
-  towerData: {fileID: 0}
+  towerData: {fileID: 11400000, guid: d1e60d469ac96cc43944ffd8ae3b8962, type: 2}
   leaveEmpty: 0
   button: {fileID: 1580639044}
   nameText: {fileID: 1695461989}

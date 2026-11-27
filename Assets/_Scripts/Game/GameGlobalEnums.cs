@@ -14,7 +14,8 @@ public enum TowerIndex
     Mummy,
     Fairy,
     Chimera,
-    Ghost
+    Ghost,
+    Werewolf
 }
 
 public enum EnemyIndex

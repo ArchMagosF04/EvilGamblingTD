@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9b6a55b92463c44aeb784f68d3be3a, type: 3}
   m_Name: PlayerSavedData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSavedData
-  gachaCoins: 400
-  Slot1Tower: {fileID: 11400000, guid: 4b0e3db2ff2613f41b51ceea1f763f7c, type: 2}
-  Slot2Tower: {fileID: 11400000, guid: 3a5457dc09a260c4a9c6a6d1b350ab7f, type: 2}
+  gachaCoins: 993300
+  Slot1Tower: {fileID: 11400000, guid: 3a5457dc09a260c4a9c6a6d1b350ab7f, type: 2}
+  Slot2Tower: {fileID: 11400000, guid: d1e60d469ac96cc43944ffd8ae3b8962, type: 2}
   Slot3Tower: {fileID: 11400000, guid: f339e9e3eeb78c0499b9e730d4612db1, type: 2}
   Slot4Tower: {fileID: 11400000, guid: eb8fbc934cfd1d343af3ac16e3d14bb9, type: 2}
-  Slot5Tower: {fileID: 0}
+  Slot5Tower: {fileID: 11400000, guid: 52c2ae892280cec46962ca7cef6e3b30, type: 2}
   towersUnlocked:
-    Keys: 0000000001000000020000000300000004000000050000000600000007000000
-    Values: 0100010001000001
+    Keys: 000000000100000002000000030000000400000005000000060000000700000008000000
+    Values: 010101000101010101
