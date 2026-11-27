@@ -13,26 +13,26 @@ MonoBehaviour:
   m_Name: TD_WerewolfData
   m_EditorClassIdentifier: Assembly-CSharp::SO_TowerData
   <ID>k__BackingField: 8
-  <Rarity>k__BackingField: 0
+  <Rarity>k__BackingField: 4
   <TowerName>k__BackingField: Werewolf
   <InventoryImage>k__BackingField: {fileID: -4586151617940930641, guid: 6182b28912c60fa46a3351265f13c865, type: 3}
   <TowerPrefab>k__BackingField: {fileID: 5255886123737869356, guid: c4c5a716300027248a74632e1995d376, type: 3}
-  <TowerCost>k__BackingField: 80
+  <TowerCost>k__BackingField: 300
   <TowerButtonSprite>k__BackingField: {fileID: 2223829051032204310, guid: 44b0195066ec3a549abfeb8471abdc30, type: 3}
-  <AttackPrefab>k__BackingField: {fileID: 3238343644718015279, guid: 4595b7cfef9485148893b9f639a3c02f, type: 3}
+  <AttackPrefab>k__BackingField: {fileID: 3238343644718015279, guid: aae0a00b7c7f41546a9277ec11ca8cc6, type: 3}
   <AttackSpeed>k__BackingField: 1.1
-  <NumberOfShots>k__BackingField: 2
+  <NumberOfShots>k__BackingField: 6
   <ShotSpread>k__BackingField: 0
   <TrackTarget>k__BackingField: 0
-  <MaxHealth>k__BackingField: 100
-  <RangeType>k__BackingField: 0
+  <MaxHealth>k__BackingField: 40
+  <RangeType>k__BackingField: 3
   <EnemyLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
-  <DetectionRange>k__BackingField: 2
-  <DetectionRadius>k__BackingField: 0.95
+  <DetectionRange>k__BackingField: 5
+  <DetectionRadius>k__BackingField: 2
   <DetectionOriginOffset>k__BackingField: {x: 0.11, y: 0.16, z: 0}
-  <DetectionAngle>k__BackingField: 0
+  <DetectionAngle>k__BackingField: 160
   <DeathSound>k__BackingField:
     _entity: {fileID: 11400000, guid: c74c3d2a7c7fc324dbca8062298694bf, type: 2}
     ID: 0

@@ -7852,6 +7852,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 180}
   m_SizeDelta: {x: -104, y: 448.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &2098271726996788098
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2216384893679402039, guid: c4c5a716300027248a74632e1995d376, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.374883
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216384893679402039, guid: c4c5a716300027248a74632e1995d376, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.673597
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216384893679402039, guid: c4c5a716300027248a74632e1995d376, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216384893679402039, guid: c4c5a716300027248a74632e1995d376, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216384893679402039, guid: c4c5a716300027248a74632e1995d376, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216384893679402039, guid: c4c5a716300027248a74632e1995d376, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216384893679402039, guid: c4c5a716300027248a74632e1995d376, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216384893679402039, guid: c4c5a716300027248a74632e1995d376, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216384893679402039, guid: c4c5a716300027248a74632e1995d376, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216384893679402039, guid: c4c5a716300027248a74632e1995d376, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193542603240384567, guid: c4c5a716300027248a74632e1995d376, type: 3}
+      propertyPath: m_Name
+      value: TP_Werewolf
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c4c5a716300027248a74632e1995d376, type: 3}
 --- !u!114 &2207933237581704882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8612,3 +8669,4 @@ SceneRoots:
   - {fileID: 577911867}
   - {fileID: 284429500}
   - {fileID: 1479590811}
+  - {fileID: 2098271726996788098}
