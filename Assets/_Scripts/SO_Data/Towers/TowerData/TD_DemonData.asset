@@ -30,7 +30,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   <DetectionRange>k__BackingField: 10
-  <DetectionRadius>k__BackingField: 0.55
+  <DetectionRadius>k__BackingField: 0.3
   <DetectionOriginOffset>k__BackingField: {x: 0, y: -0.15, z: 0}
   <DetectionAngle>k__BackingField: 0
   <DeathSound>k__BackingField:
