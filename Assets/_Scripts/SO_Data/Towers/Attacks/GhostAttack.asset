@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: GhostAttack
   m_EditorClassIdentifier: Assembly-CSharp::SO_Attack
   <ID>k__BackingField: GhostAttack
-  <Damage>k__BackingField: 25
+  <Damage>k__BackingField: 5
   <Pierce>k__BackingField: 9999
   <CanHitSameEnemyMultipleTimes>k__BackingField: 1
   <DestroyOnLastHit>k__BackingField: 0
-  <MoveSpeed>k__BackingField: 0
-  <LifeTime>k__BackingField: 0.25
-  <DestroyBeyondRange>k__BackingField: 0
+  <MoveSpeed>k__BackingField: 2
+  <LifeTime>k__BackingField: 1.1
+  <DestroyBeyondRange>k__BackingField: 1
   <CheckPreviousFramesCollision>k__BackingField: 0
   <TargetMask>k__BackingField:
     serializedVersion: 2
